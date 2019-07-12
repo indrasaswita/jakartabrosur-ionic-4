@@ -1,0 +1,23 @@
+<ion-content>
+	<div class="login-page">
+		<div class="icon">
+			<img src="assets/icon/icon.png" width="60px" height="60px" />
+		</div>
+		<div class="input-botline">
+			<div class="title">USERNAME</div>
+			<ion-input type="email" name="username" placeholder="example@email.com" [(ngModel)]="username"></ion-input>
+		</div>
+		<div class="input-botline">
+			<div class="title">PASSWORD</div>
+			<ion-input type="password" name="password" placeholder="••••••••••" [(ngModel)]="password"></ion-input>
+		</div>
+		<div class="text-xs-center tx-yellow size-12 text-bold" style="margin:10px 0; min-height: 16px;">
+			{{loginresultstring}}
+		</div>
+		<div class="action">
+			<button class="btn" id="login_btn" (click)="login_clicked()">
+				LOG IN !
+			</button>
+		</div>
+	</div>
+</ion-content>

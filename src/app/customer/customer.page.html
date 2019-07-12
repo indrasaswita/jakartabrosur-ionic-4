@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+    	<i class="fab fa-earlybirds fa-fw"></i>
+	    Customers
+	  </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="text-xs-center">
+
+		<div class="text-xs-center line-11" *ngIf="customererror==true" style="margin:30px 0;">
+			No Customer Data Received<br>
+			<small>
+				<b>
+					( EROR ketika terima data Brohhhh!!! )
+				</b>
+			</small>
+		</div>
+
+		<table class="table" *ngIf="customererror==false">
+			<thead>
+				<tr>
+					<th class="text-xs-left">Customers</th>
+					<th>Phone Num.</th>
+					<th class="text-xs-right">Last Log</th>
+				</tr>
+			</thead>
+			<tbody *ngFor="let customer of customers">
+				<tr>
+					<td class="text-xs-left line-09">
+						{{customer.id}}.
+						<b>
+							<i class="fas fa-user" [ngClass]="{'tx-primary':customer.title=='Mr.', 'tx-lightmagenta':customer.title=='Mrs.' || customer.title=='Ms.'}"></i>
+							{{customer.name}}
+						</b>
+						<br>
+						<small>
+							{{customer.email}}
+						</small>
+					</td>
+					<td class="line-10">
+						<small>
+							{{customer.phone1}}
+							<span *ngIf="customer.phone2!=''">
+								<br>
+								{{customer.phone2}}
+							</span>
+						</small>
+					</td>
+					<td class="text-xs-right line-09">
+						<small>
+							{{customer.updated_at}}
+						</small>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</ion-content>

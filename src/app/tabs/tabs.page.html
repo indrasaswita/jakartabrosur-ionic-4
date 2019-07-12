@@ -1,0 +1,43 @@
+<ion-tabs>
+
+  <ion-tab tab="home"> <!-- HIDDEN -->
+    <ion-router-outlet name="home"></ion-router-outlet>
+  </ion-tab>
+  <ion-tab tab="salelist">
+    <ion-router-outlet name="salelist"></ion-router-outlet>
+  </ion-tab>
+  <ion-tab tab="pricelist">
+    <ion-router-outlet name="pricelist"></ion-router-outlet>
+  </ion-tab>
+  <ion-tab tab="customer">
+    <ion-router-outlet name="customer"></ion-router-outlet>
+  </ion-tab>
+  <ion-tab tab="notification">
+    <ion-router-outlet name="notification"></ion-router-outlet>
+  </ion-tab>
+
+  <ion-tab-bar slot="bottom">
+
+    <ion-tab-button tab="salelist" href="/tabs/full/(salelist:salelist)">
+      <ion-icon name="bonfire"></ion-icon>
+      <ion-label>Sale</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="pricelist" href="/tabs/full/(pricelist:pricelist)">
+      <ion-icon name="list-box"></ion-icon>
+      <ion-label>Price</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="customer" href="/tabs/full/(customer:customer)">
+      <ion-icon name="logo-freebsd-devil"></ion-icon>
+      <ion-label>Customers</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="notification" href="/tabs/full/(notification:notification)">
+      <ion-icon name="notifications"></ion-icon>
+      <ion-label>Notif</ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+
+</ion-tabs>
