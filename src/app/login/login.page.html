@@ -1,8 +1,10 @@
 <ion-content>
 	<div class="login-page">
 		<div class="icon">
-			<img src="assets/icon/icon.png" width="60px" height="60px" />
+			<img src="../assets/logo-transp/logo-white-shadow-200px.png" width="200px" height="200px" />
 		</div>
+
+		{{global.onesignalID}}
 		<div class="input-botline">
 			<div class="title">USERNAME</div>
 			<ion-input type="email" name="username" placeholder="example@email.com" [(ngModel)]="username"></ion-input>
@@ -11,13 +13,15 @@
 			<div class="title">PASSWORD</div>
 			<ion-input type="password" name="password" placeholder="••••••••••" [(ngModel)]="password"></ion-input>
 		</div>
-		<div class="text-xs-center tx-yellow size-12 text-bold" style="margin:10px 0; min-height: 16px;">
-			{{loginresultstring}}
-		</div>
-		<div class="action">
+		<div class="result-text" *ngIf="loginresultstring.length>0" [innerHTML]="loginresultstring"></div>
+		<div class="action" *ngIf="!global.loginloading&&loginerror">
 			<button class="btn" id="login_btn" (click)="login_clicked()">
 				LOG IN !
 			</button>
+		</div>
+		<div class="action" *ngIf="global.loginloading||!loginerror">
+			<i class="fal fa-spinner fa-spin"></i>
+			loading...
 		</div>
 	</div>
 </ion-content>

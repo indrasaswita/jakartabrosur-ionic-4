@@ -10,62 +10,82 @@ import { PricelistPage } from '../pricelist/pricelist.page';
 import { AddpricePage } from '../pricelist/addprice/addprice.page';
 import { CustomerPage } from '../customer/customer.page';
 import { NotificationPage } from '../notification/notification.page';
+import { WhatsappPage } from '../whatsapp/whatsapp.page';
+import { MasterPage } from '../master/master.page';
+import { AlluserPage } from '../alluser/alluser.page';
+import { CartsPage } from '../carts/carts.page';
 
 const routes: Routes = [
-  {
-    path: 'full',
-    component: TabsPage,
-    children: [
-      /*{
-        path: '',
-        redirectTo: '/tabs/full/(home:home)',
-        pathMatch: 'full',
-      },*/
-      {
-        path: 'home',
-        outlet: 'home',
-        component: HomePage
-      },
-      {
-        path: 'salelist',
-        outlet: 'salelist',
-        component: SalelistPage
-      },
-      {
-        path: 'pricelist',
-        outlet: 'pricelist',
-        component: PricelistPage
-        //loadChildren: './pricelist/pricelist.module#PricelistPageModule'
-      },/*
-      {
-        path: 'addprice',
-        outlet: 'pricelist',
-        component: AddpricePage,
-        redirectTo: '/popup/addprice',
-        pathMatch: 'full'
-      },*/
-      /*{ path: 'addprice', loadChildren: './pricelist/addprice/addprice.module#AddpricePageModule' }*/
-      {
-        path: 'customer',
-        outlet: 'customer',
-        component: CustomerPage
-      },
-      {
-        path: 'notification',
-        outlet: 'notification',
-        component: NotificationPage
-      }
-    ]
-  }/*,
-  {
-    path: 'addprice',
-    redirectTo: '/tabs/addprice',
-    pathMatch: 'full'
-  }*/
+	{
+		path: 'full',
+		component: TabsPage,
+		children: [
+			{
+				path: 'home',
+				outlet: 'home',
+				component: HomePage
+			},
+			{
+				path: 'about',
+				outlet: 'about',
+				component: AboutPage
+			},
+			{
+				path: 'contact',
+				outlet: 'contact',
+				component: ContactPage
+			},
+			{
+				path: 'salelist',
+				outlet: 'salelist',
+				component: SalelistPage
+			},
+			{
+				path: 'pricelist',
+				outlet: 'pricelist',
+				component: PricelistPage
+			},
+			{
+				path: 'addprice',
+				outlet: 'addprice',
+				component: AddpricePage
+			},
+			{
+				path: 'customer',
+				outlet: 'customer',
+				component: CustomerPage
+			},
+			{
+				path: 'notification',
+				outlet: 'notification',
+				component: NotificationPage
+			},
+			{
+				path: 'whatsapp',
+				outlet: 'whatsapp',
+				component: WhatsappPage
+			},
+			{
+				path: 'master',
+				outlet: 'master',
+				component: MasterPage
+			},
+			{
+				path: 'alluser',
+				outlet: 'alluser',
+				component: AlluserPage
+			},/*
+			{
+				path: 'carts',
+				outlet: 'carts',
+				component: CartsPage
+			},*/
+		]
+	}
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forChild(routes)],
+	exports: [RouterModule]
 })
 export class TabsPageRoutingModule {}

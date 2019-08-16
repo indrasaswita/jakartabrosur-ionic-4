@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+    <ion-title>
+			SalesID #{{data.id|number:0}} 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<table class="table item-header">
+		<tbody>
+			<tr class="header">
+				<td>
+					<i class="fal fa-user-astronaut fa-fw"></i>
+					{{data.customer.name}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{{data.created_at}}
+			 	</td>
+			</tr>
+			<tr>
+				<td>
+					done at -> {{data.estdate}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					top -> {{data.tempo}}
+				</td>
+			</tr>
+			<tr *ngIf="data.companyname!=null">
+				<td>
+					{{data.companyname}}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<table class="table item-detail">
+		<tbody *ngFor="let detail of data.salesdetail; let i = index">
+			<tr class="header">
+				<td colspan="2">
+					#{{i+1}}.
+					{{detail.cartheader.jobsubtype.name}}
+				</td>
+			</tr>
+			<tr class="sub-header">
+				<td colspan="2">Keterangan:</td>
+			</tr>
+			<tr>
+				<td>Judul</td>
+				<td>
+					<i class="fas fa-sign fa-fw"></i>
+					{{detail.cartheader.jobtitle}}
+				</td>
+			</tr>
+			<tr>
+				<td>Quantity</td>
+				<td>
+					{{detail.cartheader.quantity|number:0}} pcs
+				</td>
+			</tr>
+			<tr class="sub-header">
+				<td colspan="2">Info lebih lanjut</td>
+			</tr>
+			<tr>
+				<td>Click here:</td>
+				<td>
+					<button class="btn btn-sm btn-primary" (click)="toggleCartheader(detail.cartheader)">
+						CartID #{{detail.cartheader.id}}
+						<i class="fas fa-external-link-square fa-fw"></i>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</ion-content>

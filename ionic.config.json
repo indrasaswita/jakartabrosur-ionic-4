@@ -4,6 +4,6 @@
     "cordova": {}
   },
   "type": "angular",
-  "pro_id": "237a2e62",
-  "typescript": "true"
+  "typescript": "true",
+  "id": "237a2e62"
 }
