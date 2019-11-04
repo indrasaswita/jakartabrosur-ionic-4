@@ -27,16 +27,13 @@ export class CustomerPage implements OnInit {
   ngOnInit() {
 		//console.log('customer mulai');
 		this.getcustomerdata();
-		console.log("AFTER NG_ONINIT");
   }
 
   ionViewWillEnter(){
   	console.log("ANJING");
   }
 
-	ngOnEnter(){
-		console.log("OnEnter on contact.page.ts");
-	}
+
   ionSelected(){
   	console.log("KUCING MEONG");
   }
@@ -49,7 +46,7 @@ export class CustomerPage implements OnInit {
 
 		let post = {
 			'app_token': this.global.logintoken,
-			'usertype': this.global.usertype,
+			'usertype': 'EM',
 			'userID': this.global.userdata.id
 		};
 
@@ -76,9 +73,5 @@ export class CustomerPage implements OnInit {
 			}
 		);
   }
-
-
-
-
 
 }

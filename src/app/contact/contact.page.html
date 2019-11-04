@@ -1,17 +1,14 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
-        </ion-buttons>
-        <ion-title>
-            <i class="fas fa-user-astronaut fa-fw"></i>
-            Customer List
-        </ion-title>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>
+      <i class="fas fa-user-astronaut fa-fw"></i> 
+      Customer List
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ul *ngIf="!customerdownloading">
+  <ul *ngIf="!customersdownloading">
     <ng-container *ngFor='let customer of customers'>
       <li>
         <div class="code">    

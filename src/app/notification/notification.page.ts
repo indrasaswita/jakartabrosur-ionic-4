@@ -39,7 +39,7 @@ export class NotificationPage implements OnInit {
   	let url = this.global.api + "update/notifications";
   	let post = {
   		'app_token': this.global.logintoken,
-  		'usertype': this.global.usertype,
+  		'usertype': 'EM',
   		'userID': this.global.userdata.id,
   		'notifID': notifid
   	}
@@ -73,7 +73,7 @@ export class NotificationPage implements OnInit {
 
 		let post = {
 			'app_token': this.global.logintoken,
-			'usertype': this.global.usertype,
+			'usertype': 'EM',
 			'userID': this.global.userdata.id
 		};
 

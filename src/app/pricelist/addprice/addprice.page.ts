@@ -44,7 +44,7 @@ export class AddpricePage implements OnInit {
   	let url = this.global.api + "select/pricetypes";
   	let post = {
   		'app_token': this.global.logintoken,
-  		'usertype': this.global.usertype,
+  		'usertype': 'EM',
   		'userID': this.global.userdata.id
   	}
   	
@@ -93,7 +93,7 @@ export class AddpricePage implements OnInit {
 		let url = this.global.api + "insert/pricelists";
 		let post = {
 			'app_token': this.global.logintoken,
-			'usertype': this.global.usertype,
+			'usertype': 'EM',
 			'userID': this.global.userdata.id,
 			'typeID': typeID,
 			'title': title,

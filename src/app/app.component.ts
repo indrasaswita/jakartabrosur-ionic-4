@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 //import { AlertController } from 'ionic-angular';
 import { Platform, AlertController } from '@ionic/angular';
-import { NavController, MenuController } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { OneSignal } from '@ionic-native/onesignal';
@@ -22,10 +20,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private alertCtrl: AlertController,
-    public global: GlobalsService,
-    private navCtrl: NavController,
-    private menuCtrl: MenuController,
-    private router: Router,
+    public global: GlobalsService
   ) {
     this.initializeApp();
   }
@@ -84,21 +79,4 @@ export class AppComponent {
 
     this.oneSignal.endInit();
   }
-
-  gotoCartsActivity(){
-    this.menuCtrl.close();
-    this.navCtrl.navigateForward("carts");
-  }
-
-  gotoSalesActivity() {
-    this.menuCtrl.close();
-    this.navCtrl.navigateForward("sales");
-  }
-
-  gotoExpensepricelist() {
-    this.menuCtrl.close();
-    this.navCtrl.navigateForward("pricelist");
-  }
-
-  
 }

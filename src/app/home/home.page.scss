@@ -23,20 +23,3 @@
 	text-align: center;
 }
 
-
-.btn-group-wrapper{
-	.btn-group{
-		display: flex;
-		.btn{
-			border: 1px solid #206;
-			&:first-child{
-				border-radius-top-left: 5px;
-				border-radius-bottom-left: 5px;
-			}
-			&:last-child{
-				border-radius-top-right: 5px;
-				border-radius-bottom-right: 5px;
-			}
-		}
-	}
-}
