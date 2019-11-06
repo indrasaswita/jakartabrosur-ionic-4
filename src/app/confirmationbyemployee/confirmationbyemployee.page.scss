@@ -1,0 +1,39 @@
+.div-header{
+  margin: 10px;
+  font-size: 18px;
+}
+
+.btn-conf{
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #70a;
+  font-weight: bold;
+  color: white;
+  margin: 10px;
+  width: 95px;
+  font-size: 10px;
+  height: 35px;
+}
+
+.btn-info{
+  margin-left: 10px;
+}
+
+.input-conf{
+  font-size: 12px;
+  font-family: Google;
+  font-weight: 100;
+  color: #306;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  &:hover{
+    border-color: #0d81ff;
+  }
+
+  &:focus,
+  &:focus:hover{
+    box-shadow: 0 0 5px 5px rgba(0,0,0,.05);
+    border-color: #0d81ff;
+  }
+}

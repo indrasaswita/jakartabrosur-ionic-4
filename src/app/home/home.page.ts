@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
@@ -22,6 +23,7 @@ export class HomePage {
   constructor(
       public global: GlobalsService,
       public http: HttpClient,
+      public navCtrl: NavController,
       //public localNotifications: LocalNotifications
   )
   {
@@ -35,6 +37,22 @@ export class HomePage {
       led: 'FF0000',
       sound: null
     });*/
+  }
+
+  navSales(){
+  	this.navCtrl.navigateForward("sales");
+  }
+  navPrice(){
+  	this.navCtrl.navigateForward("prices");
+  }
+  navContact(){
+  	this.navCtrl.navigateForward("contact");
+  }
+  navNotif(){
+  	this.navCtrl.navigateForward("notif");
+  }
+  navCust(){
+  	this.navCtrl.navigateForward("customer");
   }
 
 }

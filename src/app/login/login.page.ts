@@ -5,77 +5,142 @@ import { Observable } from 'rxjs/Observable';
 
 import { GlobalsService } from '../globals.service';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
+import { AuthenticationService } from "../services/authentication.service";
+import { Storage } from "@ionic/storage";
 
 
 //@ViewChild('login_btn') inputEl: ElementRef;
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+	selector: 'app-login',
+	templateUrl: './login.page.html',
+	styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
 
 	username: String = "";
 	password: String = "";
-	loginresult: Observable<any>;
+	result: Observable<any>;
 	loginresultstring: String = "";
+	loginerror: boolean = true;
+	subscription: any;
 
-  constructor(
-  	public global: GlobalsService, 
-  	public http: HttpClient,
-  	public router: Router,
-  	public navCtrl: NavController
+	constructor(
+		public global: GlobalsService,
+		private auth: AuthenticationService,
+		public http: HttpClient,
+		public router: Router,
+		public navCtrl: NavController,
+		public platform: Platform,
+		public storage: Storage
 	) { 
 		//constructor
 		this.username = "employee@test.com";
 		this.password = "password";
+		this.global.logintoken = "$2y$10$yLK5sCjIeWdGRGA8gFjnpuUiBblJn9AP0A/TVTJculb2Ttbe4PBSq";
 	}
 
-  ngOnInit() {
+	ngOnInit() {
 		
-  }
-
-
-  login_clicked() {
-		let onesignalID = this.global.onesignalID;
-		let url = this.global.api+'login';
-		let post = {
-			'onesignalID': onesignalID,
-			'username': this.username,
-			'password': this.password
-		};
-
-
-		this.loginresult = this.http.post(url, 
-			post,
-			{ 
-				responseType: 'json' 
+		
+		//this.storage.clear('USER_INFO');
+		
+		var self = this;
+		this.auth.cek_token(function(data){
+			self.loginerror = false;
+			
+			if(self.global.usertype == "EM"){
+				self.router.navigateByUrl('tabs/full/(home:home)');
+				self.loginresultstring = "<i class='fas fa-check fa-fw'></i> Employee Logged-in, Success..";
 			}
-		);
+		}, function(error){
+			self.loginerror = true;
+			self.global.loginloading = false;
+			self.loginresultstring = "Please re-login..";
+			//kosongin passwod set user name dari storage
+			console.log(error);
+		});
+		
+	}
 
-		this.loginresult.subscribe(data=>{
-			if (data != null) {
-				if(data[0]=='1'){
-					console.log('STATUS OK');
-					this.global.logintoken = data[1];
-					console.log(data[2]);
-					this.global.userdata = data[2];
-					this.loginresultstring = "";
 
-					//this.router.navigateByUrl('tabs/full/(home:home)');
-					this.navCtrl.navigateForward('tabs/full/(home:home)');
+	ionViewDidEnter() {
+		this.subscription = this.platform.backButton.subscribe(() => {
+			navigator['app'].exitApp();
+		});
+	}
 
-				}else{
-					console.log('STATUS ERROR');
-					this.loginresultstring = data[1];
+
+	login_clicked() {
+		if(this.global.loginloading == false) {
+			this.global.loginloading = true;
+		
+			let onesignalID = this.global.onesignalID;
+			let url = this.global.api+'login';
+			let post = {
+				'onesignalID': onesignalID,
+				'username': this.username,
+				'password': this.password
+			};
+		
+			//console.log(url);
+		
+			//this.authService.login();
+		
+				this.result = this.http.post(url,
+					post,
+					{
+						responseType: 'json'
+					}
+				);
+				if(this.result != null){
+					this.result.subscribe(data=>{
+						if (data != null) {
+							if(data[0]=='1'){
+								this.global.logintoken = data[1];
+								this.global.userdata = data[2];
+								this.global.usertype = data[3];
+								this.loginerror = false;
+								
+								var dummy_response = {
+									onesignalID : this.global.onesignalID,
+									app_token : this.global.logintoken
+								};
+								this.storage.set('USER_INFO', dummy_response).then((response) => { });
+								
+
+								if(this.global.usertype == "EM"){
+									this.router.navigateByUrl('tabs/full/(home:home)');
+									this.loginresultstring = "<i class='fas fa-check fa-fw'></i> Employee Logged-in, Success..";
+								}else if(this.global.usertype == "CU"){
+									//CUSTOMER ROLE
+									//this.router.navigateByUrl('');
+									console.log("CUSTOMER RESTICTION");
+									this.loginresultstring = "<i class='fas fa-check fa-fw'></i> Customer Logged-in, Cannot go inside..";
+									this.global.loginloading = false;
+								}
+							}else{
+								this.loginerror = true;
+								console.log('STATUS ERROR');
+								this.loginresultstring = data[1];
+							}
+						}else{
+							this.loginerror = true;
+							console.log('NO DATA RECEIVED');
+						}
+						this.global.loginloading = false;
+					}, error=>{
+						this.global.loginloading = false;
+						console.log(error);
+					});
+				} else {
+					this.loginerror = true;
+					console.log("CANNOT LOGIN, error in result = null");
 				}
 			}else{
-				console.log('NO DATA RECEIVED');
+				console.log("STILL on log-in loading API, please wait..");
 			}
-		});
-
-  }
+		}
 
 }
