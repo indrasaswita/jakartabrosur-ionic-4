@@ -33,7 +33,9 @@ export class CustomerPage implements OnInit {
   	console.log("ANJING");
   }
 
-
+	ngOnEnter(){
+		console.log("OnEnter on contact.page.ts");
+	}
   ionSelected(){
   	console.log("KUCING MEONG");
   }
@@ -46,7 +48,7 @@ export class CustomerPage implements OnInit {
 
 		let post = {
 			'app_token': this.global.logintoken,
-			'usertype': 'EM',
+			'usertype': this.global.usertype,
 			'userID': this.global.userdata.id
 		};
 
@@ -73,5 +75,9 @@ export class CustomerPage implements OnInit {
 			}
 		);
   }
+
+
+
+
 
 }

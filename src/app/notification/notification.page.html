@@ -1,14 +1,20 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-    	<i class="fas fa-bell fa-fw"></i>
-    	Notifications
-    </ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+				<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+				<i class="fas fa-bell fa-fw"></i>
+				Notifications
+		</ion-title>
+		<ion-buttons slot="end">
+			<ion-menu-button autoHide="false"></ion-menu-button>
+		</ion-buttons>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content>
-	<table class="table">
+	<table class="table" *ngIf="notifications!=null">
 		<thead>
 			<tr>
 				<th>

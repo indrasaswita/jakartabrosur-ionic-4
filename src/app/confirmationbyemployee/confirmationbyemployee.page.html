@@ -1,0 +1,126 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Payment Confirmation by Employee</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+	<div class="div-header">
+		<label>
+			<i class="far fa-receipt"></i> Card ID {{data.id}} - {{data.jobtitle}}
+		</label>
+	</div>
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+				<table class="table item-detail" *ngIf="global.customeracc!=null">
+					<thead>
+						<tr class="header">
+							<th colspan="2">
+								Detail Bank
+							</th>
+						</tr>
+					</thead>
+					<tbody *ngIf="global.customeracc.salespayment.length>0">
+					<tr>
+						<td>Account No.</td>
+						<td>{{global.customeracc.salespayment[0].customeracc.accno}}</td>
+					</tr>
+					<tr>
+						<td>Bank Name</td>
+						<td>{{global.customeracc.salespayment[0].customeracc.bank.bankname}}</td>
+					</tr>
+					<tr>
+						<td>Name Account</td>
+						<td>{{global.customeracc.salespayment[0].customeracc.accname}}</td>
+					</tr>
+					<tr>
+						<td>Transfer Date</td>
+						<td>{{global.customeracc.salespayment[0].paydate|date:'dd/MM/yyyy'}}</td>
+					</tr>
+					<tr>
+						<td>Total Transfer</td>
+						<td>{{(global.customeracc.salespayment[0].ammount|number:0)}}</td>
+					</tr>
+					<tr>
+						<td>Note</td>
+						<td>
+							<ion-input id="note" type="text" autofocus="on" class="input-conf" [(ngModel)]="note"></ion-input>
+						</td>
+					</tr>
+					</tbody>
+					<tbody *ngIf="global.customeracc.salespayment.length==0">
+					<tr>
+						<td>Account No.</td>
+						<td>
+							<ion-select [(ngModel)]="accountno" (ionChange)="selectedaccount($event)" id="accountno">
+								<ion-select-option *ngFor="let custbank of global.custbankaccs" value="{{custbank.id}} - {{custbank.accname}} - {{custbank.bank.bankname}}">{{custbank.accno}} - {{custbank.bank.alias}}</ion-select-option>
+							</ion-select>
+						</td>
+					</tr>
+					<tr>
+						<td>Bank Name</td>
+						<td>
+							<ion-input type="text" class="input-conf" [(ngModel)]="bankname" readonly></ion-input>
+						</td>
+					</tr>
+					<tr>
+						<td>Name Account</td>
+						<td>
+							<ion-input type="text" class="input-conf" [(ngModel)]="nameacc" readonly></ion-input>
+						</td>
+					</tr>
+					<tr>
+						<td>Transfer Date</td>
+						<td>
+							<ion-input (click)="showDatepicker()" [(ngModel)]="myDate" value="myDate" class="input-conf">
+								<i class="far fa-calendar-alt"></i>
+							</ion-input>
+<!--							<ion-button (click)="showDatepicker()" [(ngModel)]="paydate">-->
+<!--								Show Date Picker-->
+<!--							</ion-button>-->
+						</td>
+					</tr>
+					<tr>
+						<td>Total Transfer</td>
+						<td>
+							<ion-input name="ammount" type="text" class="input-conf" [(ngModel)]="ammount"></ion-input>
+						</td>
+					</tr>
+					<tr>
+						<td>Note</td>
+						<td>
+							<ion-input name="note" type="text" class="input-conf" [(ngModel)]="note"></ion-input>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<div>
+					<button class="btn btn-conf" (click)="konfirmasipembayaran(global.customeracc.id)">Konfirmasi Pembayaran</button>
+				</div>
+			</ion-col>
+			<ion-col>
+				<table class="table item-detail" *ngIf="global.curls.length>0">
+					<thead>
+					<tr class="header">
+						<th colspan="3">
+							Detail Transaksi Bank
+						</th>
+					</tr>
+					</thead>
+					<tbody *ngFor="let data of global.curls">
+					<tr (click)="selecteddetail(data)">
+						<td>{{data.mutationDate|date:'dd/MM/yyyy'}}</td>
+						<td>{{data.mutationNote}}</td>
+						<td>{{data.mutationAmmount|number:0}}</td>
+					</tr>
+					</tbody>
+				</table>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+	
+</ion-content>

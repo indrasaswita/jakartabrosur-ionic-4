@@ -2,6 +2,20 @@
 // http://ionicframework.com/docs/theming/
 
 
+@import "custom-color";
+@import "custom-fonts";
+@import "custom-buttons";
+@import "custom-text-color";
+@import "custom-text-style";
+@import "custom-ion-menu-submenu";
+@import "custom-table-global";
+@import "custom-ul-global";
+@import "custom-subtab-global";
+@import "custom-icons-global";
+@import "custom-input-global";
+@import "custom-result-text";
+@import "custom-background-wrapper";
+
 /** Ionic CSS Variables **/
 :root {
 
@@ -77,12 +91,13 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
-  --ion-background-color: #fafafa;
+  --ion-background-color: #fff;
 
-  --ion-toolbar-background: #70a;
-  --ion-toolbar-background: -moz-linear-gradient(left, #70a 0%, #c0a 100%);
-  --ion-toolbar-background: -webkit-linear-gradient(left, #70a,#c0a 100%);
-  --ion-toolbar-background: linear-gradient(to right, #70a,#c0a);
-  --ion-toolbar-color: white;
+  --ion-toolbar-background: #fbfbfb;
+  --ion-toolbar-background: -moz-linear-gradient(left, #fbfbfb 0%, #fbfbfb 100%);
+  --ion-toolbar-background: -webkit-linear-gradient(left, #fbfbfb,#fbfbfb 100%);
+  --ion-toolbar-background: linear-gradient(to right, #fbfbfb,#fbfbfb);
+  --ion-toolbar-color: #444;
 
 }
+

@@ -1,0 +1,74 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			<i class="fal fa-eye fa-fw"></i>
+			Admin Sales Viewer
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<div class="text-xs-center" *ngIf="global.salesdownloading">
+		<i class="fas fa-spinner fa-spin fa-5x"></i>
+	</div>
+	<ng-container *ngIf="global.carts!=null">
+		<div class="text-xs-center" *ngIf="global.sales.length == 0">
+			No Pending Cart
+		</div>
+		<ng-container *ngIf="!global.salesdownloading && global.sales.length > 0">
+			<div class="content-title">
+				Sale Header
+				<div class="content-subtitle">
+					Click a card to see details
+				</div>
+			</div>
+			<div class="text-xs-right">
+				<input type="text">
+				<button class="btn">
+					<i class="fal fa-search fa-fw"></i>
+				</button>
+			</div>
+			<ul class="three-column">
+				<ng-container *ngFor = 'let saleheader of global.sales'>
+					<li (click)="toggleSaleheader(saleheader)">
+						<div class="header-id">
+							<b>{{saleheader.id}}</b>
+
+							<span class="pull-xs-right">
+								<small>
+									Rp
+								</small> 
+								<b>
+									
+								</b>
+							</span>
+						</div>
+						<div class="content">
+							<div class="pretitle">
+								
+							</div>
+							<div class="title">
+								<div class="" *ngFor="let saledetail of saleheader.salesdetail">
+									{{saledetail.cartheader.jobsubtype.name}}: {{saledetail.cartheader.jobtitle}}
+								</div>
+							</div>
+
+							<div class="post-title">
+								<i class="fal fa-clock fa-fw">
+								</i>
+								{{saleheader.created_at}}
+							</div>
+						</div>
+					</li>
+				</ng-container>
+			</ul>
+		</ng-container>
+	</ng-container>
+
+	<button class="btn" (click)="haha()">
+		haha
+	</button>
+</ion-content>
