@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { GlobalsService } from '../globals.service';
 import { Router } from '@angular/router';
-import { AddpricePage } from '../pricelist/addprice/addprice.page';
+/*import { AddpricePage } from '../pricelist/addprice/addprice.page';*/
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -15,9 +15,7 @@ import { NavController } from '@ionic/angular';
 })
 export class PricelistPage implements OnInit {
 
-	pricelists: any;
-	httpresult: Observable<any>;
-	pricelisterror:boolean;
+	result: Observable<any>;
 
   constructor(
   	public router: Router,
@@ -25,11 +23,11 @@ export class PricelistPage implements OnInit {
   	public http: HttpClient,
   	public navCtrl: NavController
 	) { 
-  	this.pricelists = null;
+  	this.global.expenseprices = [];
   }
 
   ngOnInit() {
-  	this.getpricelists();
+  	//this.getpricelists();
 		
   }
 
@@ -40,42 +38,44 @@ export class PricelistPage implements OnInit {
 
   refresh(event){
 		setTimeout(() => {
-			this.pricelists = [];
-			this.getpricelists();
+			this.global.expenseprices = [];
+			this.getPrices();
 			event.target.complete();
 		}, 2000);
   }
 
-  getpricelists(){
-  	let url = this.global.api+"select/pricelists";
-		let post = {
-			'app_token': this.global.logintoken,
-			'usertype': 'EM',
-			'userID': this.global.userdata.id
-		}
+  getPrices(){
+  		let url = this.global.api+"select/pricelists";
+  		let post = {
+  			'app_token': this.global.logintoken,
+  			'usertype': this.global.usertype,
+  			'userID': this.global.userdata.id
+  		}
 
-		this.httpresult = this.http.post(
-			url,
-			post,
-			{
-				responseType: 'json'
-			}
-		);
+  		this.result = this.http.post(
+  			url,
+  			post,
+  			{
+  				responseType: 'json'
+  			}
+  		);
 
-		this.httpresult.subscribe(
-			data => {
-				if (data != null) {
-					if (data instanceof Object) {
-						this.pricelists = data;
-						this.pricelisterror = false;
-					} else {
-						console.log("ERROR OUTPUT FROM " + url);
-						this.pricelisterror = true;
-						this.router.navigateByUrl('');
-					}
-				}
-			}
-		);
-  }
+  		if(this.result != null){
+  			this.result.subscribe(
+  				data => {
+  					if (data != null) {
+  						if (data instanceof Object) {
+  							this.global.expenseprices = data;
+  						} else {
+  							this.global.expenseprices = [];
+  							console.log("ERROR OUTPUT FROM " + url);
+  							this.router.navigateByUrl('');
+  						}
+  					}
+  				}
+  			);
+  		}
+  	}
+
 
 }

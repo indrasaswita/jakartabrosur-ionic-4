@@ -1,20 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-    	<i class="fab fa-earlybirds fa-fw"></i>
-	    Customers
-	  </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <i class="far fa-child fa-fw"></i>
+            Customer
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 	<div class="text-xs-center">
-
+<!--		TODO: Indra kupret-->
 		<div class="text-xs-center line-11" *ngIf="customererror==true" style="margin:30px 0;">
 			No Customer Data Received<br>
 			<small>
 				<b>
-					( EROR ketika terima data Brohhhh!!! )
+					( ERROR ketika terima data )
 				</b>
 			</small>
 		</div>

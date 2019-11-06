@@ -1,197 +1,75 @@
 <ion-header>
 	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
 		<ion-title>
-			<i class="fas fa-code-branch fa-fw"></i>
-			Data Penjualan
+			<div class="logo-img">
+				<img src="../assets/logo-transp/logo-contrast-100px.png" width="25px">
+			</div>
+			<div class="logo">
+				<span class="tx-darkpurple">Jakarta</span><span class="tx-gray">Brosur</span>
+			</div>
 		</ion-title>
+		<ion-buttons slot="end">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
 	</ion-toolbar>
 </ion-header>
 
 <ion-content>
+	<div class="background-wrapper">
+		<div class="icon xxl">
+			<i class="fal fa-bags-shopping fa-fw"></i>
+			<div class="text">
+				All purchase and sells are shown in this tabs. You can see all transactions by toggle the submenu on the top-right corner.
+			</div>
 
-	<div class="loading" *ngIf="cartsdownloading||salesdownloading">
-		<div>
-			<b>Please wait</b>, 
-			<br>
-			until the data is successfully loaded..
-		</div>
-	</div>
-	<div *ngIf="!cartsdownloading||!salesdownloading">
-		<div class="btn-group">
-			<button class="btn size-14" [ngClass]="{'selected':tab=='carts'}" (click)="setTab('carts')">
-				Carts
-			</button>
-			<button class="btn size-14" [ngClass]="{'selected':tab=='sales'}" (click)="setTab('sales')">
-				Sales
-			</button>
-		</div>
-		<ul *ngIf="!cartsdownloading && tab=='carts'">
-			<ng-container *ngFor = 'let cartheader of pendingcarts'>
-				<li>
-					<div class="code">
-						{{cartheader.id}}
-					</div>
-					<div class="content">
-						<div class="pretitle">
-							{{cartheader.customer.name}}
-							<span class="tx-gray"> - 
-								{{cartheader.customer.company.name}}
-							</span>
-						</div>
-						<div class="title">
-							<b>
-								{{cartheader.quantity}} {{cartheader.quantitytypename}} 
-							</b>
-							{{cartheader.jobsubtype.name}} 
-							<span class="tx-darkpurple">
-								{{cartheader.jobtitle}}
-							</span>
-						</div>
-					</div>
-					<div class="price">
-						{{((cartheader.printprice+cartheader.deliveryprice-cartheader.discount)/1000)|number:0}}
-					</div>
-					<button class="expand" (click)="toggleCartheader($event,cartheader)" [ngClass]="{'active':cartheader.showdetail}">
-						<i class="fas fa-fw fa-chevron-down"></i>
-					</button>
-				</li>
-				<ng-container *ngIf="cartheader.showdetail">
-					<ng-container *ngFor="let cartdetail of cartheader.cartdetail">
-						<li class="list-detail">
-							<div class="detail-content">
-								<div class="div-100"> 
-									<span class="tx-darkpurple">
-										<b>	
-											- {{cartdetail.cartname}} ({{cartdetail.jobtype}}) -
-										</b>
-									</span>
-								</div>
-								<div class="div-100 text-xs-right"> 	
-									Printer: {{cartdetail.printer.machinename}}
-								</div>
-							</div>
-							<div class="detail-content">
-								<div class="div-100"> 
-									Bahan: {{cartdetail.paper.name}} {{cartdetail.paper.color}} <b>{{cartdetail.paper.gramature}}</b>gsm
-								</div>
-							</div>
-							<div class="detail-content">
-								<div class="div-100"> 
-									Ukuran Gbr: {{cartdetail.imagewidth|number:0}} x {{cartdetail.imagelength|number:0}} cm
-								</div>
-							</div>
-							<div class="detail-content">
-								<div class="div-100"> 
-									Kertas: {{cartdetail.printwidth|number:0}} x {{cartdetail.printlength|number:0}} cm
-								</div>
-								<div class="div-100"> 
-									Plano: {{cartdetail.plano.width|number:0}} x {{cartdetail.plano.length|number:0}} cm
-								</div>
-							</div>
-							<div class="detail-content">
-								<div class="div-100"> 
-									Dalam Cetak: <b>{{cartdetail.totalinprintx|number:0}}</b> x <b>{{cartdetail.totalinprinty|number:0}}</b> + <b>{{cartdetail.totalinprintrest|number:0}}</b> = <b>{{cartdetail.totalinprint|number:0}}</b>
-								</div>
-								<div class="div-100"> 
-									Dalam Plano: <b>{{cartdetail.totalinplanox|number:0}}</b> x <b>{{cartdetail.totalinplanoy|number:0}}</b> + <b>{{cartdetail.totalinplanorest|number:0}}</b> = <b>{{cartdetail.totalinplano|number:0}}</b>
-								</div>
-							</div>
-						</li>
-					</ng-container>
-				</ng-container>
-			</ng-container>
-		</ul>
-		<ul *ngIf="!salesdownloading && tab=='sales'">
-			<ng-container *ngFor='let salesheader of sales'>
-				<li>
-					<div class="code">
-						{{salesheader.id}}
-					</div>
-					<div class="content">
-						<div class="pretitle">
-							<b>
-								{{salesheader.created_at}}
-							</b>
-							<i class="fas fa-chevron-right"></i>
-							{{salesheader.estdate}}
-							<span *ngIf='salesheader.estdate==null'>
-								NOT SET
-							</span> 
-						</div>
-						<div class="title">
-							{{salesheader.customer.name}}
-							<span class="tx-gray"> 
-								{{salesheader.customer.company.name}}
-							</span>
-						</div>
-					</div>
-					<div class="price">
-						{{(salesheader.totalprice/1000)|number:0}}
-					</div>
-					<button class="expand" (click)="toggleSalesheader($event,salesheader)" [ngClass]="{'active':salesheader.showdetail}">
-						<i class="fas fa-fw fa-chevron-down"></i>
-					</button>
-				</li>
 
-				<ng-container *ngIf="salesheader.showdetail">
-					<li *ngFor="let salesdetail of salesheader.salesdetail; index as i" class="list-detail">
-						<div class="detail-title">
-							<div class="div-100">
-								{{i+1}}. <span class="tx-primary">#CH{{salesdetail.cartheader.id}}</span> {{salesdetail.cartheader.jobsubtype.name}} {{salesdetail.cartheader.jobtitle}}
-							</div>
-							<div class="text-xs-right">
-								{{(salesdetail.cartheader.printprice+salesdetail.cartheader.deliveryprice-salesdetail.cartheader.discount)|number:0}}
-							</div>
-						</div>
-						<div class="detail-content">
-							<div class="div-100">
-								Qty: <span class="tx-darkpurple"><b>{{salesdetail.cartheader.quantity|number:0}}</b> {{salesdetail.cartheader.quantitytypename}}</span>
-							</div>
-						</div>
-						<ng-container *ngFor="let cartdetail of salesdetail.cartheader.cartdetail">
-							<div class="detail-content">
-								<div class="div-100"> 
-									<span class="tx-darkpurple">
-										<b>	
-											- {{cartdetail.cartname}} ({{cartdetail.jobtype}}) -
-										</b>
-									</span>
-								</div>
-								<div class="div-100 text-xs-right"> 	
-									Printer: {{cartdetail.printer.machinename}}
-								</div>
-							</div>
-							<div class="detail-content">
-								<div class="div-100"> 
-									Bahan: {{cartdetail.paper.name}} {{cartdetail.paper.color}} <b>{{cartdetail.paper.gramature}}</b>gsm
-								</div>
-							</div>
-							<div class="detail-content">
-								<div class="div-100"> 
-									Ukuran Gbr: {{cartdetail.imagewidth|number:0}} x {{cartdetail.imagelength|number:0}} cm
-								</div>
-							</div>
-							<div class="detail-content">
-								<div class="div-100"> 
-									Kertas: {{cartdetail.printwidth|number:0}} x {{cartdetail.printlength|number:0}} cm
-								</div>
-								<div class="div-100"> 
-									Plano: {{cartdetail.plano.width|number:0}} x {{cartdetail.plano.length|number:0}} cm
-								</div>
-							</div>
-							<div class="detail-content">
-								<div class="div-100"> 
-									Dalam Cetak: <b>{{cartdetail.totalinprintx|number:0}}</b> x <b>{{cartdetail.totalinprinty|number:0}}</b> + <b>{{cartdetail.totalinprintrest|number:0}}</b> = <b>{{cartdetail.totalinprint|number:0}}</b>
-								</div>
-								<div class="div-100"> 
-									Dalam Plano: <b>{{cartdetail.totalinplanox|number:0}}</b> x <b>{{cartdetail.totalinplanoy|number:0}}</b> + <b>{{cartdetail.totalinplanorest|number:0}}</b> = <b>{{cartdetail.totalinplano|number:0}}</b>
-								</div>
-							</div>
-						</ng-container>
-					</li>
-				</ng-container>
-			</ng-container>
-		</ul>
+			<ul class="text menus">
+				<li>
+					<i class="fal fa-list fa-fw icon"></i>
+					<div class="content">
+						All Pending Carts
+					</div>
+					<i class="fas fa-check fa-fw icon" *ngIf="global.carts.length>0"></i>
+				</li>
+				<li>
+					<i class="fal fa-list fa-fw icon"></i>
+					<div class="content">
+						Sales Activity
+					</div>
+					<i class="fas fa-check fa-fw icon" *ngIf="global.sales.length>0"></i>
+				</li>
+				<li>
+					<i class="fal fa-bookmark fa-fw icon"></i>
+					<div class="content">
+						Sales Need To-Do
+					</div>
+				</li>
+				<li>
+					<i class="fal fa-filter fa-fw icon"></i>
+					<div class="content">
+						Sales Filter & Search
+					</div>
+				</li>
+				<li>
+					<i class="fal fa-chart-network fa-fw icon"></i>
+					<div class="content">
+						Join Cart <small class="fal fa-chevron-double-right"></small> Sale
+					</div>
+				</li>
+				<li>
+					<i class="fal fa-envelope-open-dollar fa-fw icon"></i>
+					<div class="content">
+						Our Expense & Purchase
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="loading" *ngIf="global.cartsdownloading||global.salesdownloading">
+		</div>
 	</div>
 
 </ion-content>
