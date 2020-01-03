@@ -15,6 +15,7 @@ export class CustomerPage implements OnInit {
 	customers: any;
 	httpresult: Observable<any>;
 	customererror: boolean;
+	groups: any = [];
 
   constructor(
   	public global: GlobalsService,
@@ -27,6 +28,7 @@ export class CustomerPage implements OnInit {
   ngOnInit() {
 		//console.log('customer mulai');
 		this.getcustomerdata();
+		//this.getgroups();
   }
 
   ionViewWillEnter(){
@@ -64,7 +66,11 @@ export class CustomerPage implements OnInit {
 			data => {
 				if(data != null){
 					if (data instanceof Array) {
+						data.forEach((item, index) => {
+							item.show = true;
+						})
 						this.customers = data;
+						console.log(this.customers);
 						this.customererror = false;
 					}else{
 						console.log('ERROR OUTPUT FROM ' + url);
@@ -75,9 +81,26 @@ export class CustomerPage implements OnInit {
 			}
 		);
   }
-
-
-
-
-
+  
+  getgroups() {
+		for (var i = 0; i < 8; i++) {
+			this.groups[i] = {
+				name: i,
+				items: [],
+				show: true
+			};
+			for (var j=0; j<3; j++) {
+				this.groups[i].items.push(i + '-' + j);
+			}
+		}
+		console.log(this.groups);
+	}
+  
+  isgroupshown(group){
+  	return group.show;
+	}
+  
+  togglegroup(group){
+		group.show = !group.show;
+	}
 }

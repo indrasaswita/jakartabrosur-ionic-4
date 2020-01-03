@@ -48,7 +48,7 @@ export class AuthenticationService {
 							if (data != null) {
 								console.log(data);
 								if (data[0] == '1') {
-									this.global.logintoken = data                         [1];
+									this.global.logintoken = data[1];
 									this.global.userdata = data[2];
 									this.global.usertype = data[3];
 									
