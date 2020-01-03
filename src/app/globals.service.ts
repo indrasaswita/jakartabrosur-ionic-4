@@ -22,7 +22,7 @@ export class GlobalsService {
 	public papers: any = [];
 	public customeracc: any = null;
 	public curls: any = [];
-	public custbankaccs: any = [];
+	//public custbankaccs: any = [];
 	public salespaymentverif: any = [];
 	public loginerror: boolean = false;
 

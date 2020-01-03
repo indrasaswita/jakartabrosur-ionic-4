@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient } from "@angular/common/http";
 import * as moment from 'moment';
 import { DatePicker } from '@ionic-native/date-picker/ngx';
-import {forEach} from "@angular-devkit/schematics";
+import { AlertController } from "@ionic/angular";
 
 @Component({
 	selector: 'app-confirmationbyemployee',
@@ -14,16 +14,33 @@ import {forEach} from "@angular-devkit/schematics";
 })
 export class ConfirmationbyemployeePage implements OnInit {
 	
-	data: any;
 	httpresult : Observable<any>;
 	result: Observable<any>;
+	urlrefresh: string = 'http://localhost/jakartabrosur/public/API/admin/compaccs/1/bca/refresh';
+	urlread: string = 'http://localhost/jakartabrosur/public/API/admin/compaccs/1/bca/read';
 	
-	banklist: any = [];
-	companybankaccmutation: any = [];
-	note: any;
-	ammount: any;
+	private paydialogstatus: string = "";
+	private paydialogshow: boolean = false;
+	private mutationtableshow: boolean = false;
+	private showsalestypes: string = "paid";
+	private showsalesloading: boolean = false;
+	private showsaleserrormessage: string = "";
+	
+	private salesheaderID: any;
+	private paydialog: any;
+	private salesnotverifs: any = [];
+	private salesnopayments: any = [];
+	private companybankaccs: any = [];
+	private salespayment: any = [];
+	private custbankaccs: any = [];
+	private newcustbanksacc: any = [];
+	private companybankaccmutation: any = [];
+	private note: any;
+	private ammount: any;
+	private selectedcompanybank: any;
+	private selectedsalesheaderindex: number = -1;
 	accountno: any = [];
-	bank: any;
+	bank: any = '';
 	accname: any;
 	salesID: any;
 	id: any;
@@ -38,29 +55,26 @@ export class ConfirmationbyemployeePage implements OnInit {
 		private router: Router,
 		private activatedRoute: ActivatedRoute,
 		private http: HttpClient,
-		private datePicker: DatePicker
+		private datePicker: DatePicker,
+		private alertController: AlertController
 	) {
 		
 		
 		this.activatedRoute.queryParams.subscribe(params => {
-			this.data = JSON.parse(params.special);
-				console.log(this.data);
-			
+			this.salesheaderID = JSON.parse(params.sid);
 		});
 	}
 
 	ngOnInit() {
-		this.getsalespaymentverif(this.data.id);
-		this.getcustomeracc(this.data.id);
-		this.getcustbanklist(this.data.customerID);
-		this.getbanklist();
-		this.getcurl();
+		if(this.salesheaderID != null){
+			this.setshowsalestype('paid');
+		}
+		this.getcompanybankaccount();
 		this.getusedcurl(0);
-		this.bank = '';
 	}
 	
 	getcustomeracc(input){
-		let url = this.global.api+"select/getcustomerpaymentbyid";
+		let url = this.global.api+"select/getsalespaymentbycartid";
 		let post = {
 			'app_token': this.global.logintoken,
 			'usertype': this.global.usertype,
@@ -96,44 +110,45 @@ export class ConfirmationbyemployeePage implements OnInit {
 		);
 	}
 	
-	getcustbanklist(input){
-		let url = this.global.api+"select/getcustbankaccount";
-		let post = {
-			'app_token': this.global.logintoken,
-			'usertype': this.global.usertype,
-			'userID': this.global.userdata.id,
-			'customerID' : input
-		};
-		
-		this.result = this.http.post(
-			url,
-			post,
-			{
-				responseType:'json'
-			}
-		);
-		
-		this.result.subscribe(
-			response => {
-				if(response != null){
-					if(response instanceof Array){
-						this.global.custbankaccs = response;
-						console.log(this.global.custbankaccs);
-					}
-					else{
-						console.log("not Array");
-					}
-				}
-				else{
-					console.log("kosong");
-					this.router.navigateByUrl('');
-				}
-			}
-		);
-	}
+	// getcustbanklist(input){
+	// 	this.global.custbankaccs = [];
+	// 	let url = this.global.api+"select/getcustbankaccount";
+	// 	let post = {
+	// 		'app_token': this.global.logintoken,
+	// 		'usertype': this.global.usertype,
+	// 		'userID': this.global.userdata.id,
+	// 		'customerID' : input
+	// 	};
+	//
+	// 	this.result = this.http.post(
+	// 		url,
+	// 		post,
+	// 		{
+	// 			responseType:'json'
+	// 		}
+	// 	);
+	//
+	// 	this.result.subscribe(
+	// 		response => {
+	// 			if(response != null){
+	// 				if(response instanceof Array){
+	// 					this.global.custbankaccs = response;
+	// 					console.log(this.global.custbankaccs);
+	// 				}
+	// 				else{
+	// 					console.log("not Array");
+	// 				}
+	// 			}
+	// 			else{
+	// 				console.log("kosong");
+	// 				this.router.navigateByUrl('');
+	// 			}
+	// 		}
+	// 	);
+	// }
 	
-	getbanklist(){
-		let url = this.global.api+"select/getbanklist";
+	getcompanybankaccount(){
+		let url = this.global.api+"select/getcompanybankaccount";
 		let post = {
 			'app_token': this.global.logintoken,
 			'usertype': this.global.usertype,
@@ -152,8 +167,7 @@ export class ConfirmationbyemployeePage implements OnInit {
 			response => {
 				if(response != null){
 					if(response instanceof Array){
-						this.banklist = response;
-						console.log(this.banklist);
+						this.companybankaccs = response;
 					}
 					else{
 						console.log("not Array");
@@ -167,20 +181,20 @@ export class ConfirmationbyemployeePage implements OnInit {
 		);
 	}
 	
-	getcurl(){
+	getbcarefresh(){
+		console.log(this.paydialog);
 		if(!this.global.curldownloading)
 		{
 			this.global.curls = [];
 			this.global.curldownloading = true;
 			var yesterday = moment().subtract(1, "days").format("YYYY-MM-DD");
-			let url = 'http://localhost/jakartabrosur/public/API/admin/compaccs/1/bca/refresh';
 			let post = {
 				'app_token': this.global.logintoken,
 				'usertype': this.global.usertype,
 				'userID': this.global.userdata.id
 			};
 			this.result = this.http.post(
-				url,
+				this.urlrefresh,
 				post,
 				{
 					responseType: 'json'
@@ -195,12 +209,15 @@ export class ConfirmationbyemployeePage implements OnInit {
 								if(item.mutationNote.includes('CR')){
 									var dates = moment(item.mutationDate).format("YYYY-MM-DD");
 									if(dates>=yesterday){
+										item.curlshow = false;
+										let count = item.mutationNote.split(";");
+										item.name = count[count.length-2];
 										this.global.curls.push(item);
 									}
 								}
 							})
 							this.global.curldownloading = false;
-							console.log("sampai sini");
+							console.log("sampai sini refresh");
 						}
 						else{
 							this.global.curldownloading = true;
@@ -210,56 +227,92 @@ export class ConfirmationbyemployeePage implements OnInit {
 					}
 				}
 			);
+			//this.getcustbanklist(this.paydialog.customerID);
 		}
 	}
 	
-	konfirmasipembayaran(input){
-		if(input.salespayment.length>0){
-			this.accountno = input.salespayment[0].customeracc.accno;
-			this.accname = input.salespayment[0].customeracc.accname;
-			this.myDate = input.salespayment[0].paydate;
-			this.ammount = input.salespayment[0].ammount;
-			this.bank = input.salespayment[0].customeracc.bankID;
-			this.customerbankaccID = input.salespayment[0].customeracc.id;
-			this.paymentID = input.salespayment[0].id;
+	getbcaread(){
+		console.log(this.paydialog);
+		if(!this.global.curldownloading){
+			this.global.curls = [];
+			this.global.curldownloading = true;
+			var yesterday = moment().subtract(1, "days").format("YYYY-MM-DD");
+			this.result = this.http.get(this.urlread,
+				{
+				responseType: 'json'
+				}
+			);
+			
+			this.result.subscribe(
+				response =>{
+					if(response != null){
+						if(response instanceof Array){
+							response.forEach((item, index) =>{
+								if(item.mutationNote.includes('CR')){
+									item.curlshow = false;
+									let count = item.mutationNote.split(";");
+									item.name = count[count.length-2];
+									var dates = moment(item.mutationDate).format("YYYY-MM-DD");
+									if(dates>=yesterday){
+										this.global.curls.push(item);
+									}
+								}
+							})
+							this.global.curldownloading = false;
+							console.log("sampai sini read");
+						}
+						else{
+							this.global.curldownloading = true;
+							console.log('ERROR OUTPUT');
+							this.router.navigateByUrl('');
+						}
+					}
+				}
+			);
+			//this.getcustbanklist(this.paydialog.customerID);
 		}
+	}
+	
+	konfirmasipembayaran($paydialog){
+		console.log($paydialog);
+		console.log('konfirmasi pembayaran');
 		let url = this.global.api + "insert/insertverif";
 		let post = {
 			'app_token'								: this.global.logintoken,
 			'usertype'								: this.global.usertype,
 			'userID'									: this.global.userdata.id,
-			'salesID'									: input.id,
+			//'salesID'									: input.id,
 			'paymentID'								: this.paymentID,
-			'ammount'									: this.ammount,
+			'ammount'									: $paydialog.ammount,
 			'paydate'									: this.myDate,
 			'accname'									: this.accname,
 			'note'										: this.note,
 			'accountno'								: this.accountno,
-			'customerID'							: input.customerID,
-			'customerbankmutationID'	: this.customerbankmutationID,
+			//'customerID'							: input.customerID,
+			'customerbankmutationID'	: $paydialog.customerbankmutationID,
 			'bankID'									: this.bank,
 			'customerbankaccID'				: this.customerbankaccID
 		};
 		
-		this.result = this.http.post(
-			url,
-			post,
-			{
-				responseType: 'json'
-			}
-		);
-		
-		this.result.subscribe(
-			response => {
-				if(response != null){
-					alert('data berhasil disimpan');
-					this.ishidden = true;
-				}
-				else{
-					alert('data gagal disimpan');
-				}
-			}
-		);
+		// this.result = this.http.post(
+		// 	url,
+		// 	post,
+		// 	{
+		// 		responseType: 'json'
+		// 	}
+		// );
+		//
+		// this.result.subscribe(
+		// 	response => {
+		// 		if(response != null){
+		// 			alert('data berhasil disimpan');
+		// 			this.ishidden = true;
+		// 		}
+		// 		else{
+		// 			alert('data gagal disimpan');
+		// 		}
+		// 	}
+		// );
 	}
 	
 	selectedaccount(event){
@@ -285,7 +338,6 @@ export class ConfirmationbyemployeePage implements OnInit {
 	}
 	
 	selecteddetail(input){
-		console.log(input);
 		this.getusedcurl(input.id);
 		let a = input.mutationNote.split(";");
 		let count = a.length;
@@ -295,14 +347,270 @@ export class ConfirmationbyemployeePage implements OnInit {
 		this.customerbankmutationID = input.id;
 	}
 	
-	getsalespaymentverif(input){
-		let url = this.global.api+"select/getsalespaymentverif";
+	hideallsalespayment(){
+		if(this.salesnotverifs!=null) {
+			this.salesnotverifs.forEach(($ii, i) => {
+				$ii.salespaymentshow = false;
+			});
+		}
+		if(this.salesnopayments!=null) {
+			this.salesnopayments.forEach(($ii, i) => {
+				$ii.salespaymentshow = false;
+			});
+		}
+	}
+	
+	showsalespayment($item){
+		this.hideallsalespayment();
+		this.salesnotverifs.forEach(($ii, i) => {
+			if($ii.id == $item.id)
+				$ii.salespaymentshow = true;
+		});
+	}
+	
+	showdetailcurl($item){
+		let $temp = $item.curlshow;
+		this.global.curls.forEach(($ii, i) => {
+			$ii.curlshow = false;
+		});
+		if($temp == false){
+			$item.curlshow = true;
+		}
+	}
+	
+	showmutation(){
+		this.getbcaread();
+		this.mutationtableshow = true;
+	}
+	
+	hidemutation(){
+		this.mutationtableshow = false;
+	}
+	
+	selectedmutation($curl, $selectedcompanybank){
+		this.paydialog.customerbankmutationID = $curl.id;
+		this.paydialog.ammount = $curl.mutationAmmount;
+		this.selectedcompanybank = $selectedcompanybank;
+		this.mutationtableshow = false;
+	}
+	
+	setshowsalestype(input){
+		var self = this;
+		this.paydialogstatus = '';
+		this.paydialogshow = false;
+		if(input == 'paid'){
+			this.getsalesnotverif(function (){
+				self.showsalestypes = input;
+			}, function (errormessage) {
+				self.showsalestypes = '';
+				self.showsaleserrormessage = errormessage;
+			});
+		} else if(input=='nopayment'){
+			this.getsalesnopayment(function (){
+				self.showsalestypes = input;
+			}, function (errormessage) {
+				self.showsalestypes = '';
+				self.showsaleserrormessage = errormessage;
+			});
+		}
+	}
+	
+	showpaydialog($header, $selectedheaderindex, $payment) {
+		console.log($header);
+		this.selectedsalesheaderindex = $selectedheaderindex;
+		
+		if($payment != null){
+			//brarti yang di klik adalah row pembayaran dari salesheader.salespayment
+			this.paydialog = {
+				"ammount": $payment.ammount,
+				"paydate": $payment.created_at,
+				"customerbankmutationID": null,
+				"paymentID": $payment.id,
+				"salesID": $payment.salesID,
+				"customerID": $payment.customerID
+			};
+			if ($payment.salespaymentverif == null) {
+				this.paydialogstatus = "notverif";
+				this.paydialog.custbankname = $payment.customeracc.bank.bankname;
+				this.paydialog.custbankaccname = $payment.customeracc.accname;
+				this.paydialog.custbankaccno = $payment.customeracc.accno;
+				this.paydialog.compbankname = $payment.companyacc.bank.bankname;
+				this.paydialog.compbankaccname = $payment.companyacc.accname;
+				this.paydialog.compbankaccno = $payment.companyacc.accno;
+				this.paydialog.companybankalias = $payment.companyacc.bank.alias;
+			} else {
+				this.paydialogstatus = "verified";
+				this.paydialog = {
+					"custbankname": $payment.customeracc.bank.bankname,
+					"custbankaccname": $payment.customeracc.accname,
+					"custbankaccno": $payment.customeracc.accno,
+					"compbankname": $payment.companyacc.bank.bankname,
+					"compbankaccname": $payment.companyacc.accname,
+					"compbankaccno": $payment.companyacc.accno,
+					"companybankalias": $payment.companyacc.bank.alias
+				};
+				this.paydialog.verifdate = $payment.salespaymentverif.veriftime;
+				this.paydialog.verifemployee = $payment.salespaymentverif.employee.name;
+			}
+		}else{
+			//jika belum ada pemabaran, maka salesheader.salespyament masih kosong, sehingga dikirimnya null
+		}
+		
+		this.paydialogshow = true;
+	}
+	
+	shownopaymentdialog($nopayment){
+		this.hideallsalespayment();
+		this.custbankaccs = $nopayment.customer.customerbankacc;
+		if($nopayment.salespayment==null) {
+			this.paydialog = {
+				"totalprice"			: $nopayment.totalprice,
+				"salestime"				: $nopayment.created_at,
+				"customerID" 			: $nopayment.customerID,
+				"custbankaccname" : '',
+				"custbankaccno"		: '',
+				"custbankname"		: ''
+			};
+			this.paydialogstatus = "nopayment";
+			$nopayment.salespaymentshow = true;
+		}else{
+			$nopayment.salespaymentshow = true;
+		}
+	}
+	
+	getsalesnotverif(whendone, whenfailed) {
+		if (!this.showsalesloading) {
+			this.showsalesloading = true;
+			
+			let url = this.global.api + "select/getpendingpayment";
+			let post = {
+				'app_token': this.global.logintoken,
+				'usertype': this.global.usertype,
+				'userID': this.global.userdata.id
+			};
+			
+			this.result = this.http.post(
+				url,
+				post,
+				{
+					responseType: 'json'
+				}
+			);
+			
+			this.result.subscribe(
+				response => {
+					if (response != null) {
+						this.salesnotverifs = response;
+						this.salesnotverifs.forEach(($ii, $i) => {
+							$ii.totalprice = 0;
+							$ii.salespaymentshow = false;
+							$ii.salesdetail.forEach(($jj, $j) => {
+								$ii.totalprice += $jj.cartheader.printprice;
+								$ii.totalprice += $jj.cartheader.deliveryprice;
+								$ii.totalprice += $jj.cartheader.discount;
+							});
+						});
+						if (whendone instanceof Function) {
+							whendone();
+						}
+					} else {
+						this.salesnotverifs = null;
+						console.log('Data sales payment verif belum ada');
+						if (whenfailed instanceof Function) {
+							whenfailed('data return = null');
+						}
+					}
+					this.showsalesloading = false;
+				}, error => {
+					if (whenfailed instanceof Function) {
+						whenfailed('data return error');
+					}
+					this.showsalesloading = false;
+				}
+			);
+		}
+	}
+	
+	getsalesnopayment(whendone, whenfailed) {
+		if(!this.showsalesloading){
+			this.showsalesloading = true;
+			
+			let url = this.global.api + "select/getsalesnopayment";
+			let post = {
+				'app_token': this.global.logintoken,
+				'usertype': this.global.usertype,
+				'userID': this.global.userdata.id
+			};
+			
+			this.result = this.http.post(
+				url,
+				post,
+				{
+					responseType: 'json'
+				}
+			);
+			
+			this.result.subscribe(
+				response => {
+					if (response != null) {
+						this.salesnopayments = response;
+						this.salesnopayments.forEach(($ii, $i) => {
+							$ii.totalprice = 0;
+							$ii.salespaymentshow = false;
+							$ii.salesdetail.forEach(($jj, $j) => {
+								$ii.totalprice += $jj.cartheader.printprice;
+								$ii.totalprice += $jj.cartheader.deliveryprice;
+								$ii.totalprice += $jj.cartheader.discount;
+							});
+						});
+						if (whendone instanceof Function) {
+							whendone();
+						}
+					} else {
+						console.log('data payment tidak ada/kosong');
+						if (whenfailed instanceof Function) {
+							whenfailed('data return = null');
+						}
+					}
+					this.showsalesloading = false;
+				}, error => {
+					if (whenfailed instanceof Function) {
+						whenfailed('data return error');
+					}
+					this.showsalesloading = false;
+				}
+			);
+		}
+	}
+	
+	insertcustomerbankacc(){
+		console.log(this.paydialog.custbankaccname + 'name');
 		let post = {
-			'app_token': this.global.logintoken,
-			'usertype': this.global.usertype,
-			'userID': this.global.userdata.id,
-			'salespaymentID' : input
+			'app_token' 							: this.global.logintoken,
+			'usertype'								: this.global.usertype,
+			'userID'									: this.global.userdata.id,
+			//'customerID'							: $paydialog.customerID,
+			//'bankID'									: this.bankID,
+			'custaccname'							: this.accname,
+			'custaccno'								: this.accountno
 		};
+		
+		// this.ajaxinsert(post, function(response){
+		// 	//whendone
+		// 	this.custbankaccs = response;
+		// }, function(errorstring, errordata=null){
+		// 	//whenfailed
+		// 	if(errorstring != ""){
+		// 		this.errormessage = errorstring;
+		// 	}
+		// 	if(errordata != null){
+		// 		console.log(errordata);
+		// 	}
+		// });
+	}
+	
+	ajaxinsert(post, whendone, whenfailed){
+		let url = this.global.api+"";
 		
 		this.result = this.http.post(
 			url,
@@ -313,16 +621,31 @@ export class ConfirmationbyemployeePage implements OnInit {
 		);
 		
 		this.result.subscribe(
-			response => {
+			response =>{
 				if(response != null){
-					this.global.salespaymentverif = response;
+					if(response instanceof Array){
+						whendone(response);
+					}else{
+						whenfailed("Hasil bukan berupa array");
+					}
 				}
 				else{
-					this.global.salespaymentverif = null;
-					console.log('Data sales payment verif belum ada');
+					whenfailed("Data kosong.");
 				}
+			}, error => {
+				whenfailed("Error", error);
 			}
 		);
+	}
+	
+	async showselectcustomerbank(){
+		const alert = await this.alertController.create({
+			title: "Use this lightsaber?",
+			message: 'Do you agree to use this lightsaber to do good across the galaxy?',
+			buttons: ['Disagree', 'Agree']
+		});
+		
+		alert.present();
 	}
 	
 	getusedcurl(input){
@@ -367,30 +690,5 @@ export class ConfirmationbyemployeePage implements OnInit {
 		);
 	}
 	
-	getallpayment(){
-		let url = this.global.api+"";
-		let post = {
-			'app_token' 							: this.global.logintoken,
-			'usertype'								: this.global.usertype,
-			'userID'									: this.global.userdata.id
-		};
-		
-		this.result = this.http.post(
-			url,
-			post,
-			{
-				responseType: 'json'
-			}
-		);
-		
-		this.result.subscribe(
-			response =>{
-				if(response != null){
-				}
-				else{
-					;
-				}
-			}
-		);
-	}
+	
 }
