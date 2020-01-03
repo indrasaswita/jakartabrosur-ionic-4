@@ -1,5 +1,5 @@
 import { NgModule, ErrorHandler } from '@angular/core';
-import {App, Config, IonicErrorHandler, ToastController} from 'ionic-angular';
+import {AlertController, App, Config, IonicErrorHandler, ToastController} from 'ionic-angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -17,7 +17,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { Platform} from "ionic-angular";
 import { BarcodeScanner } from '../../node_modules/@ionic-native/barcode-scanner/ngx';
 import { DatePicker } from '@ionic-native/date-picker/ngx';
-
 
 @NgModule({
 	declarations: [AppComponent],
@@ -42,7 +41,8 @@ import { DatePicker } from '@ionic-native/date-picker/ngx';
 		Platform,
 		ToastController,
 		App,
-		Config
+		Config,
+		//AlertController
 	],
 	bootstrap: [AppComponent]
 })

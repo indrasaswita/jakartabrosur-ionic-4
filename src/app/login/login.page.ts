@@ -51,7 +51,10 @@ export class LoginPage implements OnInit {
 			self.loginerror = false;
 			
 			if(self.global.usertype == "EM"){
-				self.router.navigateByUrl('tabs/full/(home:home)');
+				self.navCtrl.navigateForward('confirmationbyemployee?sid=1');
+				//comment dulu biar cepet
+				//self.router.navigateByUrl('tabs/full/(home:home)');
+				//end
 				self.loginresultstring = "<i class='fas fa-check fa-fw'></i> Employee Logged-in, Success..";
 			}
 		}, function(error){
