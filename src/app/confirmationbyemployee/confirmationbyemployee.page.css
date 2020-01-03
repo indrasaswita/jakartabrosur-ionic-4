@@ -1,0 +1,75 @@
+.div-header {
+  margin: 10px;
+  font-size: 18px; }
+
+.btn-conf {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #70a;
+  font-weight: bold;
+  color: white;
+  margin: 10px;
+  width: 95px;
+  font-size: 10px;
+  height: 35px; }
+
+.btn-info {
+  margin-left: 10px; }
+
+.input-conf {
+  font-size: 12px;
+  font-family: Google;
+  font-weight: 100;
+  color: #306;
+  border: 1px solid #aaa;
+  border-radius: 6px; }
+  .input-conf:hover {
+    border-color: #0d81ff; }
+  .input-conf:focus, .input-conf:focus:hover {
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
+    border-color: #0d81ff; }
+
+.button-group > .button {
+  -webkit-box-flex: initial;
+  -webkit-flex: initial;
+  -moz-box-flex: initial;
+  -moz-flex: initial;
+  -ms-flex: initial;
+  flex: initial;
+  padding: 0 10px;
+  width: auto;
+  min-width: 90px;
+  font-size: 14px;
+  border: 1px solid; }
+
+.data-wrapper {
+  display: flex;
+  height: 100%; }
+  .data-wrapper .data-left {
+    width: 50%;
+    display: block; }
+    .data-wrapper .data-left .left-top {
+      width: 100%; }
+    .data-wrapper .data-left .left-bottom {
+      width: 100%; }
+      .data-wrapper .data-left .left-bottom .table .header .detail td {
+        padding: 8pxpx; }
+      .data-wrapper .data-left .left-bottom .table .header .total td {
+        padding: 2px 2px; }
+      .data-wrapper .data-left .left-bottom .table .header:hover .payment {
+        background-color: rgba(0, 0, 0, 0.05); }
+      .data-wrapper .data-left .left-bottom .table .header .payment td {
+        padding: 5px 2px; }
+      .data-wrapper .data-left .left-bottom .table .header .payment:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+        cursor: pointer; }
+  .data-wrapper .data-right {
+    width: 50%;
+    display: block; }
+    .data-wrapper .data-right .detailtransaksibank-wrapper {
+      display: block;
+      overflow: scroll;
+      height: 100%; }
+
+/*# sourceMappingURL=confirmationbyemployee.page.css.map */
