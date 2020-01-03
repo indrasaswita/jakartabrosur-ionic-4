@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { ConfirmationbyemployeePage } from './confirmationbyemployee.page';
+import {AlertController} from "@ionic/angular";
 
 const routes: Routes = [
   {
@@ -21,6 +22,9 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ConfirmationbyemployeePage]
+  declarations: [ConfirmationbyemployeePage],
+  providers: [
+    AlertController
+  ]
 })
 export class ConfirmationbyemployeePageModule {}
