@@ -41,8 +41,7 @@ export class EditcustomerbankaccPage implements OnInit {
   }
 
   customerbankaccOptions: any = {
-    header: 'Daftar Bank',
-    subHeader: 'Pilih Bank Pelanggan:'
+    header: 'Daftar Bank'
   };
 
   compareById(o1,o2) {

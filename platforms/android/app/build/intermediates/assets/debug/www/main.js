@@ -1588,6 +1588,7 @@ var map = {
 	],
 	"./customer/customer.module": [
 		"./src/app/customer/customer.module.ts",
+		"default~customer-customer-module~tabs-tabs-module",
 		"common"
 	],
 	"./customerpayment/customerpayment.module": [
@@ -1597,6 +1598,10 @@ var map = {
 	"./customersales/customersales.module": [
 		"./src/app/customersales/customersales.module.ts",
 		"customersales-customersales-module"
+	],
+	"./editcustomerbankacc/editcustomerbankacc.module": [
+		"./src/app/editcustomerbankacc/editcustomerbankacc.module.ts",
+		"editcustomerbankacc-editcustomerbankacc-module"
 	],
 	"./employee/employee.module": [
 		"./src/app/employee/employee.module.ts",
@@ -1629,6 +1634,7 @@ var map = {
 	"./tabs/tabs.module": [
 		"./src/app/tabs/tabs.module.ts",
 		"default~carts-carts-module~tabs-tabs-module",
+		"default~customer-customer-module~tabs-tabs-module",
 		"common",
 		"tabs-tabs-module"
 	],
@@ -1714,7 +1720,8 @@ var routes = [
     { path: 'addnewcustomer', loadChildren: './addnewcustomer/addnewcustomer.module#AddnewcustomerPageModule' },
     { path: 'user', loadChildren: './user/user.module#UserPageModule' },
     { path: 'confirmationbyemployee', loadChildren: './confirmationbyemployee/confirmationbyemployee.module#ConfirmationbyemployeePageModule' },
-    { path: 'cetaksuratjalan', loadChildren: './cetaksuratjalan/cetaksuratjalan.module#CetaksuratjalanPageModule' }
+    { path: 'cetaksuratjalan', loadChildren: './cetaksuratjalan/cetaksuratjalan.module#CetaksuratjalanPageModule' },
+    { path: 'editcustomerbankacc', loadChildren: './editcustomerbankacc/editcustomerbankacc.module#EditcustomerbankaccPageModule' }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
