@@ -62,7 +62,7 @@ var EmployeePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-buttons slot=\"start\">\n\t\t\t<ion-back-button></ion-back-button>\n\t\t</ion-buttons>\n\t\t<ion-title>\n\t\t\t<i class=\"fal fa-eye fa-fw\"></i>\n\t\t\tEmployee Detail\n\t\t</ion-title>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n\t<ul>\n\t\t<li *ngFor=\"let item of global.employees; let i = index\">\n\t\t\t{{i+1}}. {{item.name}}\n\t\t</li>\n\t</ul>\n</ion-content>\n"
+module.exports = "<ion-header>\r\n\t<ion-toolbar>\r\n\t\t<ion-buttons slot=\"start\">\r\n\t\t\t<ion-back-button></ion-back-button>\r\n\t\t</ion-buttons>\r\n\t\t<ion-title>\r\n\t\t\t<i class=\"fal fa-eye fa-fw\"></i>\r\n\t\t\tEmployee Detail\r\n\t\t</ion-title>\r\n\t</ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content padding>\r\n\t<ul>\r\n\t\t<li *ngFor=\"let item of global.employees; let i = index\">\r\n\t\t\t{{i+1}}. {{item.name}}\r\n\t\t</li>\r\n\t</ul>\r\n</ion-content>\r\n"
 
 /***/ }),
 

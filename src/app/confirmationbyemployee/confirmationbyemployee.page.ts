@@ -638,16 +638,6 @@ export class ConfirmationbyemployeePage implements OnInit {
 		);
 	}
 	
-	async showselectcustomerbank(){
-		const alert = await this.alertController.create({
-			title: "Use this lightsaber?",
-			message: 'Do you agree to use this lightsaber to do good across the galaxy?',
-			buttons: ['Disagree', 'Agree']
-		});
-		
-		alert.present();
-	}
-	
 	getusedcurl(input){
 		let url = this.global.api+"select/usedcurl";
 		let post = {

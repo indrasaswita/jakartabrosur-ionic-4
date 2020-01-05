@@ -17667,6 +17667,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var routes = [
     {
         path: '',
@@ -17684,7 +17685,10 @@ var ConfirmationbyemployeePageModule = /** @class */ (function () {
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(routes)
             ],
-            declarations: [_confirmationbyemployee_page__WEBPACK_IMPORTED_MODULE_5__["ConfirmationbyemployeePage"]]
+            declarations: [_confirmationbyemployee_page__WEBPACK_IMPORTED_MODULE_5__["ConfirmationbyemployeePage"]],
+            providers: [
+                _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"]
+            ]
         })
     ], ConfirmationbyemployeePageModule);
     return ConfirmationbyemployeePageModule;
@@ -17701,7 +17705,7 @@ var ConfirmationbyemployeePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-buttons slot=\"start\">\n\t\t\t<ion-back-button></ion-back-button>\n\t\t</ion-buttons>\n\t\t<ion-title>Payment Confirmation by Employee</ion-title>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content fullscreen>\n\t<div class=\"div-header\">\n\t\t<label>\n\t\t\t<i class=\"far fa-receipt\"></i> Card ID {{data.id}} - {{data.jobtitle}}\n\t\t</label>\n\t</div>\n\t<ion-grid>\n\t\t<ion-row>\n\t\t\t<ion-col>\n\t\t\t\t<table class=\"table item-detail\" *ngIf=\"global.customeracc!=null\">\n\t\t\t\t\t<thead>\n\t\t\t\t\t\t<tr class=\"header\">\n\t\t\t\t\t\t\t<th colspan=\"2\">\n\t\t\t\t\t\t\t\tDetail Bank\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n\t\t\t\t\t<tbody *ngIf=\"global.customeracc.salespayment.length>0\">\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Account No.</td>\n\t\t\t\t\t\t<td>{{global.customeracc.salespayment[0].customeracc.accno}}</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Bank Name</td>\n\t\t\t\t\t\t<td>{{global.customeracc.salespayment[0].customeracc.bank.bankname}}</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Name Account</td>\n\t\t\t\t\t\t<td>{{global.customeracc.salespayment[0].customeracc.accname}}</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Transfer Date</td>\n\t\t\t\t\t\t<td>{{global.customeracc.salespayment[0].paydate|date:'dd/MM/yyyy'}}</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Total Transfer</td>\n\t\t\t\t\t\t<td>{{(global.customeracc.salespayment[0].ammount|number:0)}}</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Note</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<ion-input id=\"note\" type=\"text\" autofocus=\"on\" class=\"input-conf\" [(ngModel)]=\"note\"></ion-input>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t</tbody>\n\t\t\t\t\t<tbody *ngIf=\"global.customeracc.salespayment.length==0\">\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Account No.</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<ion-select [(ngModel)]=\"accountno\" (ionChange)=\"selectedaccount($event)\" id=\"accountno\">\n\t\t\t\t\t\t\t\t<ion-select-option *ngFor=\"let custbank of global.custbankaccs\" value=\"{{custbank.id}} - {{custbank.accname}} - {{custbank.bank.bankname}}\">{{custbank.accno}} - {{custbank.bank.alias}}</ion-select-option>\n\t\t\t\t\t\t\t</ion-select>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Bank Name</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<ion-input type=\"text\" class=\"input-conf\" [(ngModel)]=\"bankname\" readonly></ion-input>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Name Account</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<ion-input type=\"text\" class=\"input-conf\" [(ngModel)]=\"nameacc\" readonly></ion-input>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Transfer Date</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<ion-input (click)=\"showDatepicker()\" [(ngModel)]=\"myDate\" value=\"myDate\" class=\"input-conf\">\n\t\t\t\t\t\t\t\t<i class=\"far fa-calendar-alt\"></i>\n\t\t\t\t\t\t\t</ion-input>\n<!--\t\t\t\t\t\t\t<ion-button (click)=\"showDatepicker()\" [(ngModel)]=\"paydate\">-->\n<!--\t\t\t\t\t\t\t\tShow Date Picker-->\n<!--\t\t\t\t\t\t\t</ion-button>-->\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Total Transfer</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<ion-input name=\"ammount\" type=\"text\" class=\"input-conf\" [(ngModel)]=\"ammount\"></ion-input>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Note</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<ion-input name=\"note\" type=\"text\" class=\"input-conf\" [(ngModel)]=\"note\"></ion-input>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t</tbody>\n\t\t\t\t</table>\n\t\t\t\t<div>\n\t\t\t\t\t<button class=\"btn btn-conf\" (click)=\"konfirmasipembayaran(global.customeracc.id)\">Konfirmasi Pembayaran</button>\n\t\t\t\t</div>\n\t\t\t</ion-col>\n\t\t\t<ion-col>\n\t\t\t\t<table class=\"table item-detail\" *ngIf=\"global.curls.length>0\">\n\t\t\t\t\t<thead>\n\t\t\t\t\t<tr class=\"header\">\n\t\t\t\t\t\t<th colspan=\"3\">\n\t\t\t\t\t\t\tDetail Transaksi Bank\n\t\t\t\t\t\t</th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n\t\t\t\t\t<tbody *ngFor=\"let data of global.curls\">\n\t\t\t\t\t<tr (click)=\"selecteddetail(data)\">\n\t\t\t\t\t\t<td>{{data.mutationDate|date:'dd/MM/yyyy'}}</td>\n\t\t\t\t\t\t<td>{{data.mutationNote}}</td>\n\t\t\t\t\t\t<td>{{data.mutationAmmount|number:0}}</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t</tbody>\n\t\t\t\t</table>\n\t\t\t</ion-col>\n\t\t</ion-row>\n\t</ion-grid>\n\t\n</ion-content>\n"
+module.exports = "<ion-header>\r\n\t<ion-toolbar>\r\n\t\t<ion-buttons slot=\"start\">\r\n\t\t\t<ion-back-button></ion-back-button>\r\n\t\t</ion-buttons>\r\n\t\t<ion-title>Konfirmasi Pembayaran</ion-title>\r\n\t</ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content fullscreen>\r\n<!--\t<div class=\"div-header\">-->\r\n<!--\t\t<label>-->\r\n<!--\t\t\t<i class=\"far fa-receipt\"></i> Card ID-->\r\n<!--\t\t\t{{data.id}} - {{data.jobtitle}}-->\r\n<!--\t\t</label>-->\r\n<!--\t</div>-->\r\n\t<div class=\"data-wrapper\" [hidden]=\"ishidden\">\r\n\t\t<div class=\"data-left\" *ngIf=\"!mutationtableshow\">\r\n\t\t\t<div class=\"left-top\" *ngIf=\"paydialogshow\">\r\n\t\t\t\t<table class=\"table item-detail\">\r\n\t\t\t\t\t<ng-container *ngIf=\"paydialogstatus=='verified'\">\r\n\t\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<td>Jumlah Bayar</td>\r\n\t\t\t\t\t\t\t<td>{{paydialog.ammount}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<td colspan=\"2\">Bank Asal (CUST)</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<td colspan=\"2\">\r\n\t\t\t\t\t\t\t\t{{paydialog.custbankname}}<br>\r\n\t\t\t\t\t\t\t\ta/n. {{paydialog.custbankaccname}}\r\n\t\t\t\t\t\t\t\t<ng-container *ngIf=\"paydialog.custbankaccno.length>0\">\r\n\t\t\t\t\t\t\t\t\t<br>\r\n\t\t\t\t\t\t\t\t\tno. {{paydialog.custbankaccno}}\r\n\t\t\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<td colspan=\"2\">Bank Tujuan (COMP)</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<td colspan=\"2\">\r\n\t\t\t\t\t\t\t\t{{paydialog.compbankname}}<br>\r\n\t\t\t\t\t\t\t\ta/n. {{paydialog.compbankaccname}}<br>\r\n\t\t\t\t\t\t\t\tno. {{paydialog.compbankaccno}}\r\n\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<td>Waktu Bayar</td>\r\n\t\t\t\t\t\t\t<td>{{paydialog.paydate}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<td>Tanggal Verifikasi</td>\r\n\t\t\t\t\t\t\t<td>{{paydialog.verifdate}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<td>Verifikator</td>\r\n\t\t\t\t\t\t\t<td>{{paydialog.verifemployee}}</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t</tbody>\r\n\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t<ng-container *ngIf=\"paydialogstatus=='notverif'\">\r\n\t\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t<td>Jumlah Bayar</td>\r\n\t\t\t\t\t\t\t\t<td>{{paydialog.ammount}}</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t<td colspan=\"2\">Bank Asal (CUST)</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t<td colspan=\"2\">\r\n\t\t\t\t\t\t\t\t\t{{paydialog.custbankname}}<br>\r\n\t\t\t\t\t\t\t\t\ta/n. {{paydialog.custbankaccname}}\r\n\t\t\t\t\t\t\t\t\t<ng-container *ngIf=\"paydialog.custbankaccno.length>0\">\r\n\t\t\t\t\t\t\t\t\t\t<br>\r\n\t\t\t\t\t\t\t\t\t\tno. {{paydialog.custbankaccno}}\r\n\t\t\t\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t<td colspan=\"2\">Bank Tujuan (COMP)</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t<td colspan=\"2\">\r\n\t\t\t\t\t\t\t\t\t{{paydialog.compbankname}}<br>\r\n\t\t\t\t\t\t\t\t\ta/n. {{paydialog.compbankaccname}}<br>\r\n\t\t\t\t\t\t\t\t\tno. {{paydialog.compbankaccno}}\r\n\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t<td>Waktu Bayar</td>\r\n\t\t\t\t\t\t\t\t<td>{{paydialog.paydate}}</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t<td>Mutasi ID</td>\r\n\t\t\t\t\t\t\t\t<td *ngIf=\"paydialog.companybankalias=='BCA'\">\r\n\t\t\t\t\t\t\t\t\t{{paydialog.customerbankmutationID}}\r\n\t\t\t\t\t\t\t\t\t<button class=\"btn btn-sm btn-outline-primary\" (click)=\"showmutation()\">\r\n\t\t\t\t\t\t\t\t\t\tShow Mutasi\r\n\t\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t</tbody>\r\n\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t<ng-container *ngIf=\"paydialogstatus=='nopayment'\">\r\n\t\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t<td>Jumlah Yang Harus Dibayar</td>\r\n\t\t\t\t\t\t\t\t<td>{{paydialog.totalprice}}</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t<td colspan=\"2\">Bank Asal (CUST)</td>\r\n\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t<ion-button (click)=\"showselectcustomerbank()\">Alert\r\n\t\t\t\t\t\t\t\t\t</ion-button>\r\n\t\t\t\t\t\t\t\t\t<ion-select [(ngModel)]=\"bank\">\r\n\t\t\t\t\t\t\t\t\t\t<ion-select-option *ngFor=\"let customerbank of salesnopayments[selectedsalesheaderindex].customer.customerbankacc\" value=\"{{customerbank.id}}\" [selected]=\"customerbank\">\r\n\t\t\t\t\t\t\t\t\t\t\t<ng-container *ngIf=\"customerbank.bank.alias!=''\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{customerbank.bank.alias}} - {{customerbank.accname}} {{customerbank.accno}}\r\n\t\t\t\t\t\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t\t\t\t\t\t<ng-container *ngIf=\"customerbank.bank.alias==''\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{customerbank.bank.bankname}} - {{customerbank.accname}} {{customerbank.accno}}\r\n\t\t\t\t\t\t\t\t\t\t\t</ng-container>\r\n<!--\t\t\t\t\t\t\t\t\t\t\t{{customerbank.bank.alias}} - {{customerbank.accname}}-->\r\n\t\t\t\t\t\t\t\t\t\t</ion-select-option>\r\n\t\t\t\t\t\t\t\t\t</ion-select>\r\n\t\t\t\t\t\t\t\t\ta/n {{paydialog.custbankaccname}}\r\n\t\t\t\t\t\t\t\t\t{{paydialog.custbankaccno}}\r\n\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t<td colspan=\"2\">Bank Tujuan (COMP)</td>\r\n\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t<ion-select [(ngModel)]=\"selectedcompanybank\">\r\n\t\t\t\t\t\t\t\t\t\t<ion-select-option *ngFor=\"let selectedcompanybank of companybankaccs\" value=\"{{selectedcompanybank.id}}\" [selected]=\"selectedcompanybank.bank.alias == 'BCA'\">{{selectedcompanybank.bank.alias}}</ion-select-option>\r\n\t\t\t\t\t\t\t\t\t</ion-select>\r\n\t\t\t\t\t\t\t\t\t{{paydialog.compbankaccname}}\r\n\t\t\t\t\t\t\t\t\t{{paydialog.companybankaccno}}\r\n\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t<td>Waktu Transaksi</td>\r\n\t\t\t\t\t\t\t\t<td>{{paydialog.salestime}}</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t<td>Mutasi ID</td>\r\n\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t{{paydialog.customerbankmutationID}}\r\n\t\t\t\t\t\t\t\t\t<button class=\"btn btn-sm btn-outline-primary\" (click)=\"showmutation()\">\r\n\t\t\t\t\t\t\t\t\t\tShow Mutasi\r\n\t\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t<td>Jumlah Transfer</td>\r\n\t\t\t\t\t\t\t\t<td>{{paydialog.ammount}}</td>\r\n\t\t\t\t\t\t\t\t<td hidden>{{paydialog.customerID}}</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t</tbody>\r\n\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t<div class=\"form-bottom\">\r\n\t\t\t\t\t\t<button class=\"btn btn-conf\" (click)=\"konfirmasipembayaran(paydialog)\">Konfirmasi Pembayaran</button>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</table>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"left-bottom\">\r\n\t\t\t\t<div class=\"button-wrapper\">\r\n\t\t\t\t\t<button (click)=\"setshowsalestype('nopayment')\" class=\"btn-payment\">\r\n\t\t\t\t\t\tBelum Bayar\r\n\t\t\t\t\t</button>\r\n\t\t\t\t\t<button (click)=\"setshowsalestype('paid')\" class=\"btn-payment\">\r\n\t\t\t\t\t\tSudah Bayar\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</div>\r\n\t\t\t\t<table class=\"table table-sm\" *ngIf=\"!showsalesloading\">\r\n\t\t\t\t\t<ng-container *ngIf=\"showsalestypes=='paid'\">\r\n\t\t\t\t\t\t<tbody class=\"header\" *ngFor=\"let notverif of salesnotverifs; let i = index;\">\r\n\t\t\t\t\t\t<tr class=\"detail\" (click)=\"showsalespayment(notverif)\" *ngFor=\"let detail of notverif.salesdetail\">\r\n\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t<b>{{detail.cartheader.jobtitle}}</b>\r\n\t\t\t\t\t\t\t\t{{detail.cartheader.quantity}}\r\n\t\t\t\t\t\t\t\t{{detail.cartheader.quantitytypename}}\r\n\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t{{(detail.cartheader.printprice+detail.cartheader.deliveryprice-detail.cartheader.discount)|number:0}}\r\n\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t<tr class=\"total\" *ngIf=\"notverif.salesdetail.length>1\">\r\n\t\t\t\t\t\t\t<td class=\"text-xs-right\">\r\n\t\t\t\t\t\t\t\tTotal\r\n\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t{{notverif.totalprice|number:0}}\r\n\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t<ng-container *ngIf=\"notverif.salespaymentshow\">\r\n\t\t\t\t\t\t\t<ng-container *ngFor=\"let payment of notverif.salespayment\">\r\n\t\t\t\t\t\t\t\t<tr class=\"payment\" (click)=\"showpaydialog(notverif, i, payment)\">\r\n\t\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t\t{{payment.created_at}} => <b>{{payment.type}}</b>\r\n\t\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t\t{{(payment.ammount)|number:0}}\r\n\t\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t\t<tr (click)=\"showpaydialog(notverif, i, payment)\">\r\n\t\t\t\t\t\t\t\t\t<td class=\"text-xs-center\" colspan=\"2\"><i>Tap here to edit</i></td>\r\n\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t</tbody>\r\n\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t<ng-container *ngIf=\"showsalestypes=='nopayment'\">\r\n\t\t\t\t\t\t<tbody *ngIf=\"!salesnopayments\">\r\n\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\tData sales tidak ada!.\r\n\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t</tbody>\r\n\t\t\t\t\t\t<ng-container *ngIf=\"salesnopayments\">\r\n\t\t\t\t\t\t\t<tbody class=\"header\" *ngFor=\"let nopayment of salesnopayments; let i = index;\">\r\n\t\t\t\t\t\t\t\t<ng-container *ngIf=\"nopayment.salesdetail\">\r\n\t\t\t\t\t\t\t\t\t<tr class=\"detail\" (click)=\"shownopaymentdialog(nopayment)\" *ngFor=\"let detail of nopayment.salesdetail\">\r\n\t\t\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t\t\t<b>{{detail.cartheader.jobtitle}}</b>\r\n\t\t\t\t\t\t\t\t\t\t\t{{detail.cartheader.quantity}}\r\n\t\t\t\t\t\t\t\t\t\t\t{{detail.cartheader.quantitytypename}}\r\n\t\t\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t\t\t{{(detail.cartheader.printprice+detail.cartheader.deliveryprice-detail.cartheader.discount)|number:0}}\r\n\t\t\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t\t\t<tr class=\"total\" *ngIf=\"nopayment.salesdetail.length>1\">\r\n\t\t\t\t\t\t\t\t\t\t<td class=\"text-xs-right\">\r\n\t\t\t\t\t\t\t\t\t\t\tTotal\r\n\t\t\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t\t\t{{nopayment.totalprice|number:0}}\r\n\t\t\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t\t\t<ng-container *ngIf=\"nopayment.salespaymentshow\">\r\n\t\t\t\t\t\t\t\t\t\t<tr class=\"payment\" (click)=\"showpaydialog(nopayment, i, null)\">\r\n\t\t\t\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{nopayment.created_at}}\r\n\t\t\t\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t-\r\n\t\t\t\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t\t\t\t<tr (click)=\"showpaydialog(nopayment, i, null)\">\r\n\t\t\t\t\t\t\t\t\t\t\t<td class=\"text-xs-center\" colspan=\"2\"><i>Tap here to edit</i></td>\r\n\t\t\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t\t</tbody>\r\n\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t</ng-container>\r\n\t\t\t\t</table>\r\n\t\t\t\t<div *ngIf=\"!showsalesloading && showsalestypes == ''\">\r\n\t\t\t\t\tError: Tidak bisa request (ajax) data.<br>\r\n\t\t\t\t\t{{showsaleserrormessage}}\r\n\t\t\t\t</div>\r\n\t\t\t\t<div *ngIf=\"showsalesloading\">\r\n\t\t\t\t\t<i class=\"fas fa-spin fa-spinner fa-fw\"></i>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"data-right\" *ngIf=\"mutationtableshow\">\r\n\t\t\t<div class=\"action-line\">\r\n\t\t\t\t<button class=\"btn btn-actionline\" (click)=\"hidemutation()\">\r\n\t\t\t\t\t<i class=\"fas fa-chevron-left\"> Back To Form</i>\r\n\t\t\t\t</button>\r\n\t\t\t\t<button class=\"btn btn-actionline\" (click)=\"getbcarefresh()\">\r\n\t\t\t\t\t<i class=\"fas fa-sync\"> Refresh Data</i>\r\n\t\t\t\t</button>\r\n\t\t\t\t<span *ngIf=\"global.curldownloading\">\r\n\t\t\t\t\t<i class=\"fas fa-spinner fa-spin fa-5x\"></i>\r\n\t\t\t\t</span>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"refresh-line\">\r\n\t\t\t</div>\r\n\t\t\t<ng-container *ngIf=\"global.curls.length>0\">\r\n\t\t\t\t<div class=\"detailtransaksibank-wrapper\">\r\n\t\t\t\t\t<table id=\"detailtransaksibank\" class=\"table item-detail\">\r\n\t\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t\t<tr class=\"header\">\r\n\t\t\t\t\t\t\t\t<th colspan=\"4\">\r\n\t\t\t\t\t\t\t\t\tDetail Transaksi Bank\r\n\t\t\t\t\t\t\t\t</th>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t</thead>\r\n\t\t\t\t\t\t<tbody *ngFor=\"let curl of global.curls\">\r\n\t\t\t\t\t\t\t<tr (click)=\"showdetailcurl(curl)\">\r\n\t\t\t\t\t\t\t\t<td>{{curl.id}}</td>\r\n\t\t\t\t\t\t\t\t<td>{{curl.mutationDate|date:'dd/MM/yyyy'}}</td>\r\n\t\t\t\t\t\t\t\t<td>{{curl.name}}</td>\r\n\t\t\t\t\t\t\t\t<td>{{curl.mutationAmmount|number:0}}</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t<tr *ngIf=\"paydialogstatus=='nopayment'\">\r\n\t\t\t\t\t\t\t\t<td *ngIf=\"curl.curlshow\">\r\n\t\t\t\t\t\t\t\t\t<ion-label>Customer Bank Acc</ion-label>\r\n\t\t\t\t\t\t\t\t\t<ion-select [(ngModel)]=\"bank\">\r\n\t\t\t\t\t\t\t\t\t\t<ion-select-option *ngFor=\"let customerbank of salesnopayments[selectedsalesheaderindex].customer.customerbankacc\" value=\"{{customerbank.id}}\" [selected]=\"customerbank\">\r\n\t\t\t\t\t\t\t\t\t\t\t<ng-container *ngIf=\"customerbank.bank.alias!=''\">.{{customerbank.bank.alias}}.\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{customerbank.bank.alias}} - {{customerbank.accname}} {{customerbank.accno}}\r\n\t\t\t\t\t\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t\t\t\t\t\t<ng-container *ngIf=\"customerbank.bank.alias==''\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{customerbank.bank.bankname}} - {{customerbank.accname}} {{customerbank.accno}}\r\n\t\t\t\t\t\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t\t\t\t\t</ion-select-option>\r\n\t\t\t\t\t\t\t\t\t\t<ion-select-option value=\"addcustbank\">\r\n\t\t\t\t\t\t\t\t\t\t\tAdd Customer Bank\r\n\t\t\t\t\t\t\t\t\t\t</ion-select-option>\r\n\t\t\t\t\t\t\t\t\t</ion-select>\r\n\t\t\t\t\t\t\t\t\t<button class=\"btn btn-sm btn-info\" (click)=\"selectedmutation(curl, bank)\">\r\n\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-check\"> Apply</i>\r\n\t\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t\t<td *ngIf=\"bank=='addcustbank'\">\r\n\t\t\t\t\t\t\t\t\t<ion-item>\r\n\t\t\t\t\t\t\t\t\t\t<ion-input [(ngModel)]=\"paydialog.custbankaccname\" class=\"input-conf\"></ion-input>\r\n\t\t\t\t\t\t\t\t\t</ion-item>\r\n\t\t\t\t\t\t\t\t\t<ion-item>\r\n\t\t\t\t\t\t\t\t\t\t<ion-input [(ngModel)]=\"paydialog.custbankaccno\" class=\"input-conf\"></ion-input>\r\n\t\t\t\t\t\t\t\t\t</ion-item>\r\n\t\t\t\t\t\t\t\t\t<ion-item>\r\n\t\t\t\t\t\t\t\t\t\t<ion-input [(ngModel)]=\"paydialog.custbankname\" value=\"BCA\"></ion-input>\r\n\t\t\t\t\t\t\t\t\t</ion-item>\r\n\t\t\t\t\t\t\t\t\t<button class=\"btn btn-sm\" (click)=\"insertcustomerbankacc()\">Save</button>\r\n\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t<tr *ngIf=\"paydialogstatus=='notverified'\">\r\n\t\t\t\t\t\t\t\t<td *ngIf=\"curl.curlshow\">\r\n\t\t\t\t\t\t\t\t\t<ion-label>Customer Bank Acc</ion-label>\r\n\t\t\t\t\t\t\t\t\t<ion-select [(ngModel)]=\"bank\">\r\n\t\t\t\t\t\t\t\t\t\t<ion-select-option *ngFor=\"let customerbank of salesnotverifs[selectedsalesheaderindex].customer.customerbankacc\" value=\"{{customerbank.id}}\" [selected]=\"customerbank\">{{customerbank.bank.alias}}</ion-select-option>\r\n\t\t\t\t\t\t\t\t\t\t<ion-select-option value=\"addcustbank\">\r\n\t\t\t\t\t\t\t\t\t\t\tAdd Customer Bank\r\n\t\t\t\t\t\t\t\t\t\t</ion-select-option>\r\n\t\t\t\t\t\t\t\t\t</ion-select>\r\n\t\t\t\t\t\t\t\t\t<button class=\"btn btn-sm btn-info\" (click)=\"selectedmutation(curl, bank)\">\r\n\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-check\"> Apply</i>\r\n\t\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t</tbody>\r\n\t\t\t\t\t</table>\r\n\t\t\t\t</div>\r\n\t\t\t</ng-container>\r\n\t\t</div>\r\n\t</div>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -17712,7 +17716,7 @@ module.exports = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-buttons slot=\"start\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".div-header {\n  margin: 10px;\n  font-size: 18px; }\n\n.btn-conf {\n  padding: 8px 16px;\n  border-radius: 6px;\n  border: 1px solid #ccc;\n  background-color: #70a;\n  font-weight: bold;\n  color: white;\n  margin: 10px;\n  width: 95px;\n  font-size: 10px;\n  height: 35px; }\n\n.btn-info {\n  margin-left: 10px; }\n\n.input-conf {\n  font-size: 12px;\n  font-family: Google;\n  font-weight: 100;\n  color: #306;\n  border: 1px solid #aaa;\n  border-radius: 6px; }\n\n.input-conf:hover {\n    border-color: #0d81ff; }\n\n.input-conf:focus, .input-conf:focus:hover {\n    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);\n    border-color: #0d81ff; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29uZmlybWF0aW9uYnllbXBsb3llZS9DOlxceGFtcHBcXGh0ZG9jc1xcakJyb3N1ckRyb2lkL3NyY1xcYXBwXFxjb25maXJtYXRpb25ieWVtcGxveWVlXFxjb25maXJtYXRpb25ieWVtcGxveWVlLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFlBQVk7RUFDWixlQUFlLEVBQUE7O0FBR2pCO0VBQ0UsaUJBQWlCO0VBQ2pCLGtCQUFrQjtFQUNsQixzQkFBc0I7RUFDdEIsc0JBQXNCO0VBQ3RCLGlCQUFpQjtFQUNqQixZQUFZO0VBQ1osWUFBWTtFQUNaLFdBQVc7RUFDWCxlQUFlO0VBQ2YsWUFBWSxFQUFBOztBQUdkO0VBQ0UsaUJBQWlCLEVBQUE7O0FBR25CO0VBQ0UsZUFBZTtFQUNmLG1CQUFtQjtFQUNuQixnQkFBZ0I7RUFDaEIsV0FBVztFQUNYLHNCQUFzQjtFQUN0QixrQkFBa0IsRUFBQTs7QUFOcEI7SUFRSSxxQkFBcUIsRUFBQTs7QUFSekI7SUFhSSwyQ0FBdUM7SUFDdkMscUJBQXFCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jb25maXJtYXRpb25ieWVtcGxveWVlL2NvbmZpcm1hdGlvbmJ5ZW1wbG95ZWUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmRpdi1oZWFkZXJ7XHJcbiAgbWFyZ2luOiAxMHB4O1xyXG4gIGZvbnQtc2l6ZTogMThweDtcclxufVxyXG5cclxuLmJ0bi1jb25me1xyXG4gIHBhZGRpbmc6IDhweCAxNnB4O1xyXG4gIGJvcmRlci1yYWRpdXM6IDZweDtcclxuICBib3JkZXI6IDFweCBzb2xpZCAjY2NjO1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICM3MGE7XHJcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG4gIG1hcmdpbjogMTBweDtcclxuICB3aWR0aDogOTVweDtcclxuICBmb250LXNpemU6IDEwcHg7XHJcbiAgaGVpZ2h0OiAzNXB4O1xyXG59XHJcblxyXG4uYnRuLWluZm97XHJcbiAgbWFyZ2luLWxlZnQ6IDEwcHg7XHJcbn1cclxuXHJcbi5pbnB1dC1jb25me1xyXG4gIGZvbnQtc2l6ZTogMTJweDtcclxuICBmb250LWZhbWlseTogR29vZ2xlO1xyXG4gIGZvbnQtd2VpZ2h0OiAxMDA7XHJcbiAgY29sb3I6ICMzMDY7XHJcbiAgYm9yZGVyOiAxcHggc29saWQgI2FhYTtcclxuICBib3JkZXItcmFkaXVzOiA2cHg7XHJcbiAgJjpob3ZlcntcclxuICAgIGJvcmRlci1jb2xvcjogIzBkODFmZjtcclxuICB9XHJcblxyXG4gICY6Zm9jdXMsXHJcbiAgJjpmb2N1czpob3ZlcntcclxuICAgIGJveC1zaGFkb3c6IDAgMCA1cHggNXB4IHJnYmEoMCwwLDAsLjA1KTtcclxuICAgIGJvcmRlci1jb2xvcjogIzBkODFmZjtcclxuICB9XHJcbn0iXX0= */"
+module.exports = ".div-header {\n  margin: 10px;\n  font-size: 18px; }\n\n.form-bottom {\n  display: flex;\n  width: 100%; }\n\n.btn-conf {\n  border-radius: 6px;\n  border: 1px solid #ccc;\n  background-color: #70a;\n  font-weight: bold;\n  color: white;\n  width: 100%;\n  font-size: 12px; }\n\n.btn-info {\n  margin-left: 10px; }\n\n.btn-actionline {\n  line-height: 1;\n  margin: 2px;\n  background-color: purple;\n  color: white; }\n\n.btn-actionline + {\n    margin-left: 0; }\n\n.input-conf {\n  font-size: 12px;\n  font-family: Google;\n  font-weight: 100;\n  color: #306;\n  border: 1px solid #aaa;\n  border-radius: 6px;\n  width: 30%; }\n\n.input-conf:hover {\n    border-color: #0d81ff; }\n\n.input-conf:focus, .input-conf:focus:hover {\n    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);\n    border-color: #0d81ff; }\n\n.btn-payment {\n  border: 1px outset #306;\n  border-radius: 5px;\n  line-height: 2.5;\n  width: 50%;\n  margin: 2px;\n  color: #70a;\n  background-color: #ffe;\n  cursor: pointer; }\n\n.btn-payment + button {\n    margin-left: 0; }\n\n.btn-payment:focus {\n    background-color: #70a;\n    color: white; }\n\n.data-wrapper {\n  display: flex;\n  height: 100%; }\n\n.data-wrapper .data-left {\n    width: 100%;\n    display: block; }\n\n.data-wrapper .data-left .left-top {\n      width: 100%; }\n\n.data-wrapper .data-left .left-bottom {\n      width: 100%; }\n\n.data-wrapper .data-left .left-bottom .button-wrapper {\n        display: flex;\n        width: 100%; }\n\n.data-wrapper .data-left .left-bottom .table tbody {\n        border-width: 2px 0;\n        border-color: rgba(0, 0, 0, 0.5);\n        border-style: solid; }\n\n.data-wrapper .data-left .left-bottom .table .header .detail td {\n        padding: 8px 2px;\n        cursor: pointer; }\n\n.data-wrapper .data-left .left-bottom .table .header .total td {\n        padding: 2px 2px;\n        cursor: pointer; }\n\n.data-wrapper .data-left .left-bottom .table .header:hover .payment {\n        background-color: rgba(0, 0, 0, 0.05); }\n\n.data-wrapper .data-left .left-bottom .table .header .payment td {\n        padding: 8px 2px;\n        background-color: #ffe;\n        cursor: pointer; }\n\n.data-wrapper .data-left .left-bottom .table .header .payment:hover {\n        background-color: rgba(0, 0, 0, 0.1); }\n\n.data-wrapper .data-right {\n    width: 100%;\n    display: block; }\n\n.data-wrapper .data-right .detailtransaksibank-wrapper {\n      display: block;\n      overflow: scroll;\n      height: 100%; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29uZmlybWF0aW9uYnllbXBsb3llZS9jOlxceGFtcHBcXGh0ZG9jc1xcamJtb2JpbGUvc3JjXFxhcHBcXGNvbmZpcm1hdGlvbmJ5ZW1wbG95ZWVcXGNvbmZpcm1hdGlvbmJ5ZW1wbG95ZWUucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0MsWUFBWTtFQUNaLGVBQWUsRUFBQTs7QUFHaEI7RUFDQyxhQUFhO0VBQ2IsV0FBVyxFQUFBOztBQUVaO0VBQ0Msa0JBQWtCO0VBQ2xCLHNCQUFzQjtFQUN0QixzQkFBc0I7RUFDdEIsaUJBQWlCO0VBQ2pCLFlBQVk7RUFDWixXQUFXO0VBQ1gsZUFBZSxFQUFBOztBQUdoQjtFQUNDLGlCQUFpQixFQUFBOztBQUdsQjtFQUNDLGNBQWM7RUFDZCxXQUFXO0VBQ1gsd0JBQXdCO0VBQ3hCLFlBQVksRUFBQTs7QUFKYjtJQU1FLGNBQWMsRUFBQTs7QUFJaEI7RUFDQyxlQUFlO0VBQ2YsbUJBQW1CO0VBQ25CLGdCQUFnQjtFQUNoQixXQUFXO0VBQ1gsc0JBQXNCO0VBQ3RCLGtCQUFrQjtFQUNsQixVQUFVLEVBQUE7O0FBUFg7SUFTRSxxQkFBcUIsRUFBQTs7QUFUdkI7SUFjRSwyQ0FBdUM7SUFDdkMscUJBQXFCLEVBQUE7O0FBSXZCO0VBQ0MsdUJBQXVCO0VBQ3ZCLGtCQUFrQjtFQUNsQixnQkFBZ0I7RUFDaEIsVUFBVTtFQUNWLFdBQVc7RUFDWCxXQUFXO0VBQ1gsc0JBQXNCO0VBQ3RCLGVBQWUsRUFBQTs7QUFSaEI7SUFVRSxjQUFjLEVBQUE7O0FBVmhCO0lBYUUsc0JBQXNCO0lBQ3RCLFlBQVksRUFBQTs7QUFJZDtFQUNDLGFBQWE7RUFDYixZQUFZLEVBQUE7O0FBRmI7SUFJRSxXQUFXO0lBQ1gsY0FBYyxFQUFBOztBQUxoQjtNQU9HLFdBQVcsRUFBQTs7QUFQZDtNQVVHLFdBQVcsRUFBQTs7QUFWZDtRQVlJLGFBQWE7UUFDYixXQUFXLEVBQUE7O0FBYmY7UUFpQkssbUJBQW1CO1FBQ25CLGdDQUE0QjtRQUM1QixtQkFBbUIsRUFBQTs7QUFuQnhCO1FBd0JPLGdCQUFnQjtRQUNoQixlQUFlLEVBQUE7O0FBekJ0QjtRQThCTyxnQkFBZ0I7UUFDaEIsZUFBZSxFQUFBOztBQS9CdEI7UUFvQ08scUNBQWlDLEVBQUE7O0FBcEN4QztRQXlDTyxnQkFBZ0I7UUFDaEIsc0JBQXNCO1FBQ3RCLGVBQWUsRUFBQTs7QUEzQ3RCO1FBOENPLG9DQUFnQyxFQUFBOztBQTlDdkM7SUFzREUsV0FBVztJQUNYLGNBQWMsRUFBQTs7QUF2RGhCO01BeURHLGNBQWM7TUFDZCxnQkFBZ0I7TUFDaEIsWUFBWSxFQUFBIiwiZmlsZSI6InNyYy9hcHAvY29uZmlybWF0aW9uYnllbXBsb3llZS9jb25maXJtYXRpb25ieWVtcGxveWVlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5kaXYtaGVhZGVye1xyXG5cdG1hcmdpbjogMTBweDtcclxuXHRmb250LXNpemU6IDE4cHg7XHJcbn1cclxuXHJcbi5mb3JtLWJvdHRvbXtcclxuXHRkaXNwbGF5OiBmbGV4O1xyXG5cdHdpZHRoOiAxMDAlO1xyXG59XHJcbi5idG4tY29uZntcclxuXHRib3JkZXItcmFkaXVzOiA2cHg7XHJcblx0Ym9yZGVyOiAxcHggc29saWQgI2NjYztcclxuXHRiYWNrZ3JvdW5kLWNvbG9yOiAjNzBhO1xyXG5cdGZvbnQtd2VpZ2h0OiBib2xkO1xyXG5cdGNvbG9yOiB3aGl0ZTtcclxuXHR3aWR0aDogMTAwJTtcclxuXHRmb250LXNpemU6IDEycHg7XHJcbn1cclxuXHJcbi5idG4taW5mb3tcclxuXHRtYXJnaW4tbGVmdDogMTBweDtcclxufVxyXG5cclxuLmJ0bi1hY3Rpb25saW5le1xyXG5cdGxpbmUtaGVpZ2h0OiAxO1xyXG5cdG1hcmdpbjogMnB4O1xyXG5cdGJhY2tncm91bmQtY29sb3I6IHB1cnBsZTtcclxuXHRjb2xvcjogd2hpdGU7XHJcblx0Jit7XHJcblx0XHRtYXJnaW4tbGVmdDogMDtcclxuXHR9XHJcbn1cclxuXHJcbi5pbnB1dC1jb25me1xyXG5cdGZvbnQtc2l6ZTogMTJweDtcclxuXHRmb250LWZhbWlseTogR29vZ2xlO1xyXG5cdGZvbnQtd2VpZ2h0OiAxMDA7XHJcblx0Y29sb3I6ICMzMDY7XHJcblx0Ym9yZGVyOiAxcHggc29saWQgI2FhYTtcclxuXHRib3JkZXItcmFkaXVzOiA2cHg7XHJcblx0d2lkdGg6IDMwJTtcclxuXHQmOmhvdmVye1xyXG5cdFx0Ym9yZGVyLWNvbG9yOiAjMGQ4MWZmO1xyXG5cdH1cclxuXHJcblx0Jjpmb2N1cyxcclxuXHQmOmZvY3VzOmhvdmVye1xyXG5cdFx0Ym94LXNoYWRvdzogMCAwIDVweCA1cHggcmdiYSgwLDAsMCwuMDUpO1xyXG5cdFx0Ym9yZGVyLWNvbG9yOiAjMGQ4MWZmO1xyXG5cdH1cclxufVxyXG5cclxuLmJ0bi1wYXltZW50IHtcclxuXHRib3JkZXI6IDFweCBvdXRzZXQgIzMwNjtcclxuXHRib3JkZXItcmFkaXVzOiA1cHg7XHJcblx0bGluZS1oZWlnaHQ6IDIuNTtcclxuXHR3aWR0aDogNTAlO1xyXG5cdG1hcmdpbjogMnB4O1xyXG5cdGNvbG9yOiAjNzBhO1xyXG5cdGJhY2tncm91bmQtY29sb3I6ICNmZmU7XHJcblx0Y3Vyc29yOiBwb2ludGVyO1xyXG5cdCYrIGJ1dHRvbntcclxuXHRcdG1hcmdpbi1sZWZ0OiAwO1xyXG5cdH1cclxuXHQmOmZvY3Vze1xyXG5cdFx0YmFja2dyb3VuZC1jb2xvcjogIzcwYTtcclxuXHRcdGNvbG9yOiB3aGl0ZTtcclxuXHR9XHJcbn1cclxuXHJcbi5kYXRhLXdyYXBwZXJ7XHJcblx0ZGlzcGxheTogZmxleDtcclxuXHRoZWlnaHQ6IDEwMCU7XHJcblx0LmRhdGEtbGVmdHtcclxuXHRcdHdpZHRoOiAxMDAlO1xyXG5cdFx0ZGlzcGxheTogYmxvY2s7XHJcblx0XHQubGVmdC10b3B7XHJcblx0XHRcdHdpZHRoOiAxMDAlO1xyXG5cdFx0fVxyXG5cdFx0LmxlZnQtYm90dG9te1xyXG5cdFx0XHR3aWR0aDogMTAwJTtcclxuXHRcdFx0LmJ1dHRvbi13cmFwcGVyIHtcclxuXHRcdFx0XHRkaXNwbGF5OiBmbGV4O1xyXG5cdFx0XHRcdHdpZHRoOiAxMDAlO1xyXG5cdFx0XHR9XHJcblx0XHRcdC50YWJsZXtcclxuICAgICAgICB0Ym9keXtcclxuXHRcdFx0XHRcdGJvcmRlci13aWR0aDogMnB4IDA7XHJcblx0XHRcdFx0XHRib3JkZXItY29sb3I6IHJnYmEoMCwwLDAsLjUpO1xyXG5cdFx0XHRcdFx0Ym9yZGVyLXN0eWxlOiBzb2xpZDtcclxuICAgICAgICB9XHJcblx0XHRcdFx0LmhlYWRlcntcclxuXHRcdFx0XHRcdC5kZXRhaWx7XHJcblx0XHRcdFx0XHRcdHRke1xyXG5cdFx0XHRcdFx0XHRcdHBhZGRpbmc6IDhweCAycHg7XHJcblx0XHRcdFx0XHRcdFx0Y3Vyc29yOiBwb2ludGVyO1xyXG5cdFx0XHRcdFx0XHR9XHJcblx0XHRcdFx0XHR9XHJcblx0XHRcdFx0XHQudG90YWx7XHJcblx0XHRcdFx0XHRcdHRke1xyXG5cdFx0XHRcdFx0XHRcdHBhZGRpbmc6IDJweCAycHg7XHJcblx0XHRcdFx0XHRcdFx0Y3Vyc29yOiBwb2ludGVyO1xyXG5cdFx0XHRcdFx0XHR9XHJcblx0XHRcdFx0XHR9XHJcblx0XHRcdFx0XHQmOmhvdmVye1xyXG5cdFx0XHRcdFx0XHQucGF5bWVudHtcclxuXHRcdFx0XHRcdFx0XHRiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsMCwwLC4wNSk7XHJcblx0XHRcdFx0XHRcdH1cclxuXHRcdFx0XHRcdH1cclxuXHRcdFx0XHRcdC5wYXltZW50e1xyXG5cdFx0XHRcdFx0XHR0ZHtcclxuXHRcdFx0XHRcdFx0XHRwYWRkaW5nOiA4cHggMnB4O1xyXG5cdFx0XHRcdFx0XHRcdGJhY2tncm91bmQtY29sb3I6ICNmZmU7XHJcblx0XHRcdFx0XHRcdFx0Y3Vyc29yOiBwb2ludGVyO1xyXG5cdFx0XHRcdFx0XHR9XHJcblx0XHRcdFx0XHRcdCY6aG92ZXJ7XHJcblx0XHRcdFx0XHRcdFx0YmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLDAsMCwuMSk7XHJcblx0XHRcdFx0XHRcdH1cclxuXHRcdFx0XHRcdH1cclxuXHRcdFx0XHR9XHJcblx0XHRcdH1cclxuXHRcdH1cclxuXHR9XHJcblx0LmRhdGEtcmlnaHR7XHJcblx0XHR3aWR0aDogMTAwJTtcclxuXHRcdGRpc3BsYXk6IGJsb2NrO1xyXG5cdFx0LmRldGFpbHRyYW5zYWtzaWJhbmstd3JhcHBlcntcclxuXHRcdFx0ZGlzcGxheTogYmxvY2s7XHJcblx0XHRcdG92ZXJmbG93OiBzY3JvbGw7XHJcblx0XHRcdGhlaWdodDogMTAwJTtcclxuXHRcdH1cclxuXHR9XHJcbn1cclxuXHJcblxyXG4iXX0= */"
 
 /***/ }),
 
@@ -17733,6 +17737,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _ionic_native_date_picker_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/date-picker/ngx */ "./node_modules/@ionic-native/date-picker/ngx/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17748,28 +17753,52 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var ConfirmationbyemployeePage = /** @class */ (function () {
-    function ConfirmationbyemployeePage(global, router, activatedRoute, http, datePicker) {
+    function ConfirmationbyemployeePage(global, router, activatedRoute, http, datePicker, alertController) {
         var _this = this;
         this.global = global;
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.http = http;
         this.datePicker = datePicker;
+        this.alertController = alertController;
+        this.urlrefresh = 'http://localhost/jakartabrosur/public/API/admin/compaccs/1/bca/refresh';
+        this.urlread = 'http://localhost/jakartabrosur/public/API/admin/compaccs/1/bca/read';
+        this.paydialogstatus = "";
+        this.paydialogshow = false;
+        this.mutationtableshow = false;
+        this.showsalestypes = "paid";
+        this.showsalesloading = false;
+        this.showsaleserrormessage = "";
+        this.salesnotverifs = [];
+        this.salesnopayments = [];
+        this.companybankaccs = [];
+        this.salespayment = [];
+        this.custbankaccs = [];
+        this.newcustbanksacc = [];
+        this.companybankaccmutation = [];
+        this.selectedsalesheaderindex = -1;
+        this.accountno = [];
+        this.bank = '';
+        this.customerbankmutationID = 0;
+        this.customerbankaccID = '';
+        this.paymentID = '';
+        this.ishidden = false;
         this.activatedRoute.queryParams.subscribe(function (params) {
-            _this.data = JSON.parse(params.special);
-            console.log(_this.data);
+            _this.salesheaderID = JSON.parse(params.sid);
         });
     }
     ConfirmationbyemployeePage.prototype.ngOnInit = function () {
-        this.getcustbanklist(this.data.customerID);
-        this.getcustomeracc(this.data.id);
-        this.getcurl();
-        this.bankname = '';
+        if (this.salesheaderID != null) {
+            this.setshowsalestype('paid');
+        }
+        this.getcompanybankaccount();
+        this.getusedcurl(0);
     };
     ConfirmationbyemployeePage.prototype.getcustomeracc = function (input) {
         var _this = this;
-        var url = this.global.api + "select/getcustomerpaymentbyid";
+        var url = this.global.api + "select/getsalespaymentbycartid";
         var post = {
             'app_token': this.global.logintoken,
             'usertype': this.global.usertype,
@@ -17779,12 +17808,12 @@ var ConfirmationbyemployeePage = /** @class */ (function () {
         this.result = this.http.post(url, post, {
             responseType: 'json'
         });
-        this.result.subscribe(function (data) {
-            if (data != null) {
-                if (data instanceof Object) {
-                    _this.global.customeracc = data;
+        this.result.subscribe(function (response) {
+            if (response != null) {
+                if (response instanceof Object) {
+                    _this.global.customeracc = response;
                     _this.global.customeracc.salespayment.forEach(function (item, index) {
-                        item.paydate = _this.global.makeDate(item.paydate);
+                        item.myDate = _this.global.makeDate(item.myDate);
                     });
                     console.log(_this.global.customeracc);
                 }
@@ -17795,38 +17824,45 @@ var ConfirmationbyemployeePage = /** @class */ (function () {
             }
         });
     };
-    ConfirmationbyemployeePage.prototype.getcustbanklist = function (input) {
+    // getcustbanklist(input){
+    // 	this.global.custbankaccs = [];
+    // 	let url = this.global.api+"select/getcustbankaccount";
+    // 	let post = {
+    // 		'app_token': this.global.logintoken,
+    // 		'usertype': this.global.usertype,
+    // 		'userID': this.global.userdata.id,
+    // 		'customerID' : input
+    // 	};
+    //
+    // 	this.result = this.http.post(
+    // 		url,
+    // 		post,
+    // 		{
+    // 			responseType:'json'
+    // 		}
+    // 	);
+    //
+    // 	this.result.subscribe(
+    // 		response => {
+    // 			if(response != null){
+    // 				if(response instanceof Array){
+    // 					this.global.custbankaccs = response;
+    // 					console.log(this.global.custbankaccs);
+    // 				}
+    // 				else{
+    // 					console.log("not Array");
+    // 				}
+    // 			}
+    // 			else{
+    // 				console.log("kosong");
+    // 				this.router.navigateByUrl('');
+    // 			}
+    // 		}
+    // 	);
+    // }
+    ConfirmationbyemployeePage.prototype.getcompanybankaccount = function () {
         var _this = this;
-        var url = this.global.api + "select/getcustbankaccount";
-        var post = {
-            'app_token': this.global.logintoken,
-            'usertype': this.global.usertype,
-            'userID': this.global.userdata.id,
-            'customerID': input
-        };
-        this.result = this.http.post(url, post, {
-            responseType: 'json'
-        });
-        this.result.subscribe(function (data) {
-            if (data != null) {
-                if (data instanceof Array) {
-                    _this.global.custbankaccs = data;
-                    console.log(_this.global.custbankaccs);
-                }
-                else {
-                    console.log("not Array");
-                }
-            }
-            else {
-                console.log("kosong");
-                _this.router.navigateByUrl('');
-            }
-        });
-    };
-    ConfirmationbyemployeePage.prototype.getcurl = function () {
-        var _this = this;
-        var yesterday = moment__WEBPACK_IMPORTED_MODULE_4__().subtract(1, "days").format("YYYY-MM-DD");
-        var url = 'http://jakartabrosur.com/API/admin/compaccs/1/bca/refresh';
+        var url = this.global.api + "select/getcompanybankaccount";
         var post = {
             'app_token': this.global.logintoken,
             'usertype': this.global.usertype,
@@ -17838,35 +17874,116 @@ var ConfirmationbyemployeePage = /** @class */ (function () {
         this.result.subscribe(function (response) {
             if (response != null) {
                 if (response instanceof Array) {
-                    response.forEach(function (item, index) {
-                        if (item.mutationNote.includes('CR')) {
-                            var dates = moment__WEBPACK_IMPORTED_MODULE_4__(item.mutationDate).format("YYYY-MM-DD");
-                            if (dates >= yesterday) {
-                                _this.global.curls.push(item);
-                            }
-                        }
-                    });
+                    _this.companybankaccs = response;
                 }
                 else {
-                    console.log('ERROR OUTPUT');
-                    _this.router.navigateByUrl('');
+                    console.log("not Array");
                 }
+            }
+            else {
+                console.log("kosong");
+                _this.router.navigateByUrl('');
             }
         });
     };
-    ConfirmationbyemployeePage.prototype.konfirmasipembayaran = function (input) {
-        console.log(this.paydate);
-        console.log(this.bankname);
-        console.log(this.nameacc);
-        var url = this.global.api + "insertverif";
+    ConfirmationbyemployeePage.prototype.getbcarefresh = function () {
+        var _this = this;
+        console.log(this.paydialog);
+        if (!this.global.curldownloading) {
+            this.global.curls = [];
+            this.global.curldownloading = true;
+            var yesterday = moment__WEBPACK_IMPORTED_MODULE_4__().subtract(1, "days").format("YYYY-MM-DD");
+            var post = {
+                'app_token': this.global.logintoken,
+                'usertype': this.global.usertype,
+                'userID': this.global.userdata.id
+            };
+            this.result = this.http.post(this.urlrefresh, post, {
+                responseType: 'json'
+            });
+            this.result.subscribe(function (response) {
+                if (response != null) {
+                    if (response instanceof Array) {
+                        response.forEach(function (item, index) {
+                            if (item.mutationNote.includes('CR')) {
+                                var dates = moment__WEBPACK_IMPORTED_MODULE_4__(item.mutationDate).format("YYYY-MM-DD");
+                                if (dates >= yesterday) {
+                                    item.curlshow = false;
+                                    var count = item.mutationNote.split(";");
+                                    item.name = count[count.length - 2];
+                                    _this.global.curls.push(item);
+                                }
+                            }
+                        });
+                        _this.global.curldownloading = false;
+                        console.log("sampai sini refresh");
+                    }
+                    else {
+                        _this.global.curldownloading = true;
+                        console.log('ERROR OUTPUT');
+                        _this.router.navigateByUrl('');
+                    }
+                }
+            });
+            //this.getcustbanklist(this.paydialog.customerID);
+        }
+    };
+    ConfirmationbyemployeePage.prototype.getbcaread = function () {
+        var _this = this;
+        console.log(this.paydialog);
+        if (!this.global.curldownloading) {
+            this.global.curls = [];
+            this.global.curldownloading = true;
+            var yesterday = moment__WEBPACK_IMPORTED_MODULE_4__().subtract(1, "days").format("YYYY-MM-DD");
+            this.result = this.http.get(this.urlread, {
+                responseType: 'json'
+            });
+            this.result.subscribe(function (response) {
+                if (response != null) {
+                    if (response instanceof Array) {
+                        response.forEach(function (item, index) {
+                            if (item.mutationNote.includes('CR')) {
+                                item.curlshow = false;
+                                var count = item.mutationNote.split(";");
+                                item.name = count[count.length - 2];
+                                var dates = moment__WEBPACK_IMPORTED_MODULE_4__(item.mutationDate).format("YYYY-MM-DD");
+                                if (dates >= yesterday) {
+                                    _this.global.curls.push(item);
+                                }
+                            }
+                        });
+                        _this.global.curldownloading = false;
+                        console.log("sampai sini read");
+                    }
+                    else {
+                        _this.global.curldownloading = true;
+                        console.log('ERROR OUTPUT');
+                        _this.router.navigateByUrl('');
+                    }
+                }
+            });
+            //this.getcustbanklist(this.paydialog.customerID);
+        }
+    };
+    ConfirmationbyemployeePage.prototype.konfirmasipembayaran = function ($paydialog) {
+        console.log($paydialog);
+        console.log('konfirmasi pembayaran');
+        var url = this.global.api + "insert/insertverif";
         var post = {
-            'employeeID': this.global.userdata.id,
-            'salesID': this.salesID,
-            'paymentID': input,
-            'ammount': this.ammount,
-            'paydate': this.paydate,
-            'nameacc': this.nameacc,
-            'note': this.note
+            'app_token': this.global.logintoken,
+            'usertype': this.global.usertype,
+            'userID': this.global.userdata.id,
+            //'salesID'									: input.id,
+            'paymentID': this.paymentID,
+            'ammount': $paydialog.ammount,
+            'paydate': this.myDate,
+            'accname': this.accname,
+            'note': this.note,
+            'accountno': this.accountno,
+            //'customerID'							: input.customerID,
+            'customerbankmutationID': $paydialog.customerbankmutationID,
+            'bankID': this.bank,
+            'customerbankaccID': this.customerbankaccID
         };
         // this.result = this.http.post(
         // 	url,
@@ -17876,17 +17993,23 @@ var ConfirmationbyemployeePage = /** @class */ (function () {
         // 	}
         // );
         //
-        // if(this.result != null){
-        // 	this.result.subscribe(data=>{
-        // 		console.log(data);
-        // 	});
-        // }
+        // this.result.subscribe(
+        // 	response => {
+        // 		if(response != null){
+        // 			alert('data berhasil disimpan');
+        // 			this.ishidden = true;
+        // 		}
+        // 		else{
+        // 			alert('data gagal disimpan');
+        // 		}
+        // 	}
+        // );
     };
     ConfirmationbyemployeePage.prototype.selectedaccount = function (event) {
-        console.log(event.target.value);
+        //console.log(event.target.value);
         var val = event.target.value.split('-');
-        this.nameacc = val[1];
-        this.bankname = val[2];
+        this.accname = val[1];
+        this.bank = val[2];
     };
     ConfirmationbyemployeePage.prototype.showDatepicker = function () {
         var _this = this;
@@ -17897,11 +18020,309 @@ var ConfirmationbyemployeePage = /** @class */ (function () {
             okText: "OK",
             todayText: "Set Today"
         }).then(function (date) {
-            _this.myDate = date.getDate() + "/" + date.toLocaleString('default', { month: 'long' }) + "/" + date.getFullYear();
+            _this.myDate = date.getDate() + "/" + date.toLocaleString('default', { month: 'medium' }) + "/" + date.getFullYear();
         }, function (err) { return console.log('Error occurred while getting date: ', err); });
     };
     ConfirmationbyemployeePage.prototype.selecteddetail = function (input) {
-        console.log(input);
+        this.getusedcurl(input.id);
+        var a = input.mutationNote.split(";");
+        var count = a.length;
+        this.ammount = input.mutationAmmount;
+        this.accname = a[count - 2];
+        this.myDate = moment__WEBPACK_IMPORTED_MODULE_4__(input.mutationDate).format('YYYY-MM-DD');
+        this.customerbankmutationID = input.id;
+    };
+    ConfirmationbyemployeePage.prototype.hideallsalespayment = function () {
+        if (this.salesnotverifs != null) {
+            this.salesnotverifs.forEach(function ($ii, i) {
+                $ii.salespaymentshow = false;
+            });
+        }
+        if (this.salesnopayments != null) {
+            this.salesnopayments.forEach(function ($ii, i) {
+                $ii.salespaymentshow = false;
+            });
+        }
+    };
+    ConfirmationbyemployeePage.prototype.showsalespayment = function ($item) {
+        this.hideallsalespayment();
+        this.salesnotverifs.forEach(function ($ii, i) {
+            if ($ii.id == $item.id)
+                $ii.salespaymentshow = true;
+        });
+    };
+    ConfirmationbyemployeePage.prototype.showdetailcurl = function ($item) {
+        var $temp = $item.curlshow;
+        this.global.curls.forEach(function ($ii, i) {
+            $ii.curlshow = false;
+        });
+        if ($temp == false) {
+            $item.curlshow = true;
+        }
+    };
+    ConfirmationbyemployeePage.prototype.showmutation = function () {
+        this.getbcaread();
+        this.mutationtableshow = true;
+    };
+    ConfirmationbyemployeePage.prototype.hidemutation = function () {
+        this.mutationtableshow = false;
+    };
+    ConfirmationbyemployeePage.prototype.selectedmutation = function ($curl, $selectedcompanybank) {
+        this.paydialog.customerbankmutationID = $curl.id;
+        this.paydialog.ammount = $curl.mutationAmmount;
+        this.selectedcompanybank = $selectedcompanybank;
+        this.mutationtableshow = false;
+    };
+    ConfirmationbyemployeePage.prototype.setshowsalestype = function (input) {
+        var self = this;
+        this.paydialogstatus = '';
+        this.paydialogshow = false;
+        if (input == 'paid') {
+            this.getsalesnotverif(function () {
+                self.showsalestypes = input;
+            }, function (errormessage) {
+                self.showsalestypes = '';
+                self.showsaleserrormessage = errormessage;
+            });
+        }
+        else if (input == 'nopayment') {
+            this.getsalesnopayment(function () {
+                self.showsalestypes = input;
+            }, function (errormessage) {
+                self.showsalestypes = '';
+                self.showsaleserrormessage = errormessage;
+            });
+        }
+    };
+    ConfirmationbyemployeePage.prototype.showpaydialog = function ($header, $selectedheaderindex, $payment) {
+        console.log($header);
+        this.selectedsalesheaderindex = $selectedheaderindex;
+        if ($payment != null) {
+            //brarti yang di klik adalah row pembayaran dari salesheader.salespayment
+            this.paydialog = {
+                "ammount": $payment.ammount,
+                "paydate": $payment.created_at,
+                "customerbankmutationID": null,
+                "paymentID": $payment.id,
+                "salesID": $payment.salesID,
+                "customerID": $payment.customerID
+            };
+            if ($payment.salespaymentverif == null) {
+                this.paydialogstatus = "notverif";
+                this.paydialog.custbankname = $payment.customeracc.bank.bankname;
+                this.paydialog.custbankaccname = $payment.customeracc.accname;
+                this.paydialog.custbankaccno = $payment.customeracc.accno;
+                this.paydialog.compbankname = $payment.companyacc.bank.bankname;
+                this.paydialog.compbankaccname = $payment.companyacc.accname;
+                this.paydialog.compbankaccno = $payment.companyacc.accno;
+                this.paydialog.companybankalias = $payment.companyacc.bank.alias;
+            }
+            else {
+                this.paydialogstatus = "verified";
+                this.paydialog = {
+                    "custbankname": $payment.customeracc.bank.bankname,
+                    "custbankaccname": $payment.customeracc.accname,
+                    "custbankaccno": $payment.customeracc.accno,
+                    "compbankname": $payment.companyacc.bank.bankname,
+                    "compbankaccname": $payment.companyacc.accname,
+                    "compbankaccno": $payment.companyacc.accno,
+                    "companybankalias": $payment.companyacc.bank.alias
+                };
+                this.paydialog.verifdate = $payment.salespaymentverif.veriftime;
+                this.paydialog.verifemployee = $payment.salespaymentverif.employee.name;
+            }
+        }
+        else {
+            //jika belum ada pemabaran, maka salesheader.salespyament masih kosong, sehingga dikirimnya null
+        }
+        this.paydialogshow = true;
+    };
+    ConfirmationbyemployeePage.prototype.shownopaymentdialog = function ($nopayment) {
+        this.hideallsalespayment();
+        this.custbankaccs = $nopayment.customer.customerbankacc;
+        if ($nopayment.salespayment == null) {
+            this.paydialog = {
+                "totalprice": $nopayment.totalprice,
+                "salestime": $nopayment.created_at,
+                "customerID": $nopayment.customerID,
+                "custbankaccname": '',
+                "custbankaccno": '',
+                "custbankname": ''
+            };
+            this.paydialogstatus = "nopayment";
+            $nopayment.salespaymentshow = true;
+        }
+        else {
+            $nopayment.salespaymentshow = true;
+        }
+    };
+    ConfirmationbyemployeePage.prototype.getsalesnotverif = function (whendone, whenfailed) {
+        var _this = this;
+        if (!this.showsalesloading) {
+            this.showsalesloading = true;
+            var url = this.global.api + "select/getpendingpayment";
+            var post = {
+                'app_token': this.global.logintoken,
+                'usertype': this.global.usertype,
+                'userID': this.global.userdata.id
+            };
+            this.result = this.http.post(url, post, {
+                responseType: 'json'
+            });
+            this.result.subscribe(function (response) {
+                if (response != null) {
+                    _this.salesnotverifs = response;
+                    _this.salesnotverifs.forEach(function ($ii, $i) {
+                        $ii.totalprice = 0;
+                        $ii.salespaymentshow = false;
+                        $ii.salesdetail.forEach(function ($jj, $j) {
+                            $ii.totalprice += $jj.cartheader.printprice;
+                            $ii.totalprice += $jj.cartheader.deliveryprice;
+                            $ii.totalprice += $jj.cartheader.discount;
+                        });
+                    });
+                    if (whendone instanceof Function) {
+                        whendone();
+                    }
+                }
+                else {
+                    _this.salesnotverifs = null;
+                    console.log('Data sales payment verif belum ada');
+                    if (whenfailed instanceof Function) {
+                        whenfailed('data return = null');
+                    }
+                }
+                _this.showsalesloading = false;
+            }, function (error) {
+                if (whenfailed instanceof Function) {
+                    whenfailed('data return error');
+                }
+                _this.showsalesloading = false;
+            });
+        }
+    };
+    ConfirmationbyemployeePage.prototype.getsalesnopayment = function (whendone, whenfailed) {
+        var _this = this;
+        if (!this.showsalesloading) {
+            this.showsalesloading = true;
+            var url = this.global.api + "select/getsalesnopayment";
+            var post = {
+                'app_token': this.global.logintoken,
+                'usertype': this.global.usertype,
+                'userID': this.global.userdata.id
+            };
+            this.result = this.http.post(url, post, {
+                responseType: 'json'
+            });
+            this.result.subscribe(function (response) {
+                if (response != null) {
+                    _this.salesnopayments = response;
+                    _this.salesnopayments.forEach(function ($ii, $i) {
+                        $ii.totalprice = 0;
+                        $ii.salespaymentshow = false;
+                        $ii.salesdetail.forEach(function ($jj, $j) {
+                            $ii.totalprice += $jj.cartheader.printprice;
+                            $ii.totalprice += $jj.cartheader.deliveryprice;
+                            $ii.totalprice += $jj.cartheader.discount;
+                        });
+                    });
+                    if (whendone instanceof Function) {
+                        whendone();
+                    }
+                }
+                else {
+                    console.log('data payment tidak ada/kosong');
+                    if (whenfailed instanceof Function) {
+                        whenfailed('data return = null');
+                    }
+                }
+                _this.showsalesloading = false;
+            }, function (error) {
+                if (whenfailed instanceof Function) {
+                    whenfailed('data return error');
+                }
+                _this.showsalesloading = false;
+            });
+        }
+    };
+    ConfirmationbyemployeePage.prototype.insertcustomerbankacc = function () {
+        console.log(this.paydialog.custbankaccname + 'name');
+        var post = {
+            'app_token': this.global.logintoken,
+            'usertype': this.global.usertype,
+            'userID': this.global.userdata.id,
+            //'customerID'							: $paydialog.customerID,
+            //'bankID'									: this.bankID,
+            'custaccname': this.accname,
+            'custaccno': this.accountno
+        };
+        // this.ajaxinsert(post, function(response){
+        // 	//whendone
+        // 	this.custbankaccs = response;
+        // }, function(errorstring, errordata=null){
+        // 	//whenfailed
+        // 	if(errorstring != ""){
+        // 		this.errormessage = errorstring;
+        // 	}
+        // 	if(errordata != null){
+        // 		console.log(errordata);
+        // 	}
+        // });
+    };
+    ConfirmationbyemployeePage.prototype.ajaxinsert = function (post, whendone, whenfailed) {
+        var url = this.global.api + "";
+        this.result = this.http.post(url, post, {
+            responseType: 'json'
+        });
+        this.result.subscribe(function (response) {
+            if (response != null) {
+                if (response instanceof Array) {
+                    whendone(response);
+                }
+                else {
+                    whenfailed("Hasil bukan berupa array");
+                }
+            }
+            else {
+                whenfailed("Data kosong.");
+            }
+        }, function (error) {
+            whenfailed("Error", error);
+        });
+    };
+    ConfirmationbyemployeePage.prototype.getusedcurl = function (input) {
+        var _this = this;
+        var url = this.global.api + "select/usedcurl";
+        var post = {
+            'app_token': this.global.logintoken,
+            'usertype': this.global.usertype,
+            'userID': this.global.userdata.id
+        };
+        this.result = this.http.post(url, post, {
+            responseType: 'json'
+        });
+        this.result.subscribe(function (response) {
+            if (response != null) {
+                if (response instanceof Array) {
+                    _this.companybankaccmutation = [];
+                    _this.companybankaccmutation = response;
+                    response.forEach(function (item, index) {
+                        if (_this.companybankaccmutation[index].customerbankmutationID == input) {
+                            alert('data sudah pernah dipilih');
+                        }
+                        else {
+                            console.log(_this.companybankaccmutation[index].customerbankmutationID);
+                        }
+                    });
+                }
+                else {
+                    console.log('data mutasi bukan array');
+                }
+            }
+            else {
+                console.log('data mutasi masih kosong');
+            }
+        });
     };
     ConfirmationbyemployeePage = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -17913,7 +18334,8 @@ var ConfirmationbyemployeePage = /** @class */ (function () {
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"],
-            _ionic_native_date_picker_ngx__WEBPACK_IMPORTED_MODULE_5__["DatePicker"]])
+            _ionic_native_date_picker_ngx__WEBPACK_IMPORTED_MODULE_5__["DatePicker"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"]])
     ], ConfirmationbyemployeePage);
     return ConfirmationbyemployeePage;
 }());

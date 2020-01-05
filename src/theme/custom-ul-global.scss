@@ -54,3 +54,94 @@ ul.three-column{
 		}
 	}
 }
+
+
+.list-standard{
+	&.highlighted {
+		.list-header{
+			background-color: #adf;
+			color: #444;
+		}
+		ul{
+			margin: 0 5px 10px;
+			border-style: solid;
+			border-color: #adf;
+			background-color: #f5faff;
+			border-radius: 0 0 2px 2px;
+			li{
+				border-bottom-color: #adf;
+			}
+		}
+	}
+	margin: 5px 0;
+	.list-header{
+		text-align: left;
+		color: #777;
+		font-size: 90%;
+		font-weight: bold;
+		padding: 5px 10px;
+	}
+	ul{
+		list-style: none;
+		padding: 0;
+		margin: 0 0 10px;
+		border-width: 0 2px 2px;
+		li{
+			padding: 15px 10px;
+			border-bottom: 1px solid #aaa;
+			display: flex;
+			align-items: center;
+			&.no-border{
+				border-bottom: 0;
+			}
+			&.list-action{
+				&:after{
+					font-family: "Font Awesome 5 Pro";
+					font-weight: 800;
+					content: "\f054";
+					color: #46a;
+					font-size: 110%;
+					opacity: 0.6;
+				}
+			}
+			&.list-sm{
+				padding-top: 2px;
+				padding-bottom: 2px;
+				.avatar{
+					height: 20px;
+				}
+			}
+			.avatar{
+				width: 40px;
+				height: 40px;
+				margin: 2px 8px 2px 0;
+				display: grid;
+				justify-content: center;
+				align-items: center;
+				img{
+					width: 100%;
+					height: 100%;
+					object-fit: scale-down;
+					-o-object-fit: scale-down;
+					border-radius: 1000px;
+					overflow: hidden;
+				}
+			}
+			.label{
+				width: 100%;
+				text-align: left;
+				.label-title{
+					font-size: 125%;
+				}
+				.label-content{
+					font-size: 110%;
+					color: #333;
+				}
+				.label-muted{
+					font-size: 90%;
+					color: #aaa;
+				}
+			}
+		}
+	}
+}

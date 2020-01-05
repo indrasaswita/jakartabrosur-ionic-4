@@ -44,7 +44,7 @@ export class GlobalsService {
 			'name': "[ not set ]"
 		};
 		//this.api = "http://septianard/jakartabrosur/public/API/io/";
-	//	this.api = "http://www.jakartabrosur.com/API/io/";
+		//this.api = "http://www.jakartabrosur.com/API/io/";
 		this.api = "http://localhost/jakartabrosur/public/API/io/";
   }
   

@@ -1,0 +1,61 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button>
+        <i class="fas fa-arrow-alt-circle-left fa-fw"></i>
+        Back
+      </ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			<i class="far fa-piggy-bank fa-fw"></i>
+			Customer Bank <span class="role">EDIT</span>
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="editcustomerbank-wrapper">
+		<div class="list-standard" *ngIf="customerbankacc!=null">
+			<ul>
+        <li class="list-sm no-border">
+          <div class="label">
+            <ion-item>
+              <ion-label position="stacked">Customer BANK</ion-label>
+              <ion-select [interfaceOptions]="customerbankaccOptions" interface="action-sheet" [(ngModel)]="selectedbank" [compareWith]="compareById">
+                <ion-select-option *ngFor="let bank of banks" [value]="bank.id">
+                  <ng-container *ngIf="bank.alias==''">{{bank.bankname}}</ng-container>
+                  <ng-container *ngIf="bank.alias!=''">{{bank.alias}}</ng-container>
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+            {{customerbankacc.bank.id}}
+          </div>
+        </li>
+				<li class="list-sm no-border">
+					<div class="label">
+            <ion-item>
+              <ion-label position="stacked">Account Name</ion-label>
+              <ion-input value="{{customerbankacc.accname}}"></ion-input>
+            </ion-item>
+					</div>
+				</li>
+        <li class="list-sm no-border">
+          <div class="label">
+            <ion-item>
+              <ion-label position="stacked">Account Number</ion-label>
+              <ion-input value="{{customerbankacc.accno}}"></ion-input>
+            </ion-item>
+          </div>
+        </li>
+        <li class="list-sm no-border">
+          <div class="label">
+            <ion-item>
+              <ion-label position="stacked">Account Location</ion-label>
+              <ion-input value="{{customerbankacc.acclocation}}"></ion-input>
+            </ion-item>
+          </div>
+        </li>
+			</ul>
+		</div>
+	</div>
+</ion-content>

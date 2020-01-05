@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { GlobalsService } from '../globals.service';
-import { Router } from '@angular/router';
+import {NavigationExtras, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-customer',
-  templateUrl: './customer.page.html',
-  styleUrls: ['./customer.page.scss'],
+	selector: 'app-customer',
+	templateUrl: './customer.page.html',
+	styleUrls: ['./customer.page.scss'],
 })
 export class CustomerPage implements OnInit {
 
@@ -17,32 +17,32 @@ export class CustomerPage implements OnInit {
 	customererror: boolean;
 	groups: any = [];
 
-  constructor(
-  	public global: GlobalsService,
-  	public http: HttpClient,
-  	public router: Router
+	constructor(
+		public global: GlobalsService,
+		public http: HttpClient,
+		public router: Router
 	) {
 		this.customers = null;
-  }
+	}
 
-  ngOnInit() {
+	ngOnInit() {
 		//console.log('customer mulai');
 		this.getcustomerdata();
 		//this.getgroups();
-  }
+	}
 
-  ionViewWillEnter(){
-  	console.log("ANJING");
-  }
+	ionViewWillEnter(){
+		console.log("ANJING");
+	}
 
 	ngOnEnter(){
 		console.log("OnEnter on contact.page.ts");
 	}
-  ionSelected(){
-  	console.log("KUCING MEONG");
-  }
+	ionSelected(){
+		console.log("KUCING MEONG");
+	}
 
-  getcustomerdata(){
+	getcustomerdata(){
 		this.customers = null;
 		let url = this.global.api+"select/customers";
 
@@ -71,6 +71,15 @@ export class CustomerPage implements OnInit {
 						})
 						this.customers = data;
 						console.log(this.customers);
+						this.hideallcustomerdetail();
+						this.customers.forEach(($ii, $i)=>{
+							$ii.showcustomerbankacc = false;
+							$ii.showcustomerdetail = false;
+							$ii.created_at = this.global.makeDateTime($ii.created_at);
+							if($ii.updated_at != null){
+								$ii.updated_at = this.global.makeDateTime($ii.updated_at);
+							}
+						});
 						this.customererror = false;
 					}else{
 						console.log('ERROR OUTPUT FROM ' + url);
@@ -80,27 +89,44 @@ export class CustomerPage implements OnInit {
 				}
 			}
 		);
-  }
-  
-  getgroups() {
-		for (var i = 0; i < 8; i++) {
-			this.groups[i] = {
-				name: i,
-				items: [],
-				show: true
-			};
-			for (var j=0; j<3; j++) {
-				this.groups[i].items.push(i + '-' + j);
-			}
+	}
+
+	hideallcustomerdetail(){
+		this.customers.forEach(($ii, $i)=>{
+			$ii.showdetail = false;
+		});
+	}
+
+	showdetail(customer){
+		let temp = customer.showdetail;
+		this.hideallcustomerdetail();
+		if(temp == false){
+			customer.showdetail = true;
 		}
-		console.log(this.groups);
+		if(!customer.showcustomerbankacc
+			&& !customer.showcustomerdetail){
+			//DEFAULT KALO BELOM ADA YANG DI PILIH SEBELUMNYA
+			customer.showcustomerdetail = true;
+		}
+
 	}
-  
-  isgroupshown(group){
-  	return group.show;
+
+	showcustomerbankacc(customer){
+		customer.showcustomerbankacc = true;
+		customer.showcustomerdetail = false;
 	}
-  
-  togglegroup(group){
-		group.show = !group.show;
+
+	showcustomerdetail(customer){
+		customer.showcustomerdetail = true;
+		customer.showcustomerbankacc = false;
+	}
+
+	goeditcustomerbankacc(bankacc){
+		let navigationExtras: NavigationExtras = {
+			queryParams: {
+				special: JSON.stringify(bankacc)
+			}
+		};
+		this.router.navigate(['editcustomerbankacc'], navigationExtras);
 	}
 }
