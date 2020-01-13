@@ -112,19 +112,16 @@
 								<td>{{paydialog.totalprice}}</td>
 							</tr>
 							<tr>
-								<td colspan="2">Bank Asal (CUST)</td>
+								<td>Bank Asal (CUST)</td>
 								<td>
-									<ion-button (click)="showselectcustomerbank()">Alert
-									</ion-button>
-									<ion-select [(ngModel)]="bank">
-										<ion-select-option *ngFor="let customerbank of salesnopayments[selectedsalesheaderindex].customer.customerbankacc" value="{{customerbank.id}}" [selected]="customerbank">
+									<ion-select [(ngModel)]="customerbankaccID" interface="action-sheet" (ionChange)="onchangecustomerbank($event)">
+										<ion-select-option *ngFor="let customerbank of salesnopayments[selectedsalesheaderindex].customer.customerbankacc" value="{{customerbank.id}}" [selected]="customerbank" class="select-text">
 											<ng-container *ngIf="customerbank.bank.alias!=''">
-												{{customerbank.bank.alias}} - {{customerbank.accname}} {{customerbank.accno}}
+												{{customerbank.bank.alias}} - {{customerbank.accname}} - {{customerbank.accno}}
 											</ng-container>
 											<ng-container *ngIf="customerbank.bank.alias==''">
-												{{customerbank.bank.bankname}} - {{customerbank.accname}} {{customerbank.accno}}
+												{{customerbank.bank.bankname}} - {{customerbank.accname}}- {{customerbank.accno}}
 											</ng-container>
-<!--											{{customerbank.bank.alias}} - {{customerbank.accname}}-->
 										</ion-select-option>
 									</ion-select>
 									a/n {{paydialog.custbankaccname}}
@@ -132,12 +129,19 @@
 								</td>
 							</tr>
 							<tr>
-								<td colspan="2">Bank Tujuan (COMP)</td>
+								<td>Bank Tujuan (COMP)</td>
 								<td>
-									<ion-select [(ngModel)]="selectedcompanybank">
-										<ion-select-option *ngFor="let selectedcompanybank of companybankaccs" value="{{selectedcompanybank.id}}" [selected]="selectedcompanybank.bank.alias == 'BCA'">{{selectedcompanybank.bank.alias}}</ion-select-option>
+									<ion-select [(ngModel)]="selectedcompanybank" interface="action-sheet" (ionChange)="onchangecompanybank($event)">
+										<ion-select-option *ngFor="let selectedcompanybank of companybankaccs" value="{{selectedcompanybank.id}}" [selected]="selectedcompanybank.bank.alias == 'BCA'">
+											<ng-container *ngIf="selectedcompanybank.bank.alias!=''">
+												{{selectedcompanybank.bank.alias}} - {{selectedcompanybank.accname}} - {{selectedcompanybank.accno}}
+											</ng-container>
+											<ng-container *ngIf="selectedcompanybank.bank.alias==''">
+												{{selectedcompanybank.bank.bankname}} - {{selectedcompanybank.accname}}- {{selectedcompanybank.accno}}
+											</ng-container>
+										</ion-select-option>
 									</ion-select>
-									{{paydialog.compbankaccname}}
+									a/n {{paydialog.compbankaccname}}
 									{{paydialog.companybankaccno}}
 								</td>
 							</tr>
@@ -148,15 +152,32 @@
 							<tr>
 								<td>Mutasi ID</td>
 								<td>
-									{{paydialog.customerbankmutationID}}
+									{{customerbankmutationID}}
 									<button class="btn btn-sm btn-outline-primary" (click)="showmutation()">
 										Show Mutasi
 									</button>
 								</td>
 							</tr>
 							<tr>
+								<td>
+									Tanggal Transfer
+								</td>
+								<td>
+									<ion-input (click)="showDatepicker()" [(ngModel)]="myDate" class="input-conf">
+										<i class="far fa-calendar-alt"></i>
+									</ion-input>
+								</td>
+							</tr>
+							<tr>
 								<td>Jumlah Transfer</td>
-								<td>{{paydialog.ammount}}</td>
+								<ng-container *ngIf="paydialog.ammount!=0">
+									<td>{{paydialog.ammount}}</td>
+								</ng-container>
+								<ng-container *ngIf="paydialog.ammount==0">
+									<td>
+										<ion-input name="ammount" type="text" class="input-conf" [(ngModel)]="ammount"></ion-input>
+									</td>
+								</ng-container>
 								<td hidden>{{paydialog.customerID}}</td>
 							</tr>
 						</tbody>
@@ -316,7 +337,7 @@
 											Add Customer Bank
 										</ion-select-option>
 									</ion-select>
-									<button class="btn btn-sm btn-info" (click)="selectedmutation(curl, bank)">
+									<button class="btn btn-sm btn-info" (click)="selectedmutation(curl)">
 										<i class="fas fa-check"> Apply</i>
 									</button>
 								</td>
@@ -342,7 +363,7 @@
 											Add Customer Bank
 										</ion-select-option>
 									</ion-select>
-									<button class="btn btn-sm btn-info" (click)="selectedmutation(curl, bank)">
+									<button class="btn btn-sm btn-info" (click)="selectedmutation(curl)">
 										<i class="fas fa-check"> Apply</i>
 									</button>
 								</td>
