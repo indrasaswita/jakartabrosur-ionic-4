@@ -40,15 +40,15 @@ export class ConfirmationbyemployeePage implements OnInit {
 	private selectedcompanybank: any;
 	private selectedsalesheaderindex: number = -1;
 	accountno: any = [];
-	bank: any = '';
+	//bank: any = '';
 	accname: any;
 	salesID: any;
-	id: any;
+	//id: any;
 	myDate: any;
 	customerbankmutationID : number = 0;
 	customerbankaccID: any = '';
 	paymentID: any = '';
-	ishidden: boolean = false;
+	//ishidden: boolean = false;
 	
 	constructor(
 		private global: GlobalsService,
@@ -110,42 +110,65 @@ export class ConfirmationbyemployeePage implements OnInit {
 		);
 	}
 	
-	// getcustbanklist(input){
-	// 	this.global.custbankaccs = [];
-	// 	let url = this.global.api+"select/getcustbankaccount";
-	// 	let post = {
-	// 		'app_token': this.global.logintoken,
-	// 		'usertype': this.global.usertype,
-	// 		'userID': this.global.userdata.id,
-	// 		'customerID' : input
-	// 	};
-	//
-	// 	this.result = this.http.post(
-	// 		url,
-	// 		post,
-	// 		{
-	// 			responseType:'json'
-	// 		}
-	// 	);
-	//
-	// 	this.result.subscribe(
-	// 		response => {
-	// 			if(response != null){
-	// 				if(response instanceof Array){
-	// 					this.global.custbankaccs = response;
-	// 					console.log(this.global.custbankaccs);
-	// 				}
-	// 				else{
-	// 					console.log("not Array");
-	// 				}
-	// 			}
-	// 			else{
-	// 				console.log("kosong");
-	// 				this.router.navigateByUrl('');
-	// 			}
-	// 		}
-	// 	);
-	// }
+	async showselectcustomerbank($activecustomerbankaccs){
+		console.log('alert');
+		let inputs = [];
+		let abc = $activecustomerbankaccs;
+		abc.forEach(($ii, i) => {
+			if($ii.bank.alias!=''){
+				inputs.push({
+					type: 'radio',
+					label: $ii.bank.alias + '-' + $ii.accname + '-' + $ii.accno,
+					value: $ii.id
+				});
+			}
+			else{
+				inputs.push({
+					type: 'radio',
+					label: $ii.bank.bankname + '-' + $ii.accname + '-' + $ii.accno,
+					value: $ii.id
+				});
+			}
+		});
+		
+		let normal = "<div class='confirm-bankacc'>";
+		abc.forEach(($ii, $i)=>{
+			normal += "<div class='check-wrapper' (click)='selectcustomerbankacc()'>" +
+				"<div class=\"check\">\n" +
+				"\t<label class=\"custom-checkbox\">\n" +
+				"\t\t<input type=\"checkbox\" ng-model=\"allchecked\" ng-click=\"checkAll()\">\n" +
+				"\t\t<span class=\"checkmark\"></span>\n" +
+				"\t</label>\n" +
+				"</div>"+
+				"<div class='text'>" +
+				"\t"+ $ii.bank.bankname + '-' + $ii.accname + '-' + $ii.accno +
+				"</div>"+
+			"</div>";
+		});
+		normal += '</div';
+		
+		const alert = await this.alertController.create({
+			header: "Customer Bank Account",
+			message: normal,
+			buttons: [
+				{
+					text: 'Cancel',
+					role: 'cancel',
+					cssClass: 'secondary',
+					handler: () => {
+						console.log('Confirm Cancel');
+					}
+				}, {
+					text: 'Ok',
+					handler: () => {
+						console.log('Confirm Ok');
+					}
+				}
+			]
+		});
+		
+		alert.present();
+	}
 	
 	getcompanybankaccount(){
 		let url = this.global.api+"select/getcompanybankaccount";
@@ -181,6 +204,21 @@ export class ConfirmationbyemployeePage implements OnInit {
 		);
 	}
 	
+	onchangecustomerbank($selectedcustomerbank){
+		let text = $selectedcustomerbank.detail.text.split("-");
+		console.log($selectedcustomerbank.detail);
+		console.log('masuk onchange');
+		this.paydialog.custbankaccname = text[1];
+		this.paydialog.custbankaccno = text[2];
+	}
+	
+	onchangecompanybank($selectedcompanybank){
+		console.log($selectedcompanybank);
+		let text = $selectedcompanybank.detail.text.split("-");
+		this.paydialog.compbankaccname = text[1];
+		this.paydialog.companybankaccno = text[2];
+	}
+	
 	getbcarefresh(){
 		console.log(this.paydialog);
 		if(!this.global.curldownloading)
@@ -188,6 +226,7 @@ export class ConfirmationbyemployeePage implements OnInit {
 			this.global.curls = [];
 			this.global.curldownloading = true;
 			var yesterday = moment().subtract(1, "days").format("YYYY-MM-DD");
+			console.log(yesterday);
 			let post = {
 				'app_token': this.global.logintoken,
 				'usertype': this.global.usertype,
@@ -205,10 +244,12 @@ export class ConfirmationbyemployeePage implements OnInit {
 				response =>{
 					if(response != null){
 						if(response instanceof Array){
+							console.log(response);
 							response.forEach((item, index) =>{
 								if(item.mutationNote.includes('CR')){
 									var dates = moment(item.mutationDate).format("YYYY-MM-DD");
-									if(dates>=yesterday){
+									console.log(dates);
+									if(yesterday<=dates){
 										item.curlshow = false;
 										let count = item.mutationNote.split(";");
 										item.name = count[count.length-2];
@@ -216,6 +257,7 @@ export class ConfirmationbyemployeePage implements OnInit {
 									}
 								}
 							})
+							console.log(this.global.curls);
 							this.global.curldownloading = false;
 							console.log("sampai sini refresh");
 						}
@@ -227,7 +269,6 @@ export class ConfirmationbyemployeePage implements OnInit {
 					}
 				}
 			);
-			//this.getcustbanklist(this.paydialog.customerID);
 		}
 	}
 	
@@ -269,58 +310,73 @@ export class ConfirmationbyemployeePage implements OnInit {
 					}
 				}
 			);
-			//this.getcustbanklist(this.paydialog.customerID);
 		}
 	}
 	
 	konfirmasipembayaran($paydialog){
-		console.log($paydialog);
 		console.log('konfirmasi pembayaran');
+		console.log('index: ' + this.selectedsalesheaderindex);
 		let url = this.global.api + "insert/insertverif";
+		if(this.paydialogstatus != 'nopayment'){
+			this.paymentID = '';
+		}
+		
 		let post = {
 			'app_token'								: this.global.logintoken,
 			'usertype'								: this.global.usertype,
 			'userID'									: this.global.userdata.id,
-			//'salesID'									: input.id,
+			'salesID'									: $paydialog.salesID,
 			'paymentID'								: this.paymentID,
 			'ammount'									: $paydialog.ammount,
 			'paydate'									: this.myDate,
-			'accname'									: this.accname,
-			'note'										: this.note,
-			'accountno'								: this.accountno,
-			//'customerID'							: input.customerID,
-			'customerbankmutationID'	: $paydialog.customerbankmutationID,
-			'bankID'									: this.bank,
-			'customerbankaccID'				: this.customerbankaccID
+			'customerID'							: $paydialog.customerID,
+			'customerbankmutationID'	: this.customerbankmutationID,
+			'customerbankaccID'				: this.customerbankaccID,
+			'companybankaccID'				: this.selectedcompanybank,
+			'statuspembayaran'				: this.paydialogstatus
 		};
 		
-		// this.result = this.http.post(
-		// 	url,
-		// 	post,
-		// 	{
-		// 		responseType: 'json'
-		// 	}
-		// );
-		//
-		// this.result.subscribe(
-		// 	response => {
-		// 		if(response != null){
-		// 			alert('data berhasil disimpan');
-		// 			this.ishidden = true;
-		// 		}
-		// 		else{
-		// 			alert('data gagal disimpan');
-		// 		}
-		// 	}
-		// );
+		this.result = this.http.post(
+			url,
+			post,
+			{
+				responseType: 'json'
+			}
+		);
+
+		this.result.subscribe(
+			response => {
+				if(response != null){
+					if(response instanceof Object){
+						console.log(response);
+						if(this.paydialogstatus == 'nopayment'){
+							console.log('masuk no payment');
+							this.salesnotverifs.splice(0, 0, response);
+							this.salesnopayments.splice(this.selectedsalesheaderindex-1, 1);
+							//this.salesnotverifs.push(response);
+							console.log('splice no payment');
+						}
+						else if(this.paydialogstatus == 'notverif'){
+							console.log('masuk notverif');
+							this.salesnotverifs[this.selectedsalesheaderindex-1] = response;
+							console.log('response not verif');
+						}
+					}
+					alert('data berhasil disimpan');
+				}
+				else{
+					alert('data gagal disimpan');
+				}
+			}
+		);
 	}
 	
-	selectedaccount(event){
-		//console.log(event.target.value);
-		let val = event.target.value.split('-');
-		this.accname = val[1];
-		this.bank = val[2];
-	}
+	// selectedaccount(event){
+	// 	//console.log(event.target.value);
+	// 	let val = event.target.value.split('-');
+	// 	this.accname = val[1];
+	// 	//this.bank = val[2];
+	// }
 	
 	showDatepicker(){
 		this.datePicker.show({
@@ -387,10 +443,10 @@ export class ConfirmationbyemployeePage implements OnInit {
 		this.mutationtableshow = false;
 	}
 	
-	selectedmutation($curl, $selectedcompanybank){
-		this.paydialog.customerbankmutationID = $curl.id;
+	selectedmutation($curl){
+		this.customerbankmutationID = $curl.id;
 		this.paydialog.ammount = $curl.mutationAmmount;
-		this.selectedcompanybank = $selectedcompanybank;
+		this.myDate = moment($curl.mutationDate).format('YYYY-MM-DD');
 		this.mutationtableshow = false;
 	}
 	
@@ -453,15 +509,17 @@ export class ConfirmationbyemployeePage implements OnInit {
 				this.paydialog.verifemployee = $payment.salespaymentverif.employee.name;
 			}
 		}else{
-			//jika belum ada pemabaran, maka salesheader.salespyament masih kosong, sehingga dikirimnya null
+			//jika belum ada pemabaran, maka salesheader.salespayment masih kosong, sehingga dikirimnya null
 		}
 		
 		this.paydialogshow = true;
 	}
 	
 	shownopaymentdialog($nopayment){
+		console.log($nopayment);
+		console.log('no payment');
 		this.hideallsalespayment();
-		this.custbankaccs = $nopayment.customer.customerbankacc;
+		//this.custbankaccs = $nopayment.customer.customerbankacc;
 		if($nopayment.salespayment==null) {
 			this.paydialog = {
 				"totalprice"			: $nopayment.totalprice,
@@ -469,7 +527,9 @@ export class ConfirmationbyemployeePage implements OnInit {
 				"customerID" 			: $nopayment.customerID,
 				"custbankaccname" : '',
 				"custbankaccno"		: '',
-				"custbankname"		: ''
+				"custbankname"		: '',
+				"ammount"					: 0,
+				"salesID"					: $nopayment.id
 			};
 			this.paydialogstatus = "nopayment";
 			$nopayment.salespaymentshow = true;
@@ -511,6 +571,7 @@ export class ConfirmationbyemployeePage implements OnInit {
 							});
 						});
 						if (whendone instanceof Function) {
+							console.log(this.salesnotverifs);
 							whendone();
 						}
 					} else {
@@ -564,6 +625,7 @@ export class ConfirmationbyemployeePage implements OnInit {
 							});
 						});
 						if (whendone instanceof Function) {
+							console.log(this.salesnopayments);
 							whendone();
 						}
 					} else {
@@ -580,6 +642,7 @@ export class ConfirmationbyemployeePage implements OnInit {
 					this.showsalesloading = false;
 				}
 			);
+			
 		}
 	}
 	
@@ -636,16 +699,6 @@ export class ConfirmationbyemployeePage implements OnInit {
 				whenfailed("Error", error);
 			}
 		);
-	}
-	
-	async showselectcustomerbank(){
-		const alert = await this.alertController.create({
-			title: "Use this lightsaber?",
-			message: 'Do you agree to use this lightsaber to do good across the galaxy?',
-			buttons: ['Disagree', 'Agree']
-		});
-		
-		alert.present();
 	}
 	
 	getusedcurl(input){
