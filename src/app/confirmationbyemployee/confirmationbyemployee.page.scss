@@ -38,7 +38,7 @@
 	color: #306;
 	border: 1px solid #aaa;
 	border-radius: 6px;
-	width: 30%;
+	width: 50%;
 	&:hover{
 		border-color: #0d81ff;
 	}
@@ -48,6 +48,16 @@
 		box-shadow: 0 0 5px 5px rgba(0,0,0,.05);
 		border-color: #0d81ff;
 	}
+}
+
+.select-text {
+	-ms-flex: 1;
+	flex: 1;
+	min-width: 16px;
+	font-size: inherit;
+	text-overflow: ellipsis;
+	white-space: normal !important;
+	overflow: hidden;
 }
 
 .btn-payment {
@@ -131,5 +141,6 @@
 		}
 	}
 }
+
 
 
