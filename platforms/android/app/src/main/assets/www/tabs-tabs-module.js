@@ -56,7 +56,7 @@ var AboutPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>\n    \t<i class=\"fas fa-brain fa-fw\"></i>\n    \tPrice List\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content></ion-content>\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>\r\n    \t<i class=\"fas fa-brain fa-fw\"></i>\r\n    \tPrice List\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content></ion-content>\r\n"
 
 /***/ }),
 
@@ -168,7 +168,7 @@ var ContactPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar>\n        <ion-buttons slot=\"start\">\n            <ion-back-button></ion-back-button>\n        </ion-buttons>\n        <ion-title>\n            <i class=\"fas fa-user-astronaut fa-fw\"></i>\n            Customer List\n        </ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ul *ngIf=\"!customerdownloading\">\n    <ng-container *ngFor='let customer of customers'>\n      <li>\n        <div class=\"code\">    \n          {{customer.id}}\n        </div>\n        <div class=\"content\">\n          <div class=\"pretitle\"> \n            {{customer.email}} \n          </div>\n          <div class=\"title\">\n            <i class=\"fas fa-user tx-info\" *ngIf=\"customer.title=='Mr.'\"></i>\n            <i class=\"fas fa-user tx-lightmagenta\" *ngIf=\"customer.title=='Ms.'||customer.title=='Mrs.'\"></i>\n             {{customer.name}}\n          </div>\n        </div>\n        <div class=\"price\">\n          {{customer.created_at|date:'d/M/yy'}}\n        </div>\n      </li>\n    </ng-container>\n  </ul>\n</ion-content>"
+module.exports = "<ion-header>\r\n    <ion-toolbar>\r\n        <ion-buttons slot=\"start\">\r\n            <ion-back-button></ion-back-button>\r\n        </ion-buttons>\r\n        <ion-title>\r\n            <i class=\"fas fa-user-astronaut fa-fw\"></i>\r\n            Customer List\r\n        </ion-title>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ul *ngIf=\"!customerdownloading\">\r\n    <ng-container *ngFor='let customer of customers'>\r\n      <li>\r\n        <div class=\"code\">    \r\n          {{customer.id}}\r\n        </div>\r\n        <div class=\"content\">\r\n          <div class=\"pretitle\"> \r\n            {{customer.email}} \r\n          </div>\r\n          <div class=\"title\">\r\n            <i class=\"fas fa-user tx-info\" *ngIf=\"customer.title=='Mr.'\"></i>\r\n            <i class=\"fas fa-user tx-lightmagenta\" *ngIf=\"customer.title=='Ms.'||customer.title=='Mrs.'\"></i>\r\n             {{customer.name}}\r\n          </div>\r\n        </div>\r\n        <div class=\"price\">\r\n          {{customer.created_at|date:'d/M/yy'}}\r\n        </div>\r\n      </li>\r\n    </ng-container>\r\n  </ul>\r\n</ion-content>"
 
 /***/ }),
 
@@ -312,7 +312,7 @@ var HomePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<ion-content>\n\t\n\t<div style=\"height: 100%; display: grid; justify-content: center; align-items: center; margin: 20px 10px;\">\n\t\t<div class=\"size-36\">\n\t\t\tHello, <br>\n\t\t\t<b>{{global.userdata.name}}</b>.\n\t\t</div>\n\t\t<div class=\"size-14 text-tx-center\">\n\t\t\tWelcome to Jakartabrosur Digital Apps.\n\t\t</div>\n\n\t</div>\n\n    <div class=\"btn-group\">\n        <div class=\"btn-group\">\n            <button class=\"btn\" (click)=\"navSales()\">\n                Sale\n            </button>\n            <button class=\"btn\" (click)=\"navCust()\">\n                Cust\n            </button>\n            <button class=\"btn\" (click)=\"navNotif()\">\n                Notif\n            </button>\n            <button class=\"btn\" (click)=\"navContact()\">\n                Contact\n            </button>\n            <button class=\"btn\" (click)=\"navPrice()\">\n                Price\n            </button>\n        </div>\n    </div>\n\n</ion-content>\n"
+module.exports = "\r\n\r\n<ion-content>\r\n\t\r\n\t<div style=\"height: 100%; display: grid; justify-content: center; align-items: center; margin: 20px 10px;\">\r\n\t\t<div class=\"size-36\">\r\n\t\t\tHello, <br>\r\n\t\t\t<b>{{global.userdata.name}}</b>.\r\n\t\t</div>\r\n\t\t<div class=\"size-14 text-tx-center\">\r\n\t\t\tWelcome to Jakartabrosur Digital Apps.\r\n\t\t</div>\r\n\r\n\t</div>\r\n\r\n    <div class=\"btn-group\">\r\n        <div class=\"btn-group\">\r\n            <button class=\"btn\" (click)=\"navSales()\">\r\n                Sale\r\n            </button>\r\n            <button class=\"btn\" (click)=\"navCust()\">\r\n                Cust\r\n            </button>\r\n            <button class=\"btn\" (click)=\"navNotif()\">\r\n                Notif\r\n            </button>\r\n            <button class=\"btn\" (click)=\"navContact()\">\r\n                Contact\r\n            </button>\r\n            <button class=\"btn\" (click)=\"navPrice()\">\r\n                Price\r\n            </button>\r\n        </div>\r\n    </div>\r\n\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -323,7 +323,7 @@ module.exports = "\n\n<ion-content>\n\t\n\t<div style=\"height: 100%; display: g
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "@-webkit-keyframes fadeLoop {\n  0% {\n    opacity: 0; }\n  80% {\n    opacity: 1; }\n  100% {\n    opacity: 1; } }\n\n.loading {\n  -webkit-animation-name: fadeLoop;\n          animation-name: fadeLoop;\n  -webkit-animation-duration: 1.8s;\n          animation-duration: 1.8s;\n  -webkit-animation-iteration-count: infinite;\n          animation-iteration-count: infinite;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 14px;\n  text-align: center; }\n\n.btn-group-wrapper .btn-group {\n  display: flex; }\n\n.btn-group-wrapper .btn-group .btn {\n    border: 1px solid #206; }\n\n.btn-group-wrapper .btn-group .btn:first-child {\n      border-radius-top-left: 5px;\n      border-radius-bottom-left: 5px; }\n\n.btn-group-wrapper .btn-group .btn:last-child {\n      border-radius-top-right: 5px;\n      border-radius-bottom-right: 5px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9DOlxceGFtcHBcXGh0ZG9jc1xcakJyb3N1ckRyb2lkL3NyY1xcYXBwXFxob21lXFxob21lLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNDO0lBQ0MsVUFBVSxFQUFBO0VBRVg7SUFDQyxVQUFVLEVBQUE7RUFFWDtJQUNDLFVBQVUsRUFBQSxFQUFBOztBQUlaO0VBQ0MsZ0NBQXdCO1VBQXhCLHdCQUF3QjtFQUN4QixnQ0FBd0I7VUFBeEIsd0JBQXdCO0VBQ3hCLDJDQUFtQztVQUFuQyxtQ0FBbUM7RUFFbkMsWUFBWTtFQUNaLGFBQWE7RUFDYixtQkFBbUI7RUFDbkIsdUJBQXVCO0VBQ3ZCLGVBQWU7RUFDZixrQkFBa0IsRUFBQTs7QUFJbkI7RUFFRSxhQUFhLEVBQUE7O0FBRmY7SUFJRyxzQkFBc0IsRUFBQTs7QUFKekI7TUFNSSwyQkFBMkI7TUFDM0IsOEJBQThCLEVBQUE7O0FBUGxDO01BVUksNEJBQTRCO01BQzVCLCtCQUErQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvaG9tZS9ob21lLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkAtd2Via2l0LWtleWZyYW1lcyBmYWRlTG9vcHtcblx0MCV7XG5cdFx0b3BhY2l0eTogMDtcblx0fVxuXHQ4MCV7XG5cdFx0b3BhY2l0eTogMTtcblx0fVxuXHQxMDAle1xuXHRcdG9wYWNpdHk6IDE7XG5cdH1cbn1cblxuLmxvYWRpbmd7XG5cdGFuaW1hdGlvbi1uYW1lOiBmYWRlTG9vcDtcblx0YW5pbWF0aW9uLWR1cmF0aW9uOiAxLjhzO1xuXHRhbmltYXRpb24taXRlcmF0aW9uLWNvdW50OiBpbmZpbml0ZTtcblxuXHRoZWlnaHQ6IDEwMCU7XG5cdGRpc3BsYXk6IGZsZXg7XG5cdGFsaWduLWl0ZW1zOiBjZW50ZXI7XG5cdGp1c3RpZnktY29udGVudDogY2VudGVyO1xuXHRmb250LXNpemU6IDE0cHg7XG5cdHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuXG4uYnRuLWdyb3VwLXdyYXBwZXJ7XG5cdC5idG4tZ3JvdXB7XG5cdFx0ZGlzcGxheTogZmxleDtcblx0XHQuYnRue1xuXHRcdFx0Ym9yZGVyOiAxcHggc29saWQgIzIwNjtcblx0XHRcdCY6Zmlyc3QtY2hpbGR7XG5cdFx0XHRcdGJvcmRlci1yYWRpdXMtdG9wLWxlZnQ6IDVweDtcblx0XHRcdFx0Ym9yZGVyLXJhZGl1cy1ib3R0b20tbGVmdDogNXB4O1xuXHRcdFx0fVxuXHRcdFx0JjpsYXN0LWNoaWxke1xuXHRcdFx0XHRib3JkZXItcmFkaXVzLXRvcC1yaWdodDogNXB4O1xuXHRcdFx0XHRib3JkZXItcmFkaXVzLWJvdHRvbS1yaWdodDogNXB4O1xuXHRcdFx0fVxuXHRcdH1cblx0fVxufSJdfQ== */"
+module.exports = "@-webkit-keyframes fadeLoop {\n  0% {\n    opacity: 0; }\n  80% {\n    opacity: 1; }\n  100% {\n    opacity: 1; } }\n\n.loading {\n  -webkit-animation-name: fadeLoop;\n          animation-name: fadeLoop;\n  -webkit-animation-duration: 1.8s;\n          animation-duration: 1.8s;\n  -webkit-animation-iteration-count: infinite;\n          animation-iteration-count: infinite;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 14px;\n  text-align: center; }\n\n.btn-group-wrapper .btn-group {\n  display: flex; }\n\n.btn-group-wrapper .btn-group .btn {\n    border: 1px solid #206; }\n\n.btn-group-wrapper .btn-group .btn:first-child {\n      border-radius-top-left: 5px;\n      border-radius-bottom-left: 5px; }\n\n.btn-group-wrapper .btn-group .btn:last-child {\n      border-radius-top-right: 5px;\n      border-radius-bottom-right: 5px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9jOlxceGFtcHBcXGh0ZG9jc1xcamJtb2JpbGUvc3JjXFxhcHBcXGhvbWVcXGhvbWUucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0M7SUFDQyxVQUFVLEVBQUE7RUFFWDtJQUNDLFVBQVUsRUFBQTtFQUVYO0lBQ0MsVUFBVSxFQUFBLEVBQUE7O0FBSVo7RUFDQyxnQ0FBd0I7VUFBeEIsd0JBQXdCO0VBQ3hCLGdDQUF3QjtVQUF4Qix3QkFBd0I7RUFDeEIsMkNBQW1DO1VBQW5DLG1DQUFtQztFQUVuQyxZQUFZO0VBQ1osYUFBYTtFQUNiLG1CQUFtQjtFQUNuQix1QkFBdUI7RUFDdkIsZUFBZTtFQUNmLGtCQUFrQixFQUFBOztBQUluQjtFQUVFLGFBQWEsRUFBQTs7QUFGZjtJQUlHLHNCQUFzQixFQUFBOztBQUp6QjtNQU1JLDJCQUEyQjtNQUMzQiw4QkFBOEIsRUFBQTs7QUFQbEM7TUFVSSw0QkFBNEI7TUFDNUIsK0JBQStCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9ob21lL2hvbWUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiQC13ZWJraXQta2V5ZnJhbWVzIGZhZGVMb29we1xyXG5cdDAle1xyXG5cdFx0b3BhY2l0eTogMDtcclxuXHR9XHJcblx0ODAle1xyXG5cdFx0b3BhY2l0eTogMTtcclxuXHR9XHJcblx0MTAwJXtcclxuXHRcdG9wYWNpdHk6IDE7XHJcblx0fVxyXG59XHJcblxyXG4ubG9hZGluZ3tcclxuXHRhbmltYXRpb24tbmFtZTogZmFkZUxvb3A7XHJcblx0YW5pbWF0aW9uLWR1cmF0aW9uOiAxLjhzO1xyXG5cdGFuaW1hdGlvbi1pdGVyYXRpb24tY291bnQ6IGluZmluaXRlO1xyXG5cclxuXHRoZWlnaHQ6IDEwMCU7XHJcblx0ZGlzcGxheTogZmxleDtcclxuXHRhbGlnbi1pdGVtczogY2VudGVyO1xyXG5cdGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG5cdGZvbnQtc2l6ZTogMTRweDtcclxuXHR0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcblxyXG4uYnRuLWdyb3VwLXdyYXBwZXJ7XHJcblx0LmJ0bi1ncm91cHtcclxuXHRcdGRpc3BsYXk6IGZsZXg7XHJcblx0XHQuYnRue1xyXG5cdFx0XHRib3JkZXI6IDFweCBzb2xpZCAjMjA2O1xyXG5cdFx0XHQmOmZpcnN0LWNoaWxke1xyXG5cdFx0XHRcdGJvcmRlci1yYWRpdXMtdG9wLWxlZnQ6IDVweDtcclxuXHRcdFx0XHRib3JkZXItcmFkaXVzLWJvdHRvbS1sZWZ0OiA1cHg7XHJcblx0XHRcdH1cclxuXHRcdFx0JjpsYXN0LWNoaWxke1xyXG5cdFx0XHRcdGJvcmRlci1yYWRpdXMtdG9wLXJpZ2h0OiA1cHg7XHJcblx0XHRcdFx0Ym9yZGVyLXJhZGl1cy1ib3R0b20tcmlnaHQ6IDVweDtcclxuXHRcdFx0fVxyXG5cdFx0fVxyXG5cdH1cclxufSJdfQ== */"
 
 /***/ }),
 
@@ -471,7 +471,7 @@ var NotificationPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-buttons slot=\"start\">\n\t\t\t\t<ion-back-button></ion-back-button>\n\t\t</ion-buttons>\n\t\t<ion-title>\n\t\t\t\t<i class=\"fas fa-bell fa-fw\"></i>\n\t\t\t\tNotifications\n\t\t</ion-title>\n\t\t<ion-buttons slot=\"end\">\n\t\t\t<ion-menu-button autoHide=\"false\"></ion-menu-button>\n\t\t</ion-buttons>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content>\n\t<table class=\"table\" *ngIf=\"notifications!=null\">\n\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th>\n\t\t\t\t\t<i class=\"fas fa-bell fa-fw tx-purple\"ng></i>\n\t\t\t\t\t<br>\n\t\t\t\t\tClick baris yg kuning (\n\t\t\t\t\t<i class=\"tx-red\">\n\t\t\t\t\t\tnotif baru\n\t\t\t\t\t</i>\n\t\t\t\t\t)\n\t\t\t\t\t<br>\n\t\t\t\t\t<small>\n\t\t\t\t\t\tuntuk menandakan sudah di baca\n\t\t\t\t\t</small>\n\t\t\t\t</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody *ngFor=\"let notif of notifications\">\n\t\t\t<tr [ngClass]=\"{'highlighted':notif.viewed==0}\">\n\t\t\t\t<td (click)=\"notifclicked(notif.id)\">\n\t\t\t\t\t{{notif.id}}.\n\t\t\t\t\t<b>\n\t\t\t\t\t\t{{notif.title}}\n\t\t\t\t\t</b>\n\t\t\t\t\t<small class=\"tx-gray\">\n\t\t\t\t\t\t{{notif.created_at}}\n\t\t\t\t\t</small>\n\t\t\t\t\t<br>\n\t\t\t\t\t<small>\n\t\t\t\t\t\t{{notif.content}}\n\t\t\t\t\t</small>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</ion-content>\n"
+module.exports = "<ion-header>\r\n\t<ion-toolbar>\r\n\t\t<ion-buttons slot=\"start\">\r\n\t\t\t\t<ion-back-button></ion-back-button>\r\n\t\t</ion-buttons>\r\n\t\t<ion-title>\r\n\t\t\t\t<i class=\"fas fa-bell fa-fw\"></i>\r\n\t\t\t\tNotifications\r\n\t\t</ion-title>\r\n\t\t<ion-buttons slot=\"end\">\r\n\t\t\t<ion-menu-button autoHide=\"false\"></ion-menu-button>\r\n\t\t</ion-buttons>\r\n\t</ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\t<table class=\"table\" *ngIf=\"notifications!=null\">\r\n\t\t<thead>\r\n\t\t\t<tr>\r\n\t\t\t\t<th>\r\n\t\t\t\t\t<i class=\"fas fa-bell fa-fw tx-purple\"ng></i>\r\n\t\t\t\t\t<br>\r\n\t\t\t\t\tClick baris yg kuning (\r\n\t\t\t\t\t<i class=\"tx-red\">\r\n\t\t\t\t\t\tnotif baru\r\n\t\t\t\t\t</i>\r\n\t\t\t\t\t)\r\n\t\t\t\t\t<br>\r\n\t\t\t\t\t<small>\r\n\t\t\t\t\t\tuntuk menandakan sudah di baca\r\n\t\t\t\t\t</small>\r\n\t\t\t\t</th>\r\n\t\t\t</tr>\r\n\t\t</thead>\r\n\t\t<tbody *ngFor=\"let notif of notifications\">\r\n\t\t\t<tr [ngClass]=\"{'highlighted':notif.viewed==0}\">\r\n\t\t\t\t<td (click)=\"notifclicked(notif.id)\">\r\n\t\t\t\t\t{{notif.id}}.\r\n\t\t\t\t\t<b>\r\n\t\t\t\t\t\t{{notif.title}}\r\n\t\t\t\t\t</b>\r\n\t\t\t\t\t<small class=\"tx-gray\">\r\n\t\t\t\t\t\t{{notif.created_at}}\r\n\t\t\t\t\t</small>\r\n\t\t\t\t\t<br>\r\n\t\t\t\t\t<small>\r\n\t\t\t\t\t\t{{notif.content}}\r\n\t\t\t\t\t</small>\r\n\t\t\t\t</td>\r\n\t\t\t</tr>\r\n\t\t</tbody>\r\n\t</table>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -668,7 +668,7 @@ var PricelistPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n  \t<ion-buttons slot=\"start\">\n  \t\t<ion-back-button></ion-back-button>\n  \t</ion-buttons>\n    <ion-title>\n    \t<i class=\"fas fa-heartbeat fa-fw\"></i>\n    \tPrice Lists\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n\t<ion-refresher slot=\"fixed\" (ionRefresh)=\"refresh($event)\">\n    <ion-refresher-content\n      pullingIcon=\"arrow-dropdown\"\n      pullingText=\"Pull to refresh\"\n      refreshingSpinner=\"circles\"\n      refreshingText=\"Refreshing...\">\n    </ion-refresher-content>\n  </ion-refresher>\n\n\n\t<div style=\"margin: 10px 0;\">\n\t\t<table class=\"table\">\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>Deskripsi</th>\n\t\t\t\t\t<th>Harga</th>\n\t\t\t\t\t<th>Updated</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody *ngFor=\"let pricelist of global.prices\">\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t{{pricelist.title}}\n\t\t\t\t\t\t<br>\n\t\t\t\t\t\t<small><b>{{pricelist.detail}}</b></small>\n\t\t\t\t\t</td>\n\t\t\t\t\t<td class=\"text-xs-right\">\n\t\t\t\t\t\t{{pricelist.price|number:0}}\n\t\t\t\t\t</td>\n\t\t\t\t\t<td class=\"text-xs-right\">\n\t\t\t\t\t\t{{pricelist.updated_at}}\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t<ion-fab-button class=\"fab-fixed\" (click)=\"gotoaddprice()\">\n    <ion-icon name=\"add\"></ion-icon>\n  </ion-fab-button>\n\n</ion-content>\n\n  \n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n  \t<ion-buttons slot=\"start\">\r\n  \t\t<ion-back-button></ion-back-button>\r\n  \t</ion-buttons>\r\n    <ion-title>\r\n    \t<i class=\"fas fa-heartbeat fa-fw\"></i>\r\n    \tPrice Lists\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n\t<ion-refresher slot=\"fixed\" (ionRefresh)=\"refresh($event)\">\r\n    <ion-refresher-content\r\n      pullingIcon=\"arrow-dropdown\"\r\n      pullingText=\"Pull to refresh\"\r\n      refreshingSpinner=\"circles\"\r\n      refreshingText=\"Refreshing...\">\r\n    </ion-refresher-content>\r\n  </ion-refresher>\r\n\r\n\r\n\t<div style=\"margin: 10px 0;\">\r\n\t\t<table class=\"table\">\r\n\t\t\t<thead>\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<th>Deskripsi</th>\r\n\t\t\t\t\t<th>Harga</th>\r\n\t\t\t\t\t<th>Updated</th>\r\n\t\t\t\t</tr>\r\n\t\t\t</thead>\r\n\t\t\t<tbody *ngFor=\"let pricelist of global.prices\">\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td>\r\n\t\t\t\t\t\t{{pricelist.title}}\r\n\t\t\t\t\t\t<br>\r\n\t\t\t\t\t\t<small><b>{{pricelist.detail}}</b></small>\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td class=\"text-xs-right\">\r\n\t\t\t\t\t\t{{pricelist.price|number:0}}\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td class=\"text-xs-right\">\r\n\t\t\t\t\t\t{{pricelist.updated_at}}\r\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t</tbody>\r\n\t\t</table>\r\n\t</div>\r\n\r\n\t<ion-fab-button class=\"fab-fixed\" (click)=\"gotoaddprice()\">\r\n    <ion-icon name=\"add\"></ion-icon>\r\n  </ion-fab-button>\r\n\r\n</ion-content>\r\n\r\n  \r\n"
 
 /***/ }),
 
@@ -847,7 +847,7 @@ var SalelistPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-buttons slot=\"start\">\n\t\t\t<ion-back-button></ion-back-button>\n\t\t</ion-buttons>\n\t\t<ion-title>\n\t\t\t<div class=\"logo-img\">\n\t\t\t\t<img src=\"../assets/logo-transp/logo-contrast-100px.png\" width=\"25px\">\n\t\t\t</div>\n\t\t\t<div class=\"logo\">\n\t\t\t\t<span class=\"tx-darkpurple\">Jakarta</span><span class=\"tx-gray\">Brosur</span>\n\t\t\t</div>\n\t\t</ion-title>\n\t\t<ion-buttons slot=\"end\">\n      <ion-menu-button autoHide=\"false\"></ion-menu-button>\n    </ion-buttons>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content>\n\t<div class=\"background-wrapper\">\n\t\t<div class=\"icon xxl\">\n\t\t\t<i class=\"fal fa-bags-shopping fa-fw\"></i>\n\t\t\t<div class=\"text\">\n\t\t\t\tAll purchase and sells are shown in this tabs. You can see all transactions by toggle the submenu on the top-right corner.\n\t\t\t</div>\n\n\n\t\t\t<ul class=\"text menus\">\n\t\t\t\t<li>\n\t\t\t\t\t<i class=\"fal fa-list fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tAll Pending Carts\n\t\t\t\t\t</div>\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.carts.length>0\"></i>\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\t<i class=\"fal fa-list fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tSales Activity\n\t\t\t\t\t</div>\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.sales.length>0\"></i>\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\t<i class=\"fal fa-bookmark fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tSales Need To-Do\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\t<i class=\"fal fa-filter fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tSales Filter & Search\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\t<i class=\"fal fa-chart-network fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tJoin Cart <small class=\"fal fa-chevron-double-right\"></small> Sale\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\t<i class=\"fal fa-envelope-open-dollar fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tOur Expense & Purchase\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t</div>\n\n\t\t<div class=\"loading\" *ngIf=\"global.cartsdownloading||global.salesdownloading\">\n\t\t</div>\n\t</div>\n\n</ion-content>\n"
+module.exports = "<ion-header>\r\n\t<ion-toolbar>\r\n\t\t<ion-buttons slot=\"start\">\r\n\t\t\t<ion-back-button></ion-back-button>\r\n\t\t</ion-buttons>\r\n\t\t<ion-title>\r\n\t\t\t<div class=\"logo-img\">\r\n\t\t\t\t<img src=\"../assets/logo-transp/logo-contrast-100px.png\" width=\"25px\">\r\n\t\t\t</div>\r\n\t\t\t<div class=\"logo\">\r\n\t\t\t\t<span class=\"tx-darkpurple\">Jakarta</span><span class=\"tx-gray\">Brosur</span>\r\n\t\t\t</div>\r\n\t\t</ion-title>\r\n\t\t<ion-buttons slot=\"end\">\r\n      <ion-menu-button autoHide=\"false\"></ion-menu-button>\r\n    </ion-buttons>\r\n\t</ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\t<div class=\"background-wrapper\">\r\n\t\t<div class=\"icon xxl\">\r\n\t\t\t<i class=\"fal fa-bags-shopping fa-fw\"></i>\r\n\t\t\t<div class=\"text\">\r\n\t\t\t\tAll purchase and sells are shown in this tabs. You can see all transactions by toggle the submenu on the top-right corner.\r\n\t\t\t</div>\r\n\r\n\r\n\t\t\t<ul class=\"text menus\">\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-list fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tAll Pending Carts\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-list fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tSales Activity\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\"></i>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-bookmark fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tSales Need To-Do\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-filter fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tSales Filter & Search\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-chart-network fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tJoin Cart <small class=\"fal fa-chevron-double-right\"></small> Sale\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-envelope-open-dollar fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tOur Expense & Purchase\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t</div>\r\n\t</div>\r\n\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -900,19 +900,6 @@ var SalelistPage = /** @class */ (function () {
     }
     SalelistPage.prototype.ngOnInit = function () {
         //this.global.cartsdownloading = true;
-    };
-    /*getData(value) {
-        if (value == 'carts')
-            this.getCarts();
-        else if (value == 'sales')
-            this.getSales();
-    }*/
-    SalelistPage.prototype.toggleSalesheader = function (event, input) {
-        var value = !input.showdetail;
-        this.global.sales.forEach(function (header) {
-            header.showdetail = false;
-        });
-        input.showdetail = value;
     };
     SalelistPage.prototype.setTab = function (value) {
         if (value != this.tab) {
@@ -1029,7 +1016,7 @@ var TabsPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-tabs>\n  <ion-tab tab=\"home\"> <!-- HIDDEN -->\n    <ion-router-outlet name=\"home\"></ion-router-outlet>\n  </ion-tab>\n  <ion-tab tab=\"salelist\"> <!-- HIDDEN -->\n    <ion-router-outlet name=\"salelist\"></ion-router-outlet>\n  </ion-tab>\n  <ion-tab tab=\"alluser\">\n    <ion-router-outlet name=\"alluser\"></ion-router-outlet>\n  </ion-tab>\n  <ion-tab tab=\"master\">\n    <ion-router-outlet name=\"master\"></ion-router-outlet>\n  </ion-tab>\n  <ion-tab tab=\"notification\">\n    <ion-router-outlet name=\"notification\"></ion-router-outlet>\n  </ion-tab><!--\n  <ion-tab tab=\"whatsapp\">\n    <ion-router-outlet name=\"whatsapp\"></ion-router-outlet>\n  </ion-tab>-->\n  <ion-tab tab=\"user\">\n    <ion-router-outlet name=\"user\"></ion-router-outlet>\n  </ion-tab>\n\n  <ion-tab-bar slot=\"bottom\">\n\n    <ion-tab-button tab=\"salelist\" href=\"/tabs/full/(salelist:salelist)\" (click)=\"navSalelist()\">\n      <!-- <ion-icon name=\"bonfire\"></ion-icon> -->\n      <span class=\"fal fa-2x fa-bags-shopping fa-fw\"></span>\n      <!-- <ion-label>Sale</ion-label> -->\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"alluser\" href=\"/tabs/full/(alluser:alluser)\" (click)=\"navAlluser()\">\n      <!-- <ion-icon name=\"logo-freebsd-devil\"></ion-icon> -->\n      <span class=\"fal fa-2x fa-head-side fa-fw\"></span>\n      <!-- <ion-label>Customers</ion-label> -->\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"master\" href=\"/tabs/full/(master:master)\" (click)=\"navMaster()\">\n      <!-- <ion-icon name=\"list-box\"></ion-icon> -->\n      <span class=\"fal fa-2x fa-crown fa-fw\"></span>\n      <!-- <ion-label>Price</ion-label> -->\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"notification\" href=\"/tabs/full/(notification:notification)\" (click)=\"navNotification()\">\n      <!-- <ion-icon name=\"notifications\"></ion-icon> -->\n      <span class=\"fal fa-2x fa-concierge-bell fa-fw\"></span>\n      <!-- <ion-label>Notif</ion-label> -->\n    </ion-tab-button>\n<!--\n    <ion-tab-button tab=\"whatsapp\" href=\"/tabs/full/(whatsapp:whatsapp)\" (click)=\"navWhatsapp()\">\n      &lt;!&ndash; <ion-icon name=\"notifications\"></ion-icon> &ndash;&gt;\n      <span class=\"fal fa-2x fa-comments-alt fa-fw\"></span>\n      &lt;!&ndash; <ion-label>Notif</ion-label> &ndash;&gt;\n    </ion-tab-button>-->\n\n    <ion-tab-button tab=\"user\" href=\"/tabs/full/(user:user)\" (click)=\"navUser()\">\n      <!-- <ion-icon name=\"notifications\"></ion-icon> -->\n      <span class=\"fal fa-2x fa-user-alt fa-fw\"></span>\n      <!-- <ion-label>Notif</ion-label> -->\n    </ion-tab-button>\n\n  </ion-tab-bar>\n\n</ion-tabs>\n"
+module.exports = "<ion-tabs>\r\n  <ion-tab tab=\"home\"> <!-- HIDDEN -->\r\n    <ion-router-outlet name=\"home\"></ion-router-outlet>\r\n  </ion-tab>\r\n  <ion-tab tab=\"salelist\"> <!-- HIDDEN -->\r\n    <ion-router-outlet name=\"salelist\"></ion-router-outlet>\r\n  </ion-tab>\r\n  <ion-tab tab=\"alluser\">\r\n    <ion-router-outlet name=\"alluser\"></ion-router-outlet>\r\n  </ion-tab>\r\n  <ion-tab tab=\"master\">\r\n    <ion-router-outlet name=\"master\"></ion-router-outlet>\r\n  </ion-tab>\r\n  <ion-tab tab=\"notification\">\r\n    <ion-router-outlet name=\"notification\"></ion-router-outlet>\r\n  </ion-tab><!--\r\n  <ion-tab tab=\"whatsapp\">\r\n    <ion-router-outlet name=\"whatsapp\"></ion-router-outlet>\r\n  </ion-tab>-->\r\n  <ion-tab tab=\"user\">\r\n    <ion-router-outlet name=\"user\"></ion-router-outlet>\r\n  </ion-tab>\r\n\r\n  <ion-tab-bar slot=\"bottom\">\r\n\r\n    <ion-tab-button tab=\"salelist\" href=\"/tabs/full/(salelist:salelist)\" (click)=\"navSalelist()\">\r\n      <!-- <ion-icon name=\"bonfire\"></ion-icon> -->\r\n      <span class=\"fal fa-2x fa-bags-shopping fa-fw\"></span>\r\n      <!-- <ion-label>Sale</ion-label> -->\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"alluser\" href=\"/tabs/full/(alluser:alluser)\" (click)=\"navAlluser()\">\r\n      <!-- <ion-icon name=\"logo-freebsd-devil\"></ion-icon> -->\r\n      <span class=\"fal fa-2x fa-head-side fa-fw\"></span>\r\n      <!-- <ion-label>Customers</ion-label> -->\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"master\" href=\"/tabs/full/(master:master)\" (click)=\"navMaster()\">\r\n      <!-- <ion-icon name=\"list-box\"></ion-icon> -->\r\n      <span class=\"fal fa-2x fa-crown fa-fw\"></span>\r\n      <!-- <ion-label>Price</ion-label> -->\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"notification\" href=\"/tabs/full/(notification:notification)\" (click)=\"navNotification()\">\r\n      <!-- <ion-icon name=\"notifications\"></ion-icon> -->\r\n      <span class=\"fal fa-2x fa-concierge-bell fa-fw\"></span>\r\n      <!-- <ion-label>Notif</ion-label> -->\r\n    </ion-tab-button>\r\n<!--\r\n    <ion-tab-button tab=\"whatsapp\" href=\"/tabs/full/(whatsapp:whatsapp)\" (click)=\"navWhatsapp()\">\r\n      &lt;!&ndash; <ion-icon name=\"notifications\"></ion-icon> &ndash;&gt;\r\n      <span class=\"fal fa-2x fa-comments-alt fa-fw\"></span>\r\n      &lt;!&ndash; <ion-label>Notif</ion-label> &ndash;&gt;\r\n    </ion-tab-button>-->\r\n\r\n    <ion-tab-button tab=\"user\" href=\"/tabs/full/(user:user)\" (click)=\"navUser()\">\r\n      <!-- <ion-icon name=\"notifications\"></ion-icon> -->\r\n      <span class=\"fal fa-2x fa-user-alt fa-fw\"></span>\r\n      <!-- <ion-label>Notif</ion-label> -->\r\n    </ion-tab-button>\r\n\r\n  </ion-tab-bar>\r\n\r\n</ion-tabs>\r\n"
 
 /***/ }),
 
@@ -1040,7 +1027,7 @@ module.exports = "<ion-tabs>\n  <ion-tab tab=\"home\"> <!-- HIDDEN -->\n    <ion
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-tab-bar {\n  height: 40px;\n  border-top: 1px solid #999;\n  background-color: #f3f3f3;\n  box-shadow: inset 0 40px 40px -40px #fff; }\n  ion-tab-bar ion-tab-button {\n    padding: 2px 0; }\n  ion-tab-bar ion-tab-button .fal, ion-tab-bar ion-tab-button .fas, ion-tab-bar ion-tab-button .fab, ion-tab-bar ion-tab-button .far {\n      font-size: 18px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGFicy9DOlxceGFtcHBcXGh0ZG9jc1xcakJyb3N1ckRyb2lkL3NyY1xcYXBwXFx0YWJzXFx0YWJzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNDLFlBQVk7RUFDWiwwQkFBMEI7RUFDMUIseUJBQXlCO0VBQ3hCLHdDQUF3QyxFQUFBO0VBSjFDO0lBTUUsY0FBYyxFQUFBO0VBTmhCO01BUUcsZUFBZSxFQUFBIiwiZmlsZSI6InNyYy9hcHAvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10YWItYmFye1xuXHRoZWlnaHQ6IDQwcHg7XG5cdGJvcmRlci10b3A6IDFweCBzb2xpZCAjOTk5O1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiAjZjNmM2YzO1xuICBib3gtc2hhZG93OiBpbnNldCAwIDQwcHggNDBweCAtNDBweCAjZmZmO1xuXHRpb24tdGFiLWJ1dHRvbntcblx0XHRwYWRkaW5nOiAycHggMDtcblx0XHQuZmFsLCAuZmFzLCAuZmFiLCAuZmFye1xuXHRcdFx0Zm9udC1zaXplOiAxOHB4O1xuXHRcdH1cblx0fVxufVxuIl19 */"
+module.exports = "ion-tab-bar {\n  height: 40px;\n  border-top: 1px solid #999;\n  background-color: #f3f3f3;\n  box-shadow: inset 0 40px 40px -40px #fff; }\n  ion-tab-bar ion-tab-button {\n    padding: 2px 0; }\n  ion-tab-bar ion-tab-button .fal, ion-tab-bar ion-tab-button .fas, ion-tab-bar ion-tab-button .fab, ion-tab-bar ion-tab-button .far {\n      font-size: 18px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGFicy9jOlxceGFtcHBcXGh0ZG9jc1xcamJtb2JpbGUvc3JjXFxhcHBcXHRhYnNcXHRhYnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0MsWUFBWTtFQUNaLDBCQUEwQjtFQUMxQix5QkFBeUI7RUFDeEIsd0NBQXdDLEVBQUE7RUFKMUM7SUFNRSxjQUFjLEVBQUE7RUFOaEI7TUFRRyxlQUFlLEVBQUEiLCJmaWxlIjoic3JjL2FwcC90YWJzL3RhYnMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXRhYi1iYXJ7XHJcblx0aGVpZ2h0OiA0MHB4O1xyXG5cdGJvcmRlci10b3A6IDFweCBzb2xpZCAjOTk5O1xyXG5cdGJhY2tncm91bmQtY29sb3I6ICNmM2YzZjM7XHJcbiAgYm94LXNoYWRvdzogaW5zZXQgMCA0MHB4IDQwcHggLTQwcHggI2ZmZjtcclxuXHRpb24tdGFiLWJ1dHRvbntcclxuXHRcdHBhZGRpbmc6IDJweCAwO1xyXG5cdFx0LmZhbCwgLmZhcywgLmZhYiwgLmZhcntcclxuXHRcdFx0Zm9udC1zaXplOiAxOHB4O1xyXG5cdFx0fVxyXG5cdH1cclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -1130,14 +1117,11 @@ var TabsPage = /** @class */ (function () {
         }
     */
     TabsPage.prototype.navSalelist = function () {
-        this.getSales();
-        this.getCarts();
         this.menuCtrl.enable(false, "menu-master");
         this.menuCtrl.enable(false, "menu-alluser");
         this.menuCtrl.enable(false, "menu-notification");
         this.menuCtrl.enable(true, "menu-salelist");
         this.menuCtrl.enable(false, "menu-calculation");
-        //this.menuCtrl.enable(false, "menu-whatsapp");
     };
     TabsPage.prototype.navUser = function () {
         this.menuCtrl.enable(false, "menu-master");
@@ -1176,85 +1160,6 @@ var TabsPage = /** @class */ (function () {
                         _this.global.expenseprices = [];
                     }
                     _this.global.expensepricesdownloading = false;
-                });
-            }
-        }
-    };
-    TabsPage.prototype.getCarts = function () {
-        var _this = this;
-        if (!this.global.cartsdownloading) {
-            this.global.cartsdownloading = true;
-            var url_2 = this.global.api + 'select/pendingcarts';
-            var post = {
-                'app_token': this.global.logintoken,
-                'usertype': this.global.usertype,
-                'userID': this.global.userdata.id
-            };
-            this.result = this.http.post(url_2, post, {
-                responseType: 'json'
-            });
-            if (this.result != null) {
-                this.result.subscribe(function (data) {
-                    if (data != null) {
-                        if (data instanceof Array) {
-                            _this.global.carts = data;
-                            _this.global.carts.forEach(function (header) {
-                                //header.showdetail = false;
-                            });
-                        }
-                        else {
-                            _this.global.carts = [];
-                            _this.router.navigateByUrl('');
-                        }
-                    }
-                    else {
-                        _this.global.carts = [];
-                        console.log("ERROR NO DATA from " + url_2);
-                    }
-                    _this.global.cartsdownloading = false;
-                });
-            }
-        }
-    };
-    TabsPage.prototype.getSales = function () {
-        var _this = this;
-        console.log("sales");
-        if (!this.global.salesdownloading) {
-            this.global.salesdownloading = true;
-            var url = this.global.api + 'select/allsales';
-            var post = {
-                'app_token': this.global.logintoken,
-                'usertype': this.global.usertype,
-                'userID': this.global.userdata.id
-            };
-            this.result = this.http.post(url, post, {
-                responseType: 'json'
-            });
-            if (this.result != null) {
-                this.result.subscribe(function (data) {
-                    if (data != null) {
-                        if (data instanceof Array) {
-                            _this.global.sales = data;
-                            _this.global.sales.forEach(function (header) {
-                                header.totalprice = 0;
-                                if (header.salesdetail != null) {
-                                    header.salesdetail.forEach(function (detail) {
-                                        header.totalprice += detail.cartheader.printprice + detail.cartheader.deliveryprice - detail.cartheader.discount;
-                                    });
-                                    //header.showdetail = false;
-                                }
-                            });
-                        }
-                        else {
-                            _this.global.sales = [];
-                            _this.router.navigateByUrl('');
-                        }
-                    }
-                    else {
-                        _this.global.sales = [];
-                        console.log("ERROR NO DATA from " + url);
-                    }
-                    _this.global.salesdownloading = false;
                 });
             }
         }

@@ -33,7 +33,9 @@ const routes: Routes = [
 	{ path: 'addnewcustomer', loadChildren: './addnewcustomer/addnewcustomer.module#AddnewcustomerPageModule' },
   { path: 'user', loadChildren: './user/user.module#UserPageModule' },
   { path: 'confirmationbyemployee', loadChildren: './confirmationbyemployee/confirmationbyemployee.module#ConfirmationbyemployeePageModule' },
-  { path: 'cetaksuratjalan', loadChildren: './cetaksuratjalan/cetaksuratjalan.module#CetaksuratjalanPageModule' }
+  { path: 'cetaksuratjalan', loadChildren: './cetaksuratjalan/cetaksuratjalan.module#CetaksuratjalanPageModule' },
+  { path: 'editcustomerbankacc', loadChildren: './editcustomerbankacc/editcustomerbankacc.module#EditcustomerbankaccPageModule' }
+
 ];
 @NgModule({
 	imports: [RouterModule.forRoot(routes)],
