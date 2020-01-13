@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 	<!-- <div class="subtab-group">
 		<button class="subtab active" (click)="setTab('carts')">
 			Carts
@@ -18,321 +18,394 @@
 			Sales
 		</button>
 	</div> -->
-	
-	<table class="table item-header" *ngIf="data != null">
-		<tbody>
-			<tr class="header">
-				<td>
-					<i class="fas fa-sign fa-fw"></i>
-					{{data.jobtitle}}
-				</td>
-			</tr>
-			<tr>
-				<td>
-					{{data.quantity|number:0}} {{data.quantitytypename}}
-					<i class="fal fa-badge-check fa-fw"></i>
-			 		{{data.jobsubtype.name}}
-			 	</td>
-			</tr>
-			<tr *ngIf="data.delivery != null">
-				<td>
-					{{data.delivery.deliveryname}}: 
-					<i class="fal fa-location-circle fa-fw"></i>
-					{{data.deliveryaddress}}
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<i class="fal fa-weight fa-fw"></i>
-					{{data.totalweight|number:0}} kg -> 
-					<i class="fal fa-box-alt fa-fw"></i>
-					{{data.totalpackage|number:0}} pack
-				</td>
-			</tr>
-			<ng-container *ngIf="data.cartfile!=null">
-				<tr *ngIf="data.cartfile.length>3">
-					<td>
-						Total File: 
-						<i class="fal fa-file-import fa-fw"></i>
-						{{data.cartfile.length|number:0}} files.
-					</td>
-				</tr>
-				<ng-container *ngIf="data.cartfile.length>0">
-					<tr *ngFor="let cartfile of data.cartfile; let i = index">
-						<td>
-							File #{{cartfile.fileID}}: &nbsp;
-							{{cartfile.file.filename}} <u *ngIf="cartfile.file.size>0">{{(cartfile.file.size/1024/1024)|number:0}}MB</u>
-						</td>
-					</tr>
-				</ng-container>
-			</ng-container>
-			<ng-container *ngIf="data.descriontion!=null">
-				<tr *ngIf="data.itemdescription.length>0">
-					<td>Deskripsi Barang:</td>
-				</tr>
-				<tr>
-					<td>
-						<i class="fal fa-quote-left fa-fw tx-lightgray"></i>
-						{{data.itemdescription}} <span class="tx-lightgray">(penjelasan cetakan)</span>
-					</td>
-				</tr>
-			</ng-container>
-			<ng-container *ngIf="data.customernote != null">
-				<tr *ngIf="data.customernote.length>0" class="sub-header">
-					<td>Catatan Tambahan:</td>
-				</tr>
-				<tr *ngIf="data.customernote.length>0">
-					<td>
-						<i class="fal fa-quote-left fa-fw tx-lightgray"></i>
-						{{data.customernote}} <span class="tx-lightgray">(diluar keterangan barang)</span>
-					</td>
-				</tr>
-			</ng-container>
-			<ng-container *ngIf="data.resellername!=null">
-				<ng-container *ngIf="data.resellername.length>0">
-					<tr class="sub-header">
-						<td>Reseller: </td>
-					</tr>
-					<tr>
-						<td>{{data.resellername}} {{data.resellerphone}}</td>
-					</tr>
-					<tr *ngIf="data.reselleraddress.length>0">
-						<td>{{data.reselleraddress}}</td>
-					</tr>
-				</ng-container>
-			</ng-container>
-			<tr class="sub-header">
-				<td>
-					Process 
-					<i class="fal fa-hourglass-end fa-fw"></i>
-				</td>
-			</tr>
-			<tr *ngIf="data.processtpe!=null">
-				<td>
+
+	<div class="title-wrapper">
+		<div class="image">
+			<img src="../assets/jobsubtypeicons/{{data.jobsubtype.icon}}" class="obj-fit">
+		</div>
+		<div class="title">
+			{{data.jobsubtype.name}}
+		</div>
+		<div class="jobtitle">
+			{{data.jobtitle}}
+		</div>
+	</div>
+
+	<div class="detail-wrapper">
+		<div class="list-standard header highlighted primary">
+			<div class="list-header">
+				DETIL PEKERJAAN
+			</div>
+			<ul>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-boxes fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							Jadi:
+							<span class="pull-xs-right">
+								<b>{{data.quantity|number:0}}</b>
+								{{data.quantitytypename}}
+							</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-dumbbell fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							&plusmn;
+							{{data.totalweight}}kg
+							&nbsp;&nbsp;
+							<i class="fas fa-long-arrow-right fa-fw"></i>
+							&nbsp;&nbsp;
+							<i class="fal fa-boxes-alt fa-fw"></i>
+							&nbsp;
+							{{data.totalpackage}}	pack
+						</div>
+					</div>
+				</li>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-badge-dollar fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							Print:
+							<span class="pull-xs-right">
+								{{data.printprice|number:0}}
+							</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-badge-dollar fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							Discount:
+							<span class="pull-xs-right">
+								- {{data.discount|number:0}}
+							</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-badge-dollar fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content text-bold">
+							Total:
+							<span class="pull-xs-right">
+								{{(data.printprice+data.deliveryprice-data.discount)|number:0}}
+							</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-badge-dollar fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							Buy:
+							<span class="pull-xs-right">
+								{{(data.buyprice)|number:0}}
+							</span>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="list-standard header highlighted primary">
+			<div class="list-header">
+				DETIL PENGIRIMAN
+			</div>
+			<ul>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-truck-container fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							Name:
+							<span class="pull-xs-right">
+								{{data.delivery.deliveryname}}
+								<span class="uppercase size-80p tx-primary">
+									<b><i>{{data.delivery.deliverytype}}</i></b>
+								</span>
+							</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-location-arrow fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							{{data.deliveryaddress.address}}
+						</div>
+					</div>
+				</li>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-badge-dollar fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							Delivery:
+							<span class="pull-xs-right">
+								{{data.deliveryprice|number:0}}
+							</span>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+
+		<div class="list-standard highlighted success" *ngIf="data.cartfile.length>0">
+			<div class="list-header">
+				DETIL FILES
+			</div>
+			<ul>
+				<li class="list-sm" *ngFor="let cartfile of data.cartfile; let i = index">
+					<div class="image">
+						<img src="..\assets\ext\{{cartfile.file.path.substring(cartfile.file.path.lastIndexOf('.')+1)}}.png">
+					</div>
+					<div class="label">
+						<div class="label-content">
+							{{cartfile.file.filename}}
+							<br>
+							Filesize:
+							<ng-container *ngIf="cartfile.file.size<1024">
+								{{cartfile.file.size}} B
+							</ng-container>
+							<ng-container *ngIf="cartfile.file.size>=1024 && cartfile.file.size<(1024*1024)">
+								{{(cartfile.file.size/1024)|number:0}} MB
+							</ng-container>
+							<ng-container *ngIf="cartfile.file.size>=(1024*1024) && cartfile.file.size<(1024*1024*1024)">
+								{{(cartfile.file.size/1024/1024)|number:0}} MB
+							</ng-container>
+							<ng-container *ngIf="cartfile.file.size>=(1024*1024*1024) && cartfile.file.size<(1024*1024*1024*1024)">
+								{{(cartfile.file.size/1024/1024/1024)|number:0}} GB
+							</ng-container>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+
+		<div class="list-standard highlighted warning" *ngFor="let cartdetail of data.cartdetail; let i = index">
+			<div class="list-header">
+				<i class="fas fa-chevron-left tx-warning"></i>{{i+1}}<i class="fas fa-chevron-right tx-warning"></i>
+				<b>
+					#{{global.zeroFill(cartdetail.id, 4)}}
 					<span class="uppercase">
-						{{data.processtype}}
-					</span>:
-					<i class="fal fa-print fa-fw"></i> 
-					{{data.processtime}}d + 
-					<i class="fal fa-truck-loading"></i>
-					{{data.deliverytime}}d
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<table class="table item-detail">
-		<tbody *ngFor="let detail of data.cartdetail; let i = index">
-			<tr class="header">
-				<td>
-					#{{i+1}}. 
-					{{detail.cartname}} 
-					{{detail.jobtype}}
-				</td>
-				<td class="text-xs-right">
-					<i class="fal fa-print fa-fw"></i>
-					{{detail.printer.machinename}}
-				</td>
-			</tr>
-			<tr class="sub-header">
-				<td colspan="2">Keterangan:</td>
-			</tr>
-			<tr>
-				<td>Qty</td>
-				<td>
-					{{data.quantity|number:0}} pcs
-				</td>
-			</tr>
-			<tr>
-				<td>Warna</td>
-				<td>
-					{{detail.side1|number:0}} / {{detail.side2|number:0}}
-				</td>
-			</tr>
-			<tr class="sub-header">
-				<td colspan="2">Bahan:</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					{{detail.paper.name}} {{detail.paper.color}} <b>{{detail.paper.gramature|number:0}}</b>gsm
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Total
-				</td>
-				<td>
-					{{detail.totalplano|number:0}} plano (bagi {{detail.totalinplano|number:0}})
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Cetak
-				</td>
-				<td>
-					{{detail.totaldruct|number:0}} druct 
-				</td>
-			</tr>
-			<tr>
-				<td>
-				</td>
-				<td>
-					{{(detail.totaldruct-detail.inschiet)|number:0}} + ins.{{detail.inschiet|number:0}}
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Toko Kertas
-				</td>
-				<td>
-					{{detail.vendor.name}}
-				</td>
-			</tr>
-			<tr *ngIf="detail.vendor.phone1.length>0">
-				<td></td>
-				<td>
-					<i class="fal fa-phone-alt fa-fw"></i>
-					{{detail.vendor.phone1}}
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Harga Kertas
-				</td>
-				<td>
-					Rp {{detail.totalpaperprice|number:0}},-
-				</td>
-			</tr>
-			<tr class="sub-header">
-				<td colspan="2">Ukuran:</td>
-			</tr>
-			<tr>
-				<td>GAMBAR</td>
-				<td>
-					{{detail.imagewidth|number:0}} x {{detail.imagelength|number:0}} cm
-				</td>
-			</tr>
-			<tr>
-				<td>KERTAS</td>
-				<td>
-					{{detail.printwidth|number:0}} x {{detail.printlength|number:0}} cm
-				</td>
-			</tr>
-			<tr>
-				<td>PLANO</td>
-				<td>
-					{{detail.plano.width|number:0}} x {{detail.plano.length|number:0}} cm
-				</td>
-			</tr>
-			<tr class="sub-header">
-				<td colspan="2">Pembagian:</td>
-			</tr>
-			<tr>
-				<td>CETAK</td>
-				<td>
-					<b>{{detail.totalinprintx|number:0}}</b> x <b>{{detail.totalinprinty|number:0}}</b> + <b>{{detail.totalinprintrest|number:0}}</b> = <b>{{detail.totalinprint|number:0}}</b>
-				</td>
-			</tr>
-			<tr>
-				<td>PLANO</td>
-				<td>
-					<b>{{detail.totalinplanox|number:0}}</b> x <b>{{detail.totalinplanoy|number:0}}</b> + <b>{{detail.totalinplanorest|number:0}}</b> = <b>{{detail.totalinplano|number:0}}</b>
-				</td>
-			</tr>
+						{{cartdetail.cartname}}
+					</span>
+					<span class="pull-xs-right">
+						<i class="fal fa-print fa-fw"></i>
+						{{cartdetail.printer.machinename}}
+					</span>
+				</b>
+			</div>
+			<ul>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-scroll-old fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							<span class="size-70p uppercase">
+								<b><i>{{cartdetail.paper.papertype.name}}</i></b>
+							</span>
+							<br>
+							{{cartdetail.paper.name}}
+							{{cartdetail.paper.gramature}}g
+							{{cartdetail.paper.color}}
+						</div>
+					</div>
+				</li>
 
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-home-lg fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							Toko:
+							<span class="pull-xs-right">
+								{{cartdetail.vendor.name}}
+							</span><br>
+							<span class="pull-xs-right size-80p text-bold">
+								<ng-container *ngIf="cartdetail.vendor.phone1!=''">
+									<i class="fal fa-phone-alt fa-fw"></i>
+									{{cartdetail.vendor.phone1}}
+								</ng-container>
+								<ng-container *ngIf="cartdetail.vendor.phone2!=''">
+									<i class="fal fa-phone-alt fa-fw"></i>
+									{{cartdetail.vendor.phone2}}
+								</ng-container>
+							</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-pallet-alt fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							Plano:
+							<span class="pull-xs-right">
+								{{cartdetail.totalplano}} lembar
+							</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-pallet-alt fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							Uk. Plano:
+							<span class="pull-xs-right">
+								{{cartdetail.plano.width}}x{{cartdetail.plano.length}} cm
+							</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-badge-dollar fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							Harga Kertas:
+							<span class="pull-xs-right">
+								&plusmn;
+								{{cartdetail.totalpaperprice|number:0}}
+							</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-pallet-alt fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							1 lembar plano dibelah {{cartdetail.totalinplano}}
+							(
+							<b>{{cartdetail.totalinplanox}}</b>x<b>{{cartdetail.totalinplanoy}}</b>+<b>{{cartdetail.totalinplanorest}}</b>
+							)
+						</div>
+					</div>
+				</li>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-pallet fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							Print:
+							<span class="pull-xs-right">
+								{{(cartdetail.totaldruct)|number:0}} druct
+								<i class="size-80p">+ins.</i> {{cartdetail.inschiet|number:0}}
+							</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-pallet fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							Uk. Print:
+							<span class="pull-xs-right">
+								{{cartdetail.printwidth}}x{{cartdetail.printlength}} cm
+							</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-pallet fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							1 lembar print jalan {{cartdetail.totalinprint}}
+							(
+							<b>{{cartdetail.totalinprintx}}</b>x<b>{{cartdetail.totalinprinty}}</b>+<b>{{cartdetail.totalinprintrest}}</b>
+							)
+						</div>
+					</div>
+				</li>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-box fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							Uk. Jadi:
+							<span class="pull-xs-right">
+								{{cartdetail.imagewidth}}x{{cartdetail.imagelength}} cm
+							</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-pallet fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							Warna:
+							<span class="pull-xs-right">
+								{{cartdetail.side1}} / {{cartdetail.side2}}
+							</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-sm">
+					<div class="avatar">
+						<i class="fal fa-pallet fa-fw"></i>
+					</div>
+					<div class="label">
+						<div class="label-content">
+							Warna:
+							<span class="pull-xs-right">
+								{{cartdetail.side1}} / {{cartdetail.side2}}
+							</span>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
 
-			<tr class="sub-header" *ngIf="detail.cartdetailfinishing.length>0">
-				<td colspan="2">
-					Finishing detail:
-				</td>
-			</tr>
+	<br><br><br>
 
-			<ng-container *ngFor="let detailfinishing of detail.cartdetailfinishing">
-				<tr>
-					<td>
-						<i class="fal fa-layer-plus fa-fw"></i>
-						<b>{{detailfinishing.finishing.name}}</b>
-					</td>
-					<td>
-						( {{detailfinishing.quantity|number:0}} * <b>{{detailfinishing.finishingoption.price|number:0}}</b>/{{detailfinishing.finishingoption.priceper}} ) + {{detailfinishing.finishingoption.pricebase|number:0}}
-					</td>
-				</tr>
-				<tr>
-					<td rowspan="2" style="vertical-align: top;">	
-						{{detailfinishing.finishingoption.optionname}}
-					</td>
-					<td>
-						min. {{detailfinishing.finishingoption.priceminim|number:0}}
-					</td>
-				</tr>
-				<tr>
-					<td>
-						buy. Rp {{detailfinishing.buyprice|number:0}},-
-					</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>
-						sell. Rp <b>{{detailfinishing.sellprice|number:0}}</b>,-
-					</td>
-				</tr>
-			</ng-container>
+	<div class="content-wrapper">
+		<div class="action action-bottom">
+			<button class="btn btn-secondary">
+				Join Cart
+			</button>
+			<button class="btn btn-secondary">
+				Print
+			</button>
+		</div>
+	</div>
 
-		</tbody>
-
-		<tbody>
-			<tr class="header">
-				<td colspan="2">
-					<i class="fal fa-comments-alt-dollar fa-fw"></i>
-					DETAIL HARGA
-				</td>
-			</tr>
-			<tr class="sub-header">
-				<td colspan="2">Harga di Nota</td>
-			</tr>
-			<tr>
-				<td>Print</td>
-				<td>
-					{{(data.printprice)|number:0}} <span class="tx-red" *ngIf="data.discount>0">- {{(data.discount)|number:0}}</span>
-				</td>
-			</tr>
-			<tr>
-				<td>Delivery</td>
-				<td>
-					{{(data.deliveryprice)|number:0}}
-				</td>
-			</tr>
-			<tr>
-				<td>Total Price</td>
-				<td>
-					Rp {{(data.printprice+data.deliveryprice-data.discount)|number:0}},-
-				</td>
-			</tr>
-			<ng-container *ngIf="data.buyprice>0">
-				<tr class="sub-header">
-					<td colspan="2">Harga Bayar Rahayu</td>
-				</tr>
-				<tr>
-					<td>Print</td>
-					<td>
-						Rp {{(data.buyprice)|number:0}},-
-					</td>
-				</tr>
-			</ng-container>
-		</tbody>
-		
-		
-	</table>
-	<table class="table item-footer">
-		<tbody>
-		<tr>
-			<td>
-				<button class="btn btn-ungu" (click)="konfirmasi(data)">Konfirmasi Pembayaran</button>
-			</td>
-<!--			<td>-->
-<!--				<button class="btn btn-ungu" (click)="suratjalan(data)">Cetak Surat Jalan</button>-->
-<!--			</td>-->
-		</tr>
-		</tbody>
-	</table>
 	
 </ion-content>

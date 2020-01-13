@@ -35,9 +35,13 @@
   font-weight: 600;
   src: url("../assets/localfonts/GoogleSans-MediumItalic.ttf");
 }
+ion-app {
+  font-family: "Google Sans";
+}
+
 .btn {
   padding: 8px 16px;
-  border-radius: 6px;
+  border-radius: 3px;
   border: 1px solid #ccc;
   background-color: white;
   font-weight: bold;
@@ -73,6 +77,11 @@
   background-color: #d9534f;
   color: white;
   border: 1px solid #444;
+}
+.btn.btn-purple {
+  background-color: #407;
+  color: white;
+  border: 1px solid #509;
 }
 .btn.btn-warning {
   background-color: #f0ad4e;
@@ -418,11 +427,16 @@ ul.three-column li .content {
   max-height: 100px;
 }
 ul.three-column li .content .pretitle {
-  text-transform: uppercase;
-  padding: 0 2px;
+  text-transform: capitalize;
+  padding: 2px;
+  color: #420;
 }
-ul.three-column li .content .title {
-  padding: 0 2px;
+ul.three-column li .content .title-wrapper {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+ul.three-column li .content .title-wrapper .title {
+  padding: 2px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 ul.three-column li .content .post-title {
   bottom: 1px;
@@ -434,21 +448,66 @@ ul.three-column li .content .post-title {
 }
 
 .list-standard {
+  font-family: "Google Sans";
   margin: 5px 0;
 }
+.list-standard.highlighted.header ul {
+  margin: 0 5px 10px;
+}
 .list-standard.highlighted .list-header {
-  background-color: #adf;
   color: #444;
 }
 .list-standard.highlighted ul {
-  margin: 0 5px 10px;
   border-style: solid;
-  border-color: #adf;
-  background-color: #f5faff;
   border-radius: 0 0 2px 2px;
 }
-.list-standard.highlighted ul li {
-  border-bottom-color: #adf;
+.list-standard.highlighted.warning .fas,
+.list-standard.highlighted.warning .fal,
+.list-standard.highlighted.warning .far,
+.list-standard.highlighted.warning .fab {
+  color: #f0ad4e;
+}
+.list-standard.highlighted.warning .list-header {
+  background-color: #fed;
+}
+.list-standard.highlighted.warning ul {
+  border-color: #fed;
+  background-color: #fffaf5;
+}
+.list-standard.highlighted.warning ul li {
+  border-bottom-color: #fed;
+}
+.list-standard.highlighted.primary .fas,
+.list-standard.highlighted.primary .fal,
+.list-standard.highlighted.primary .far,
+.list-standard.highlighted.primary .fab {
+  color: #0275d8;
+}
+.list-standard.highlighted.primary .list-header {
+  background-color: #def;
+}
+.list-standard.highlighted.primary ul {
+  border-color: #def;
+  background-color: #f5faff;
+}
+.list-standard.highlighted.primary ul li {
+  border-bottom-color: #def;
+}
+.list-standard.highlighted.success .fas,
+.list-standard.highlighted.success .fal,
+.list-standard.highlighted.success .far,
+.list-standard.highlighted.success .fab {
+  color: #5cb85c;
+}
+.list-standard.highlighted.success .list-header {
+  background-color: #efd;
+}
+.list-standard.highlighted.success ul {
+  border-color: #efd;
+  background-color: #f5fffa;
+}
+.list-standard.highlighted.success ul li {
+  border-bottom-color: #efd;
 }
 .list-standard .list-header {
   text-align: left;
@@ -486,6 +545,14 @@ ul.three-column li .content .post-title {
 }
 .list-standard ul li.list-sm .avatar {
   height: 20px;
+}
+.list-standard ul li .image {
+  height: 40px;
+}
+.list-standard ul li .image img {
+  height: 100%;
+  max-width: unset;
+  margin-right: 8px;
 }
 .list-standard ul li .avatar {
   width: 40px;
@@ -638,6 +705,88 @@ ion-input {
   left: 0;
   content: "Ȁ";
   height: 2px;
+}
+
+.action {
+  width: 100%;
+  padding: 0;
+  z-index: 2000;
+}
+.action .btn {
+  padding: 12px 20px;
+  border-radius: 0;
+  margin: 0 !important;
+  border: 0;
+}
+.action .btn:not(:first-child) {
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: rgba(0, 0, 0, 0.3);
+}
+
+.action-bottom {
+  display: flex;
+  bottom: 0;
+  position: fixed;
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.action-bottom .btn {
+  width: 100%;
+}
+
+.errormessage-wrapper {
+  padding: 20px;
+  z-index: 1001;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  opacity: 0;
+  -webkit-transition: visibility 0s, opacity 0.3s linear;
+  -moz-transition: visibility 0s, opacity 0.3s linear;
+  -o-transition: visibility 0s, opacity 0.3s linear;
+  transition: visibility 0s, opacity 0.3s linear;
+  visibility: hidden;
+}
+.errormessage-wrapper.show {
+  opacity: 1;
+  visibility: visible;
+}
+.errormessage-wrapper .errormessage {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  color: white;
+  border: 2px solid black;
+}
+
+.loadingmessage-wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(64, 32, 96, 0.7);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1002;
+}
+.loadingmessage-wrapper .loadingmessage {
+  color: white;
+  text-align: center;
+  font-family: "Google Sans Black";
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.loadingmessage-wrapper .loadingmessage .fas,
+.loadingmessage-wrapper .loadingmessage .fab,
+.loadingmessage-wrapper .loadingmessage .far,
+.loadingmessage-wrapper .loadingmessage .fal {
+  margin: 20px 10px;
 }
 
 /** Ionic CSS Variables **/

@@ -158,7 +158,7 @@
 									DAFTAR BANK PELANGGAN
 								</div>
 								<ul>
-									<li class="list-action" *ngFor="let bankacc of customer.customerbankacc" (click)="goeditcustomerbankacc(bankacc)">
+									<li class="list-action" *ngFor="let bankacc of customer.customerbankacc" (click)="goeditcustomerbankacc(customer, bankacc)">
 										<div class="avatar">
 											<ng-container *ngIf="bankacc.bank.alias!=''">
 												<img src="../assets/banks/{{bankacc.bank.alias}}.png" class="obj-fit">

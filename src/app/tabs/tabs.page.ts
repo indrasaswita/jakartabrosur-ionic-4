@@ -84,15 +84,11 @@ export class TabsPage {
 */
 
 	navSalelist(){
-		this.getSales();
-		this.getCarts();
-
 		this.menuCtrl.enable(false, "menu-master");
 		this.menuCtrl.enable(false, "menu-alluser");
 		this.menuCtrl.enable(false, "menu-notification");
 		this.menuCtrl.enable(true, "menu-salelist");
 		this.menuCtrl.enable(false, "menu-calculation");
-		//this.menuCtrl.enable(false, "menu-whatsapp");
 	}
 
 	navUser(){
@@ -139,95 +135,6 @@ export class TabsPage {
 						this.global.expensepricesdownloading = false;
 					}
 				);
-			}
-		}
-	}
-
-	getCarts() {
-		if (!this.global.cartsdownloading){
-			this.global.cartsdownloading = true;
-			let url = this.global.api+'select/pendingcarts';
-			let post = {
-				'app_token': this.global.logintoken,
-				'usertype': this.global.usertype,
-				'userID': this.global.userdata.id
-			};
-			this.result = this.http.post(
-				url,
-				post,
-				{
-					responseType: 'json'
-				}
-			);
-			if (this.result != null) {
-				this.result.subscribe(data => {
-					if (data != null) {
-						if (data instanceof Array) {
-							this.global.carts = data;
-
-							this.global.carts.forEach(function(header) {
-								//header.showdetail = false;
-							});
-
-						} else {
-							this.global.carts = [];
-							this.router.navigateByUrl('');
-						}
-					} else {
-						this.global.carts = [];
-						console.log("ERROR NO DATA from " + url);
-					}
-					this.global.cartsdownloading = false;
-				});
-			}
-		}
-	}
-
-	getSales() {
-		console.log("sales");
-		if (!this.global.salesdownloading) {
-			this.global.salesdownloading = true;
-			var url = this.global.api + 'select/allsales';
-			let post = {
-				'app_token': this.global.logintoken,
-				'usertype': this.global.usertype,
-				'userID': this.global.userdata.id
-			};
-			this.result = this.http.post(
-				url,
-				post,
-				{
-					responseType: 'json'
-				}
-			);
-			if (this.result != null) {
-				this.result.subscribe(data => {
-					if(data != null){
-						if (data instanceof Array){
-							this.global.sales = data;
-							this.global.sales.forEach(function(header) {
-								header.totalprice = 0;
-
-								if (header.salesdetail != null) {
-									header.salesdetail.forEach(function(detail) {
-										header.totalprice += detail.cartheader.printprice + detail.cartheader.deliveryprice - detail.cartheader.discount;
-									});
-
-									//header.showdetail = false;
-								}
-
-							});
-						} else {
-							this.global.sales = [];
-							this.router.navigateByUrl('');
-						}
-					} else {
-						this.global.sales = [];
-						console.log("ERROR NO DATA from "+url);
-					}
-
-					this.global.salesdownloading = false;
-				});
 			}
 		}
 	}

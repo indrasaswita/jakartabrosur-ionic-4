@@ -68,7 +68,7 @@ var CustomerPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n    <ion-toolbar>\r\n        <ion-buttons slot=\"start\">\r\n            <ion-back-button></ion-back-button>\r\n        </ion-buttons>\r\n        <ion-title>\r\n            <i class=\"far fa-child fa-fw\"></i>\r\n            Customer\r\n        </ion-title>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\t<div class=\"text-xs-center\">\r\n\t\t<div class=\"text-xs-center line-11\" *ngIf=\"customererror==true\" style=\"margin:30px 0;\">\r\n\t\t\tNo Customer Data Received<br>\r\n\t\t\t<small>\r\n\t\t\t\t<b>\r\n\t\t\t\t\t( ERROR ketika terima data )\r\n\t\t\t\t</b>\r\n\t\t\t</small>\r\n\t\t</div>\r\n\t\t\r\n\r\n\t\t<table class=\"table\" *ngIf=\"customererror==false\">\r\n\t\t\t<tbody *ngFor=\"let customer of customers\">\r\n\t\t\t\t<tr (click)=\"showdetail(customer)\">\r\n\t\t\t\t\t<td>\r\n\t\t\t\t\t\t{{customer.id}}.\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td>\r\n\t\t\t\t\t\t<ng-container *ngIf=\"customer.company != null\">\r\n\t\t\t\t\t\t\t{{customer.company.name}}\r\n\t\t\t\t\t\t\t<ng-container *ngIf=\"customer.company.parentcompany != null\">\r\n\t\t\t\t\t\t\t\t<br>\r\n\t\t\t\t\t\t\t\tfrom {{customer.company.parentcompany.name}}\r\n\t\t\t\t\t\t\t</ng-container><br>\r\n\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t<b>\r\n\t\t\t\t\t\t\t<span class=\"fas fa-user fa-fw\" ng-class=\"{'tx-lightmagenta':customer.title=='Mrs.'||customer.title=='Ms.', 'tx-primary': customer.title=='Mr.'}\"></span>\r\n\t\t\t\t\t\t\t{{customer.name}}\r\n\t\t\t\t\t\t</b>\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td>\r\n\t\t\t\t\t\t<ng-container *ngIf=\"customer.salesheader!=null\">\r\n\t\t\t\t\t\t\tTotal {{customer.salesheader.length}} job\r\n\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t\t<tr *ngIf=\"customer.showdetail\">\r\n\t\t\t\t\t<td class=\"td-detail\" colspan=\"3\">\r\n\t\t\t\t\t\t<div class=\"detail-wrapper\">\r\n\t\t\t\t\t\t\t<div class=\"toggle-wrapper\">\r\n\t\t\t\t\t\t\t\t<div class=\"toggler\" [ngClass]=\"{'active': customer.showcustomerbankacc}\" (click)=\"showcustomerbankacc(customer)\">\r\n\t\t\t\t\t\t\t\t\tLIST BANK\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t<div class=\"toggler\" [ngClass]=\"{'active': customer.showcustomerdetail}\" (click)=\"showcustomerdetail(customer)\">\r\n\t\t\t\t\t\t\t\t\tDETAIL PELANGGAN\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t<div class=\"list-standard highlighted\" *ngIf=\"customer.showcustomerdetail\">\r\n\t\t\t\t\t\t\t\t<div class=\"list-header\">\r\n\t\t\t\t\t\t\t\t\tDETIL PELANGGAN\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t<ul>\r\n\t\t\t\t\t\t\t\t\t<li class=\"list-sm\" *ngIf=\"customer.phone1!=null\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"avatar\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-phone-alt fa-fw\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"label\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content\">\r\n\t\t\t\t\t\t\t\t\t\t\t\tPhone 1: {{customer.phone1}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t<li class=\"list-sm\" *ngIf=\"customer.phone2!=null\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"avatar\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-phone-alt fa-fw\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"label\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content\">\r\n\t\t\t\t\t\t\t\t\t\t\t\tPhone 2: {{customer.phone2}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t<li class=\"list-sm\" *ngIf=\"customer.phone3!=null\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"avatar\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-phone-alt fa-fw\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"label\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content\">\r\n\t\t\t\t\t\t\t\t\t\t\t\tPhone 3: {{customer.phone3}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t<li class=\"list-sm\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"avatar\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-mail-bulk fa-fw\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"label\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{customer.email}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t<li class=\"list-sm\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"avatar\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-user-tie fa-fw\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"label\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{customer.type}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t<li class=\"list-sm\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"avatar\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-calendar-alt fa-fw\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"label\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content\">\r\n\t\t\t\t\t\t\t\t\t\t\t\tJoin: {{customer.created_at|date:'dd MMMM y'}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t</ul>\r\n\t\t\t\t\t\t\t\t<div class=\"list-header\" *ngIf=\"customer.company!=null\">\r\n\t\t\t\t\t\t\t\t\tCOMPANY\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t<ul>\r\n\t\t\t\t\t\t\t\t\t<li class=\"list-sm\" *ngIf=\"customer.company!=null\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"avatar\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-home fa-fw\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"label\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-title\" *ngIf=\"customer.company.nickname!=''\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{customer.company.nickname}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content\" *ngIf=\"customer.company.phone1!=null\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-phone-alt fa-fw tx-gray\"></i>\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{customer.company.phone1}}\r\n\t\t\t\t\t\t\t\t\t\t\t\t<ng-container *ngIf=\"customer.company.phone2!=null\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t, {{customer.company.phone2}}\r\n\t\t\t\t\t\t\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<ng-container *ngIf=\"customer.company.phone3!=null\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t, {{customer.company.phone3}}\r\n\t\t\t\t\t\t\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-muted\" *ngIf=\"customer.company.name!=''\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{customer.company.name}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t</ul>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t<div class=\"list-standard highlighted\" *ngIf=\"customer.showcustomerbankacc\">\r\n\t\t\t\t\t\t\t\t<div class=\"list-header\">\r\n\t\t\t\t\t\t\t\t\tDAFTAR BANK PELANGGAN\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t<ul>\r\n\t\t\t\t\t\t\t\t\t<li class=\"list-action\" *ngFor=\"let bankacc of customer.customerbankacc\" (click)=\"goeditcustomerbankacc(bankacc)\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"avatar\">\r\n\t\t\t\t\t\t\t\t\t\t\t<ng-container *ngIf=\"bankacc.bank.alias!=''\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t<img src=\"../assets/banks/{{bankacc.bank.alias}}.png\" class=\"obj-fit\">\r\n\t\t\t\t\t\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"label\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-title\" *ngIf=\"bankacc.bank.alias!=''\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{bankacc.bank.alias}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content\" *ngIf=\"bankacc.bank.alias==''\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{bankacc.bank.bankname}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content lowercase\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{bankacc.accname}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t\t<ng-container *ngIf=\"bankacc.accno!=null\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-muted\" *ngIf=\"bankacc.accno!=''\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t{{bankacc.accno}}\r\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t</ul>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t</tbody>\r\n\t\t</table>\r\n\r\n\t</div>\r\n</ion-content>\r\n"
+module.exports = "<ion-header>\r\n    <ion-toolbar>\r\n        <ion-buttons slot=\"start\">\r\n            <ion-back-button></ion-back-button>\r\n        </ion-buttons>\r\n        <ion-title>\r\n            <i class=\"far fa-child fa-fw\"></i>\r\n            Customer\r\n        </ion-title>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\t<div class=\"text-xs-center\">\r\n\t\t<div class=\"text-xs-center line-11\" *ngIf=\"customererror==true\" style=\"margin:30px 0;\">\r\n\t\t\tNo Customer Data Received<br>\r\n\t\t\t<small>\r\n\t\t\t\t<b>\r\n\t\t\t\t\t( ERROR ketika terima data )\r\n\t\t\t\t</b>\r\n\t\t\t</small>\r\n\t\t</div>\r\n\t\t\r\n\r\n\t\t<table class=\"table\" *ngIf=\"customererror==false\">\r\n\t\t\t<tbody *ngFor=\"let customer of customers\">\r\n\t\t\t\t<tr (click)=\"showdetail(customer)\">\r\n\t\t\t\t\t<td>\r\n\t\t\t\t\t\t{{customer.id}}.\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td>\r\n\t\t\t\t\t\t<ng-container *ngIf=\"customer.company != null\">\r\n\t\t\t\t\t\t\t{{customer.company.name}}\r\n\t\t\t\t\t\t\t<ng-container *ngIf=\"customer.company.parentcompany != null\">\r\n\t\t\t\t\t\t\t\t<br>\r\n\t\t\t\t\t\t\t\tfrom {{customer.company.parentcompany.name}}\r\n\t\t\t\t\t\t\t</ng-container><br>\r\n\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t<b>\r\n\t\t\t\t\t\t\t<span class=\"fas fa-user fa-fw\" ng-class=\"{'tx-lightmagenta':customer.title=='Mrs.'||customer.title=='Ms.', 'tx-primary': customer.title=='Mr.'}\"></span>\r\n\t\t\t\t\t\t\t{{customer.name}}\r\n\t\t\t\t\t\t</b>\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td>\r\n\t\t\t\t\t\t<ng-container *ngIf=\"customer.salesheader!=null\">\r\n\t\t\t\t\t\t\tTotal {{customer.salesheader.length}} job\r\n\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t\t<tr *ngIf=\"customer.showdetail\">\r\n\t\t\t\t\t<td class=\"td-detail\" colspan=\"3\">\r\n\t\t\t\t\t\t<div class=\"detail-wrapper\">\r\n\t\t\t\t\t\t\t<div class=\"toggle-wrapper\">\r\n\t\t\t\t\t\t\t\t<div class=\"toggler\" [ngClass]=\"{'active': customer.showcustomerbankacc}\" (click)=\"showcustomerbankacc(customer)\">\r\n\t\t\t\t\t\t\t\t\tLIST BANK\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t<div class=\"toggler\" [ngClass]=\"{'active': customer.showcustomerdetail}\" (click)=\"showcustomerdetail(customer)\">\r\n\t\t\t\t\t\t\t\t\tDETAIL PELANGGAN\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t<div class=\"list-standard highlighted\" *ngIf=\"customer.showcustomerdetail\">\r\n\t\t\t\t\t\t\t\t<div class=\"list-header\">\r\n\t\t\t\t\t\t\t\t\tDETIL PELANGGAN\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t<ul>\r\n\t\t\t\t\t\t\t\t\t<li class=\"list-sm\" *ngIf=\"customer.phone1!=null\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"avatar\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-phone-alt fa-fw\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"label\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content\">\r\n\t\t\t\t\t\t\t\t\t\t\t\tPhone 1: {{customer.phone1}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t<li class=\"list-sm\" *ngIf=\"customer.phone2!=null\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"avatar\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-phone-alt fa-fw\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"label\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content\">\r\n\t\t\t\t\t\t\t\t\t\t\t\tPhone 2: {{customer.phone2}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t<li class=\"list-sm\" *ngIf=\"customer.phone3!=null\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"avatar\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-phone-alt fa-fw\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"label\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content\">\r\n\t\t\t\t\t\t\t\t\t\t\t\tPhone 3: {{customer.phone3}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t<li class=\"list-sm\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"avatar\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-mail-bulk fa-fw\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"label\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{customer.email}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t<li class=\"list-sm\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"avatar\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-user-tie fa-fw\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"label\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{customer.type}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t<li class=\"list-sm\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"avatar\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-calendar-alt fa-fw\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"label\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content\">\r\n\t\t\t\t\t\t\t\t\t\t\t\tJoin: {{customer.created_at|date:'dd MMMM y'}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t</ul>\r\n\t\t\t\t\t\t\t\t<div class=\"list-header\" *ngIf=\"customer.company!=null\">\r\n\t\t\t\t\t\t\t\t\tCOMPANY\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t<ul>\r\n\t\t\t\t\t\t\t\t\t<li class=\"list-sm\" *ngIf=\"customer.company!=null\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"avatar\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-home fa-fw\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"label\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-title\" *ngIf=\"customer.company.nickname!=''\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{customer.company.nickname}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content\" *ngIf=\"customer.company.phone1!=null\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-phone-alt fa-fw tx-gray\"></i>\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{customer.company.phone1}}\r\n\t\t\t\t\t\t\t\t\t\t\t\t<ng-container *ngIf=\"customer.company.phone2!=null\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t, {{customer.company.phone2}}\r\n\t\t\t\t\t\t\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<ng-container *ngIf=\"customer.company.phone3!=null\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t, {{customer.company.phone3}}\r\n\t\t\t\t\t\t\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-muted\" *ngIf=\"customer.company.name!=''\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{customer.company.name}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t</ul>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t<div class=\"list-standard highlighted\" *ngIf=\"customer.showcustomerbankacc\">\r\n\t\t\t\t\t\t\t\t<div class=\"list-header\">\r\n\t\t\t\t\t\t\t\t\tDAFTAR BANK PELANGGAN\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t<ul>\r\n\t\t\t\t\t\t\t\t\t<li class=\"list-action\" *ngFor=\"let bankacc of customer.customerbankacc\" (click)=\"goeditcustomerbankacc(customer, bankacc)\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"avatar\">\r\n\t\t\t\t\t\t\t\t\t\t\t<ng-container *ngIf=\"bankacc.bank.alias!=''\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t<img src=\"../assets/banks/{{bankacc.bank.alias}}.png\" class=\"obj-fit\">\r\n\t\t\t\t\t\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"label\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-title\" *ngIf=\"bankacc.bank.alias!=''\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{bankacc.bank.alias}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content\" *ngIf=\"bankacc.bank.alias==''\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{bankacc.bank.bankname}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-content lowercase\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t{{bankacc.accname}}\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t\t<ng-container *ngIf=\"bankacc.accno!=null\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"label-muted\" *ngIf=\"bankacc.accno!=''\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t{{bankacc.accno}}\r\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t\t</ng-container>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t</ul>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t</tbody>\r\n\t\t</table>\r\n\r\n\t</div>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -116,61 +116,88 @@ var CustomerPage = /** @class */ (function () {
         this.http = http;
         this.router = router;
         this.groups = [];
+        this.laststate = "";
         this.customers = null;
     }
     CustomerPage.prototype.ngOnInit = function () {
         //console.log('customer mulai');
-        this.getcustomerdata();
         //this.getgroups();
     };
     CustomerPage.prototype.ionViewWillEnter = function () {
-        console.log("ANJING");
+        this.getcustomerdata();
     };
     CustomerPage.prototype.ngOnEnter = function () {
-        console.log("OnEnter on contact.page.ts");
+        //console.log("OnEnter on contact.page.ts");
     };
     CustomerPage.prototype.ionSelected = function () {
-        console.log("KUCING MEONG");
+        //console.log("KUCING MEONG");
     };
     CustomerPage.prototype.getcustomerdata = function () {
         var _this = this;
         this.customers = null;
-        var url = this.global.api + "select/customers";
-        console.log(this.global.logintoken);
-        var post = {
-            'app_token': this.global.logintoken,
-            'usertype': this.global.usertype,
-            'userID': this.global.userdata.id
-        };
-        this.httpresult = this.http.post(url, post, {
-            responseType: 'json'
-        });
-        this.httpresult.subscribe(function (data) {
-            if (data != null) {
-                if (data instanceof Array) {
-                    data.forEach(function (item, index) {
-                        item.show = true;
-                    });
-                    _this.customers = data;
-                    console.log(_this.customers);
-                    _this.hideallcustomerdetail();
-                    _this.customers.forEach(function ($ii, $i) {
-                        $ii.showcustomerbankacc = false;
-                        $ii.showcustomerdetail = false;
-                        $ii.created_at = _this.global.makeDateTime($ii.created_at);
-                        if ($ii.updated_at != null) {
-                            $ii.updated_at = _this.global.makeDateTime($ii.updated_at);
+        if (!this.global.loadingshow) {
+            this.global.loadingshow = true;
+            var url_1 = this.global.api + "select/customers";
+            console.log(this.global.logintoken);
+            var post = {
+                'app_token': this.global.logintoken,
+                'usertype': this.global.usertype,
+                'userID': this.global.userdata.id
+            };
+            this.httpresult = this.http.post(url_1, post, {
+                responseType: 'json'
+            });
+            this.httpresult.subscribe(function (data) {
+                if (data != null) {
+                    if (data instanceof Array) {
+                        data.forEach(function (item, index) {
+                            item.show = true;
+                        });
+                        _this.customers = data;
+                        console.log(_this.customers);
+                        _this.hideallcustomerdetail();
+                        _this.customers.forEach(function ($ii, $i) {
+                            $ii.showcustomerbankacc = false;
+                            $ii.showcustomerdetail = false;
+                            $ii.created_at = _this.global.makeDateTime($ii.created_at);
+                            if ($ii.updated_at != null) {
+                                $ii.updated_at = _this.global.makeDateTime($ii.updated_at);
+                            }
+                        });
+                        if (_this.laststate != null) {
+                            if (_this.laststate.customerID != null) {
+                                _this.customers.forEach(function ($ii, $i) {
+                                    console.log($ii.id + " -> " + _this.laststate.customerID);
+                                    if ($ii.id == _this.laststate.customerID) {
+                                        if (_this.laststate.detailtab == "customerbankacc") {
+                                            $ii.showdetail = true;
+                                            $ii.showcustomerbankacc = true;
+                                            $ii.showcustomerdetail = false;
+                                            console.log("bacnkacc");
+                                        }
+                                        else if (_this.laststate.detailtab == "customerdetail") {
+                                            $ii.showdetail = true;
+                                            $ii.showcustomerdetail = true;
+                                            $ii.showcustomerbankacc = false;
+                                            console.log("detail");
+                                        }
+                                    }
+                                });
+                            }
                         }
-                    });
-                    _this.customererror = false;
+                        _this.customererror = false;
+                    }
+                    else {
+                        console.log('ERROR OUTPUT FROM ' + url_1);
+                        _this.customererror = true;
+                        _this.router.navigateByUrl('');
+                    }
                 }
-                else {
-                    console.log('ERROR OUTPUT FROM ' + url);
-                    _this.customererror = true;
-                    _this.router.navigateByUrl('');
-                }
-            }
-        });
+                _this.global.loadingshow = false;
+            }, function (error) {
+                _this.global.loadingshow = false;
+            });
+        }
     };
     CustomerPage.prototype.hideallcustomerdetail = function () {
         this.customers.forEach(function ($ii, $i) {
@@ -197,7 +224,11 @@ var CustomerPage = /** @class */ (function () {
         customer.showcustomerdetail = true;
         customer.showcustomerbankacc = false;
     };
-    CustomerPage.prototype.goeditcustomerbankacc = function (bankacc) {
+    CustomerPage.prototype.goeditcustomerbankacc = function (customer, bankacc) {
+        this.laststate = {
+            "customerID": customer.id,
+            "detailtab": "customerbankacc"
+        };
         var navigationExtras = {
             queryParams: {
                 special: JSON.stringify(bankacc)

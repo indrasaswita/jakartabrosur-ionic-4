@@ -3,6 +3,7 @@ import {GlobalsService} from "../globals.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Location} from "@angular/common";
 
 
 
@@ -22,15 +23,16 @@ export class EditcustomerbankaccPage implements OnInit {
   private customerbankacc: any = null;
   private bankserror: boolean = false;
   private banks: any = [];
-  private bankloading: boolean = false;
   private httpresult: Observable<any>;
   private selectedbank: any = null;
+  private customerbankloading: boolean = false;
 
   constructor(
     private global: GlobalsService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    public http: HttpClient
+    private http: HttpClient,
+    private location: Location
   ) {
     this.activatedRoute.queryParams.subscribe(params => {
       if (params && params.special) {
@@ -40,63 +42,72 @@ export class EditcustomerbankaccPage implements OnInit {
     });
   }
 
+  ngOnInit() {
+  }
+
   customerbankaccOptions: any = {
     header: 'Daftar Bank'
   };
 
-  compareById(o1,o2) {
-    if (o1 == null || o2 == null) {
-      return false;
-    }
-    return o1.id === o2.id;
-  }
-
   getbankdata(){
     this.banks = null;
-    let url = this.global.api+"select/banks";
+    let url = this.global.api + "select/banks";
+    let self = this;
 
-    let post = {
-      'app_token': this.global.logintoken,
-      'usertype': this.global.usertype,
-      'userID': this.global.userdata.id
-    };
+    this.global.dopost(url, function(data){
+      self.banks = data;
 
-    this.httpresult = this.http.post(
-      url,
-      post,
-      {
-        responseType: 'json'
-      }
-    );
-
-    this.httpresult.subscribe(
-    data => {
-      if(data != null){
-        if (data instanceof Array) {
-          this.banks = data;
-
-
-          this.banks.forEach(($ii, $i)=>{
-            if($ii.id == this.customerbankacc.bank.id){
-              this.selectedbank = $ii.id;
-            }
-          });
-
-          this.bankserror = false;
-        }else{
-          console.log('ERROR OUTPUT FROM ' + url);
-          this.bankserror = true;
-          this.router.navigateByUrl('');
+      let temp = 0;
+      self.banks.forEach(($ii, $i) => {
+        if ($ii.id == self.customerbankacc.bank.id) {
+          temp = $ii.id;
         }
-      }
-      this.bankloading = false;
-    }, error => {
-      console.log(error);
-      this.bankloading = false;
+      });
+      self.customerbankacc.bankID = 0;
+
+      let self2 = self;
+      setTimeout(function () {
+        self2.customerbankacc.bankID = temp;
+      }, 20);
+
+      self.bankserror = false;
+    }, function(error){
+      self.bankserror = true;
     });
   }
 
-  ngOnInit() {
+  updatecustomerbankacc(bankacc){
+
+    let post = {
+      "id": bankacc.id,
+      "accname": bankacc.accname,
+      "accno": bankacc.accno,
+      "acclocation": bankacc.acclocation,
+      "bankID": bankacc.bankID,
+    };
+    let url = this.global.api+"update/customerbankacc";
+    let this2 = this;
+
+    this.global.dopost(url, function(data){
+      if(data[0] == 1){
+        //return ke page sebelomnya.
+        let self = this2;
+        setTimeout(function(){
+          self.location.back();
+        }, 3000);
+      }else{
+        console.log("error: "+data);
+      }
+      this2.global.showerror(data[1]);
+    }, function(error){
+      if(error.status != 200) {
+        console.log("error from editcustomerbankacc.page.ts");
+        this2.global.showerror("error");
+      } else {
+        console.log("Hasil Bukan JSON / Preflight Req.");
+      }
+    }, post);
+
   }
 
 }

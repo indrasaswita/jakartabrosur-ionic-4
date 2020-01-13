@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class SalelistPage implements OnInit {
 
+	
 	tab: string = '';
 	constructor(
 		public global: GlobalsService,
@@ -26,24 +27,8 @@ export class SalelistPage implements OnInit {
 	ngOnInit() {
 		//this.global.cartsdownloading = true;
 	}
+	
 
-	/*getData(value) {
-		if (value == 'carts')
-			this.getCarts();
-		else if (value == 'sales')
-			this.getSales();
-	}*/
-
-
-
-  
-	toggleSalesheader(event, input) {
-		let value = !input.showdetail;
-		this.global.sales.forEach(function(header) {
-			header.showdetail = false;
-		});
-		input.showdetail = value;
-	}
 
 
 	setTab(value: string) {

@@ -847,7 +847,7 @@ var SalelistPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n\t<ion-toolbar>\r\n\t\t<ion-buttons slot=\"start\">\r\n\t\t\t<ion-back-button></ion-back-button>\r\n\t\t</ion-buttons>\r\n\t\t<ion-title>\r\n\t\t\t<div class=\"logo-img\">\r\n\t\t\t\t<img src=\"../assets/logo-transp/logo-contrast-100px.png\" width=\"25px\">\r\n\t\t\t</div>\r\n\t\t\t<div class=\"logo\">\r\n\t\t\t\t<span class=\"tx-darkpurple\">Jakarta</span><span class=\"tx-gray\">Brosur</span>\r\n\t\t\t</div>\r\n\t\t</ion-title>\r\n\t\t<ion-buttons slot=\"end\">\r\n      <ion-menu-button autoHide=\"false\"></ion-menu-button>\r\n    </ion-buttons>\r\n\t</ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\t<div class=\"background-wrapper\">\r\n\t\t<div class=\"icon xxl\">\r\n\t\t\t<i class=\"fal fa-bags-shopping fa-fw\"></i>\r\n\t\t\t<div class=\"text\">\r\n\t\t\t\tAll purchase and sells are shown in this tabs. You can see all transactions by toggle the submenu on the top-right corner.\r\n\t\t\t</div>\r\n\r\n\r\n\t\t\t<ul class=\"text menus\">\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-list fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tAll Pending Carts\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.carts.length>0\"></i>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-list fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tSales Activity\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.sales.length>0\"></i>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-bookmark fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tSales Need To-Do\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-filter fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tSales Filter & Search\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-chart-network fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tJoin Cart <small class=\"fal fa-chevron-double-right\"></small> Sale\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-envelope-open-dollar fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tOur Expense & Purchase\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"loading\" *ngIf=\"global.cartsdownloading||global.salesdownloading\">\r\n\t\t</div>\r\n\t</div>\r\n\r\n</ion-content>\r\n"
+module.exports = "<ion-header>\r\n\t<ion-toolbar>\r\n\t\t<ion-buttons slot=\"start\">\r\n\t\t\t<ion-back-button></ion-back-button>\r\n\t\t</ion-buttons>\r\n\t\t<ion-title>\r\n\t\t\t<div class=\"logo-img\">\r\n\t\t\t\t<img src=\"../assets/logo-transp/logo-contrast-100px.png\" width=\"25px\">\r\n\t\t\t</div>\r\n\t\t\t<div class=\"logo\">\r\n\t\t\t\t<span class=\"tx-darkpurple\">Jakarta</span><span class=\"tx-gray\">Brosur</span>\r\n\t\t\t</div>\r\n\t\t</ion-title>\r\n\t\t<ion-buttons slot=\"end\">\r\n      <ion-menu-button autoHide=\"false\"></ion-menu-button>\r\n    </ion-buttons>\r\n\t</ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\t<div class=\"background-wrapper\">\r\n\t\t<div class=\"icon xxl\">\r\n\t\t\t<i class=\"fal fa-bags-shopping fa-fw\"></i>\r\n\t\t\t<div class=\"text\">\r\n\t\t\t\tAll purchase and sells are shown in this tabs. You can see all transactions by toggle the submenu on the top-right corner.\r\n\t\t\t</div>\r\n\r\n\r\n\t\t\t<ul class=\"text menus\">\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-list fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tAll Pending Carts\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-list fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tSales Activity\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\"></i>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-bookmark fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tSales Need To-Do\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-filter fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tSales Filter & Search\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-chart-network fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tJoin Cart <small class=\"fal fa-chevron-double-right\"></small> Sale\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-envelope-open-dollar fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tOur Expense & Purchase\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t</div>\r\n\t</div>\r\n\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -900,19 +900,6 @@ var SalelistPage = /** @class */ (function () {
     }
     SalelistPage.prototype.ngOnInit = function () {
         //this.global.cartsdownloading = true;
-    };
-    /*getData(value) {
-        if (value == 'carts')
-            this.getCarts();
-        else if (value == 'sales')
-            this.getSales();
-    }*/
-    SalelistPage.prototype.toggleSalesheader = function (event, input) {
-        var value = !input.showdetail;
-        this.global.sales.forEach(function (header) {
-            header.showdetail = false;
-        });
-        input.showdetail = value;
     };
     SalelistPage.prototype.setTab = function (value) {
         if (value != this.tab) {
@@ -1130,14 +1117,11 @@ var TabsPage = /** @class */ (function () {
         }
     */
     TabsPage.prototype.navSalelist = function () {
-        this.getSales();
-        this.getCarts();
         this.menuCtrl.enable(false, "menu-master");
         this.menuCtrl.enable(false, "menu-alluser");
         this.menuCtrl.enable(false, "menu-notification");
         this.menuCtrl.enable(true, "menu-salelist");
         this.menuCtrl.enable(false, "menu-calculation");
-        //this.menuCtrl.enable(false, "menu-whatsapp");
     };
     TabsPage.prototype.navUser = function () {
         this.menuCtrl.enable(false, "menu-master");
@@ -1176,85 +1160,6 @@ var TabsPage = /** @class */ (function () {
                         _this.global.expenseprices = [];
                     }
                     _this.global.expensepricesdownloading = false;
-                });
-            }
-        }
-    };
-    TabsPage.prototype.getCarts = function () {
-        var _this = this;
-        if (!this.global.cartsdownloading) {
-            this.global.cartsdownloading = true;
-            var url_2 = this.global.api + 'select/pendingcarts';
-            var post = {
-                'app_token': this.global.logintoken,
-                'usertype': this.global.usertype,
-                'userID': this.global.userdata.id
-            };
-            this.result = this.http.post(url_2, post, {
-                responseType: 'json'
-            });
-            if (this.result != null) {
-                this.result.subscribe(function (data) {
-                    if (data != null) {
-                        if (data instanceof Array) {
-                            _this.global.carts = data;
-                            _this.global.carts.forEach(function (header) {
-                                //header.showdetail = false;
-                            });
-                        }
-                        else {
-                            _this.global.carts = [];
-                            _this.router.navigateByUrl('');
-                        }
-                    }
-                    else {
-                        _this.global.carts = [];
-                        console.log("ERROR NO DATA from " + url_2);
-                    }
-                    _this.global.cartsdownloading = false;
-                });
-            }
-        }
-    };
-    TabsPage.prototype.getSales = function () {
-        var _this = this;
-        console.log("sales");
-        if (!this.global.salesdownloading) {
-            this.global.salesdownloading = true;
-            var url = this.global.api + 'select/allsales';
-            var post = {
-                'app_token': this.global.logintoken,
-                'usertype': this.global.usertype,
-                'userID': this.global.userdata.id
-            };
-            this.result = this.http.post(url, post, {
-                responseType: 'json'
-            });
-            if (this.result != null) {
-                this.result.subscribe(function (data) {
-                    if (data != null) {
-                        if (data instanceof Array) {
-                            _this.global.sales = data;
-                            _this.global.sales.forEach(function (header) {
-                                header.totalprice = 0;
-                                if (header.salesdetail != null) {
-                                    header.salesdetail.forEach(function (detail) {
-                                        header.totalprice += detail.cartheader.printprice + detail.cartheader.deliveryprice - detail.cartheader.discount;
-                                    });
-                                    //header.showdetail = false;
-                                }
-                            });
-                        }
-                        else {
-                            _this.global.sales = [];
-                            _this.router.navigateByUrl('');
-                        }
-                    }
-                    else {
-                        _this.global.sales = [];
-                        console.log("ERROR NO DATA from " + url);
-                    }
-                    _this.global.salesdownloading = false;
                 });
             }
         }

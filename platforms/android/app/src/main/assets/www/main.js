@@ -1746,7 +1746,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app>\r\n\t<ion-menu class=\"submenu\" contentId=\"submenu\" menu-id=\"menu-salelist\" side=\"end\" type=\"push\">\r\n\t\t<ion-header class=\"submenu-header\">\r\n\t\t\t<div class=\"header-title\">\r\n\t\t\t\tTRANSACTION\r\n\t\t\t</div>\r\n\t\t</ion-header>\r\n\t\t<ion-content class=\"submenu-content\">\r\n\t\t\t<ul>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoCartsActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-list fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tAll Pending Carts\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoSalesActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-list fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tSales Activity\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-bookmark fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tSales Need To-Do\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-filter fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tSales Filter & Search\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-chart-network fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tJoin Cart <small class=\"fal fa-chevron-double-right\"></small> Sale\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-envelope-open-dollar fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tOur Expense & Purchase\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t</ion-content>\r\n  </ion-menu>\r\n  <ion-menu class=\"submenu\" contentId=\"submenu\" menu-id=\"menu-alluser\" side=\"end\" type=\"push\">\r\n    <ion-header class=\"submenu-header\">\r\n      <div class=\"header-title\">\r\n      \tALL USER EDITOR\r\n      </div>\r\n    </ion-header>\r\n    <ion-content class=\"submenu-content\">\r\n\t\t\t<ul>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoEmployeeActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-user-cog fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tEmployee and Roles\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoSalesActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-user-plus fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tAdd New Employee Acc.\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-cogs fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tRoles Detail\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoCustomerActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-users-class fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tCustomers Detail\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoCustomerPayment()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-user-clock fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tCustomer & Payment\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoCustomerSales()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-user-chart fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tCustomer & Sales\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoNewCustomer()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-users-medical fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tAdd New Customer by Admin\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t</ion-content>\r\n  </ion-menu>\r\n  <ion-menu class=\"submenu\" contentId=\"submenu\" menu-id=\"menu-master\" side=\"end\" type=\"push\">\r\n    <ion-header class=\"submenu-header\">\r\n      <div class=\"header-title\">\r\n      \tDATABASE MASTER\r\n      </div>\r\n    </ion-header>\r\n    <ion-content class=\"submenu-content\">\r\n\t\t\t<ul>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoSalesActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-scroll-old fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tView Paper Price + Details\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoSalesActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-warehouse fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tView Papershops and Vendors\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-dryer fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tView Finishings + Options\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-toggle-on fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tJobsubtype Activation + Details\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoExpensepricelist()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-scanner fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tExpense Price Lists\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t</ion-content>\r\n  </ion-menu>\r\n  <ion-menu class=\"submenu\" contentId=\"submenu\" menu-id=\"menu-notification\" side=\"end\" type=\"push\">\r\n    <ion-header class=\"submenu-header\">\r\n      <div class=\"header-title\">\r\n      \tNOTIFICATIONS\r\n      </div>\r\n    </ion-header>\r\n    <ion-content class=\"submenu-content\">\r\n\t\t\t<ul>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoSalesActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-bell-plus fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tMake Broadcast via Notification\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoSalesActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-bells fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tSee Broadcast History\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-bell-exclamation fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tTransaction Notif. from Customer\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-bell-plus fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tMake Broadcast for Employee\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t</ion-content>\r\n  </ion-menu>\r\n  <ion-menu class=\"submenu\" contentId=\"submenu\" menu-id=\"menu-user\" side=\"end\" type=\"push\">\r\n    <ion-header class=\"submenu-header\">\r\n    \t{{global.userdata.name}}\r\n    </ion-header>\r\n    <ion-content class=\"submenu-content\">\r\n\t\t\t<ul>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoSalesActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-bullhorn fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tWA: Chat to Spesific Customer\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoSalesActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-bullhorn fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tWA: Chat to Group\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"doLogout()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-power-off fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tLog Out\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t</ion-content>\r\n  </ion-menu>\r\n\r\n  <ion-router-outlet id=\"submenu\" main></ion-router-outlet>\r\n</ion-app>\r\n"
+module.exports = "<ion-app>\r\n\t<ion-menu class=\"submenu\" contentId=\"submenu\" menu-id=\"menu-salelist\" side=\"end\" type=\"push\">\r\n\t\t<ion-header class=\"submenu-header\">\r\n\t\t\t<div class=\"header-title\">\r\n\t\t\t\tTRANSACTION\r\n\t\t\t</div>\r\n\t\t</ion-header>\r\n\t\t<ion-content class=\"submenu-content\">\r\n\t\t\t<ul>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoCartsActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-list fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tAll Pending Carts\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoSalesActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-list fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tSales Activity\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-bookmark fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tSales Need To-Do\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-filter fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tSales Filter & Search\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-chart-network fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tJoin Cart <small class=\"fal fa-chevron-double-right\"></small> Sale\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-envelope-open-dollar fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tOur Expense & Purchase\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t</ion-content>\r\n  </ion-menu>\r\n  <ion-menu class=\"submenu\" contentId=\"submenu\" menu-id=\"menu-alluser\" side=\"end\" type=\"push\">\r\n    <ion-header class=\"submenu-header\">\r\n      <div class=\"header-title\">\r\n      \tALL USER EDITOR\r\n      </div>\r\n    </ion-header>\r\n    <ion-content class=\"submenu-content\">\r\n\t\t\t<ul>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoEmployeeActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-user-cog fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tEmployee and Roles\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoSalesActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-user-plus fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tAdd New Employee Acc.\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-cogs fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tRoles Detail\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoCustomerActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-users-class fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tCustomers Detail\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoCustomerPayment()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-user-clock fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tCustomer & Payment\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoCustomerSales()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-user-chart fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tCustomer & Sales\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoNewCustomer()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-users-medical fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tAdd New Customer by Admin\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t</ion-content>\r\n  </ion-menu>\r\n  <ion-menu class=\"submenu\" contentId=\"submenu\" menu-id=\"menu-master\" side=\"end\" type=\"push\">\r\n    <ion-header class=\"submenu-header\">\r\n      <div class=\"header-title\">\r\n      \tDATABASE MASTER\r\n      </div>\r\n    </ion-header>\r\n    <ion-content class=\"submenu-content\">\r\n\t\t\t<ul>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoSalesActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-scroll-old fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tView Paper Price + Details\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoSalesActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-warehouse fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tView Papershops and Vendors\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-dryer fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tView Finishings + Options\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-toggle-on fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tJobsubtype Activation + Details\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoExpensepricelist()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-scanner fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tExpense Price Lists\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t</ion-content>\r\n  </ion-menu>\r\n  <ion-menu class=\"submenu\" contentId=\"submenu\" menu-id=\"menu-notification\" side=\"end\" type=\"push\">\r\n    <ion-header class=\"submenu-header\">\r\n      <div class=\"header-title\">\r\n      \tNOTIFICATIONS\r\n      </div>\r\n    </ion-header>\r\n    <ion-content class=\"submenu-content\">\r\n\t\t\t<ul>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoSalesActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-bell-plus fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tMake Broadcast via Notification\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoSalesActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-bells fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tSee Broadcast History\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-bell-exclamation fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tTransaction Notif. from Customer\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\">\r\n\t\t\t\t\t\t<i class=\"fal fa-bell-plus fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tMake Broadcast for Employee\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t</ion-content>\r\n  </ion-menu>\r\n  <ion-menu class=\"submenu\" contentId=\"submenu\" menu-id=\"menu-user\" side=\"end\" type=\"push\">\r\n    <ion-header class=\"submenu-header\">\r\n    \t{{global.userdata.name}}\r\n    </ion-header>\r\n    <ion-content class=\"submenu-content\">\r\n\t\t\t<ul>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoSalesActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-bullhorn fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tWA: Chat to Spesific Customer\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"gotoSalesActivity()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-bullhorn fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tWA: Chat to Group\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<button class=\"button\" (click)=\"doLogout()\">\r\n\t\t\t\t\t\t<i class=\"fal fa-power-off fa-fw icon\"></i>\r\n\t\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\t\tLog Out\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t</ion-content>\r\n  </ion-menu>\r\n\r\n  <ion-router-outlet id=\"submenu\" main></ion-router-outlet>\r\n\r\n\t<div class=\"errormessage-wrapper\" [ngClass]=\"{'show':global.errormessageshow}\">\r\n\t\t<div class=\"errormessage\" (click)=\"global.hideerror()\">\r\n\t\t\t{{global.errormessage}}\r\n\t\t</div>\r\n\t</div>\r\n\t<div class=\"loadingmessage-wrapper\" *ngIf=\"global.loadingshow\">\r\n\t\t<div class=\"loadingmessage\">\r\n\t\t\t<i class=\"fas fa-spin fa-spinner fa-4x\"></i> <br>\r\n\t\t\tLoading...\r\n\t\t</div>\r\n\t</div>\r\n</ion-app>\r\n"
 
 /***/ }),
 
@@ -2004,20 +2004,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/onesignal/ngx */ "./node_modules/@ionic-native/onesignal/ngx/index.js");
-/* harmony import */ var _globals_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./globals.service */ "./src/app/globals.service.ts");
-/* harmony import */ var _services_authentication_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services/authentication.service */ "./src/app/services/authentication.service.ts");
-/* harmony import */ var _services_auth_guard_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/auth-guard.service */ "./src/app/services/auth-guard.service.ts");
-/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _node_modules_ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../node_modules/@ionic-native/barcode-scanner/ngx */ "./node_modules/@ionic-native/barcode-scanner/ngx/index.js");
-/* harmony import */ var _ionic_native_date_picker_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/date-picker/ngx */ "./node_modules/@ionic-native/date-picker/ngx/index.js");
+/* harmony import */ var _services_authentication_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./services/authentication.service */ "./src/app/services/authentication.service.ts");
+/* harmony import */ var _services_auth_guard_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services/auth-guard.service */ "./src/app/services/auth-guard.service.ts");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _node_modules_ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../node_modules/@ionic-native/barcode-scanner/ngx */ "./node_modules/@ionic-native/barcode-scanner/ngx/index.js");
+/* harmony import */ var _ionic_native_date_picker_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/date-picker/ngx */ "./node_modules/@ionic-native/date-picker/ngx/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -2044,22 +2042,22 @@ var AppModule = /** @class */ (function () {
             entryComponents: [],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClientModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
-                _ionic_storage__WEBPACK_IMPORTED_MODULE_13__["IonicStorageModule"].forRoot(),
+                _ionic_storage__WEBPACK_IMPORTED_MODULE_12__["IonicStorageModule"].forRoot(),
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"]
             ],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
                 _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_9__["OneSignal"],
-                _node_modules_ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_15__["BarcodeScanner"],
-                _ionic_native_date_picker_ngx__WEBPACK_IMPORTED_MODULE_16__["DatePicker"],
+                _node_modules_ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_14__["BarcodeScanner"],
+                _ionic_native_date_picker_ngx__WEBPACK_IMPORTED_MODULE_15__["DatePicker"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] },
                 { provide: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ErrorHandler"], useClass: ionic_angular__WEBPACK_IMPORTED_MODULE_1__["IonicErrorHandler"] },
-                _globals_service__WEBPACK_IMPORTED_MODULE_10__["GlobalsService"],
-                _services_auth_guard_service__WEBPACK_IMPORTED_MODULE_12__["AuthGuardService"],
-                _services_authentication_service__WEBPACK_IMPORTED_MODULE_11__["AuthenticationService"],
+                //GlobalsService,
+                _services_auth_guard_service__WEBPACK_IMPORTED_MODULE_11__["AuthGuardService"],
+                _services_authentication_service__WEBPACK_IMPORTED_MODULE_10__["AuthenticationService"],
                 ionic_angular__WEBPACK_IMPORTED_MODULE_1__["Platform"],
                 ionic_angular__WEBPACK_IMPORTED_MODULE_1__["ToastController"],
                 ionic_angular__WEBPACK_IMPORTED_MODULE_1__["App"],
@@ -2086,6 +2084,8 @@ var AppModule = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GlobalsService", function() { return GlobalsService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2096,16 +2096,18 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var GlobalsService = /** @class */ (function () {
-    function GlobalsService() {
+    function GlobalsService(http, router) {
+        this.http = http;
+        this.router = router;
         this.onesignalID = null;
         this.logintoken = null;
         this.userdata = null;
         this.usertype = null;
         this.api = null;
-        this.sales = [];
         this.expenseprices = [];
-        this.carts = [];
         this.employees = [];
         this.customers = [];
         this.customerpayment = [];
@@ -2123,11 +2125,12 @@ var GlobalsService = /** @class */ (function () {
         this.customerpaymentdownloading = false;
         this.customersalesdownloading = false;
         this.rolesdownloading = false;
-        this.cartsdownloading = false;
-        this.salesdownloading = false;
         this.expensepricesdownloading = false;
         this.papersdownloading = false;
         this.curldownloading = false;
+        this.errormessage = "TEST";
+        this.errormessageshow = false;
+        this.loadingshow = false;
         this.makeDate = function ($input) {
             if ($input == null)
                 return null;
@@ -2150,18 +2153,114 @@ var GlobalsService = /** @class */ (function () {
             temp2 = temp2.split(':');
             return new Date(temp[0], temp[1] - 1, temp[2], temp2[0], temp2[1], temp2[2]);
         };
+        this.zeroFill = function (number, width) {
+            if (number == null)
+                return "null";
+            width -= number.toString().length;
+            if (width > 0) {
+                return new Array(width + (/\./.test(number) ? 2 : 1)).join('0') + number;
+            }
+            return number + ""; // always return a string
+        };
+        this.singkatText = function (text, totalhuruf, simbolakhir) {
+            var hasil = "";
+            if (text == null || totalhuruf == null || simbolakhir == null)
+                return '-';
+            else {
+                if (simbolakhir == '') {
+                    hasil = this.singkatText0(text, totalhuruf);
+                }
+                else {
+                    if (text.length > totalhuruf) {
+                        var indexSimbol = text.lastIndexOf(simbolakhir) - 2;
+                        var panjangAkhir = text.length - indexSimbol;
+                        var panjangDepan = (totalhuruf - panjangAkhir < 5 ? 5 : totalhuruf - panjangAkhir);
+                        var depan = text.substring(0, panjangDepan);
+                        var belakang = text.substring(indexSimbol);
+                        var hasil_1 = depan + "..." + belakang;
+                    }
+                    else {
+                        hasil = text;
+                    }
+                }
+                if (hasil.length > totalhuruf + 3) {
+                    hasil = this.singkatText0(text, totalhuruf);
+                }
+                return hasil;
+            }
+        };
+        this.singkatText0 = function (text, totalhuruf) {
+            if (text == null)
+                return '-';
+            if (text.length > totalhuruf) {
+                var depan = text.substring(0, totalhuruf);
+                return depan + "...";
+            }
+            else {
+                return text;
+            }
+        };
         this.userdata = {
             'name': "[ not set ]"
         };
-        //this.api = "http://septianard/jakartabrosur/public/API/io/";
         this.api = "http://www.jakartabrosur.com/API/io/";
         //this.api = "http://localhost/jakartabrosur/public/API/io/";
     }
+    GlobalsService.prototype.showerror = function (error) {
+        var self = this;
+        this.errormessage = error;
+        self.errormessageshow = true;
+        setTimeout(function () {
+            self.errormessageshow = false;
+        }, 5000);
+    };
+    GlobalsService.prototype.hideerror = function () {
+        this.errormessageshow = false;
+    };
+    GlobalsService.prototype.dopost = function (url, whendone, whenfailed, postdata) {
+        var _this = this;
+        if (postdata === void 0) { postdata = null; }
+        if (!this.loadingshow) {
+            this.loadingshow = true;
+            var post = {
+                'app_token': this.logintoken,
+                'usertype': this.usertype,
+                'userID': this.userdata.id
+            };
+            if (postdata != null) {
+                Object.assign(post, postdata);
+            }
+            this.httpresult = this.http.post(url, post, {
+                responseType: 'json'
+            });
+            this.httpresult.subscribe(function (data) {
+                if (data != null) {
+                    if (data instanceof Array) {
+                        if (whendone instanceof Function)
+                            whendone(data);
+                    }
+                    else {
+                        console.log('ERROR OUTPUT FROM ' + url);
+                        _this.router.navigateByUrl('');
+                        if (whendone instanceof Function)
+                            whenfailed();
+                    }
+                }
+                _this.loadingshow = false;
+            }, function (error) {
+                console.log(error);
+                _this.loadingshow = false;
+                if (whendone instanceof Function)
+                    whenfailed(error);
+            });
+        }
+    };
     GlobalsService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], GlobalsService);
     return GlobalsService;
 }());

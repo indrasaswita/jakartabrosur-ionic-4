@@ -12,10 +12,11 @@ import {NavigationExtras, Router} from '@angular/router';
 })
 export class CustomerPage implements OnInit {
 
-	customers: any;
-	httpresult: Observable<any>;
-	customererror: boolean;
-	groups: any = [];
+	private customers: any;
+	private httpresult: Observable<any>;
+	private customererror: boolean;
+	private groups: any = [];
+	private laststate: any = "";
 
 	constructor(
 		public global: GlobalsService,
@@ -27,68 +28,96 @@ export class CustomerPage implements OnInit {
 
 	ngOnInit() {
 		//console.log('customer mulai');
-		this.getcustomerdata();
 		//this.getgroups();
 	}
 
 	ionViewWillEnter(){
-		console.log("ANJING");
+		this.getcustomerdata();
 	}
 
 	ngOnEnter(){
-		console.log("OnEnter on contact.page.ts");
+		//console.log("OnEnter on contact.page.ts");
 	}
 	ionSelected(){
-		console.log("KUCING MEONG");
+		//console.log("KUCING MEONG");
 	}
 
 	getcustomerdata(){
 		this.customers = null;
-		let url = this.global.api+"select/customers";
 
-		console.log(this.global.logintoken);
+		if(!this.global.loadingshow) {
+			this.global.loadingshow = true;
+			let url = this.global.api + "select/customers";
 
-		let post = {
-			'app_token': this.global.logintoken,
-			'usertype': this.global.usertype,
-			'userID': this.global.userdata.id
-		};
+			console.log(this.global.logintoken);
 
-		this.httpresult = this.http.post(
-			url,
-			post,
-			{
-				responseType: 'json'
-			}
-		);
+			let post = {
+				'app_token': this.global.logintoken,
+				'usertype': this.global.usertype,
+				'userID': this.global.userdata.id
+			};
 
-		this.httpresult.subscribe(
-			data => {
-				if(data != null){
-					if (data instanceof Array) {
-						data.forEach((item, index) => {
-							item.show = true;
-						})
-						this.customers = data;
-						console.log(this.customers);
-						this.hideallcustomerdetail();
-						this.customers.forEach(($ii, $i)=>{
-							$ii.showcustomerbankacc = false;
-							$ii.showcustomerdetail = false;
-							$ii.created_at = this.global.makeDateTime($ii.created_at);
-							if($ii.updated_at != null){
-								$ii.updated_at = this.global.makeDateTime($ii.updated_at);
-							}
-						});
-						this.customererror = false;
-					}else{
-						console.log('ERROR OUTPUT FROM ' + url);
-						this.customererror = true;
-						this.router.navigateByUrl('');
-					}
+			this.httpresult = this.http.post(
+				url,
+				post,
+				{
+					responseType: 'json'
 				}
-			}
-		);
+			);
+
+			this.httpresult.subscribe(
+				data => {
+					if (data != null) {
+						if (data instanceof Array) {
+							data.forEach((item, index) => {
+								item.show = true;
+							})
+							this.customers = data;
+							console.log(this.customers);
+							this.hideallcustomerdetail();
+							this.customers.forEach(($ii, $i) => {
+								$ii.showcustomerbankacc = false;
+								$ii.showcustomerdetail = false;
+								$ii.created_at = this.global.makeDateTime($ii.created_at);
+								if ($ii.updated_at != null) {
+									$ii.updated_at = this.global.makeDateTime($ii.updated_at);
+								}
+							});
+
+							if(this.laststate!=null){
+								if(this.laststate.customerID!=null){
+									this.customers.forEach(($ii, $i)=>{
+										console.log($ii.id+" -> "+this.laststate.customerID);
+										if($ii.id == this.laststate.customerID){
+											if(this.laststate.detailtab=="customerbankacc") {
+												$ii.showdetail = true;
+												$ii.showcustomerbankacc = true;
+												$ii.showcustomerdetail = false;
+												console.log("bacnkacc");
+											}else if(this.laststate.detailtab=="customerdetail") {
+												$ii.showdetail = true;
+												$ii.showcustomerdetail = true;
+												$ii.showcustomerbankacc = false;
+												console.log("detail");
+											}
+										}
+									});
+								}
+							}
+
+							this.customererror = false;
+						} else {
+							console.log('ERROR OUTPUT FROM ' + url);
+							this.customererror = true;
+							this.router.navigateByUrl('');
+						}
+					}
+					this.global.loadingshow = false;
+				}, error => {
+					this.global.loadingshow = false;
+				}
+			);
+		}
 	}
 
 	hideallcustomerdetail(){
@@ -121,7 +150,12 @@ export class CustomerPage implements OnInit {
 		customer.showcustomerbankacc = false;
 	}
 
-	goeditcustomerbankacc(bankacc){
+	goeditcustomerbankacc(customer, bankacc){
+		this.laststate = {
+			"customerID": customer.id,
+			"detailtab": "customerbankacc"
+		};
+
 		let navigationExtras: NavigationExtras = {
 			queryParams: {
 				special: JSON.stringify(bankacc)
