@@ -121,7 +121,7 @@ var AlluserPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-buttons slot=\"start\">\n\t\t\t<ion-back-button></ion-back-button>\n\t\t</ion-buttons>\n\t\t<ion-title>\n\t\t\t<i class=\"fal fa-users-crown fa-fw\"></i>\n\t\t\tAll User\n\t\t</ion-title>\n\t\t<ion-buttons slot=\"end\">\n      <ion-menu-button autoHide=\"false\" (click)=\"toggleMenu()\"></ion-menu-button>\n    </ion-buttons>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n\t<div class=\"background-wrapper\">\n\t\t<div class=\"icon xxl\">\n\t\t\t<i class=\"fal fa-head-side fa-fw\"></i>\n\t\t\t<div class=\"text\">\n\t\t\t\tYou can see all customers and employees here. Plus, payments and sale details per customer.\n\t\t\t</div>\n\n\n\t\t\t<ul class=\"text menus\">\n\t\t\t\t<li>\t\t\n\t\t\t\t\t<i class=\"fal fa-user-cog fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tEmployee and Roles\n\t\t\t\t\t</div>\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.employees.length>0\"></i>\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\t<i class=\"fal fa-user-plus fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tAdd New Employee Acc.\n\t\t\t\t\t</div>\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\"></i>\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\t<i class=\"fal fa-cogs fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tRoles Detail\n\t\t\t\t\t</div>\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.roles.length>0\"></i>\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\t<i class=\"fal fa-users-class fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tCustomers Detail\n\t\t\t\t\t</div>\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.customers.length>0\"></i>\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\t<i class=\"fal fa-user-clock fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tCustomer & Payment\n\t\t\t\t\t</div>\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.customerpayment.length>0\"></i>\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\t<i class=\"fal fa-user-chart fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tCustomer & Sales\n\t\t\t\t\t</div>\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.customersales.length>0\"></i>\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\t<i class=\"fal fa-users-medical fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tAdd New Customer by Admin\n\t\t\t\t\t</div>\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\"></i>\n\t\t\t\t</li>\n\t\t\t</ul>\n\n\t\t\t<div class=\"loading\" *ngIf=\"global.cartsdownloading||global.salesdownloading\">\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</ion-content>\n"
+module.exports = "<ion-header>\r\n\t<ion-toolbar>\r\n\t\t<ion-buttons slot=\"start\">\r\n\t\t\t<ion-back-button></ion-back-button>\r\n\t\t</ion-buttons>\r\n\t\t<ion-title>\r\n\t\t\t<i class=\"fal fa-users-crown fa-fw\"></i>\r\n\t\t\tAll User\r\n\t\t</ion-title>\r\n\t\t<ion-buttons slot=\"end\">\r\n      <ion-menu-button autoHide=\"false\" (click)=\"toggleMenu()\"></ion-menu-button>\r\n    </ion-buttons>\r\n\t</ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content padding>\r\n\t<div class=\"background-wrapper\">\r\n\t\t<div class=\"icon xxl\">\r\n\t\t\t<i class=\"fal fa-head-side fa-fw\"></i>\r\n\t\t\t<div class=\"text\">\r\n\t\t\t\tYou can see all customers and employees here. Plus, payments and sale details per customer.\r\n\t\t\t</div>\r\n\r\n\r\n\t\t\t<ul class=\"text menus\">\r\n\t\t\t\t<li>\t\t\r\n\t\t\t\t\t<i class=\"fal fa-user-cog fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tEmployee and Roles\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.employees.length>0\"></i>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-user-plus fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tAdd New Employee Acc.\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\"></i>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-cogs fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tRoles Detail\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.roles.length>0\"></i>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-users-class fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tCustomers Detail\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.customers.length>0\"></i>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-user-clock fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tCustomer & Payment\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.customerpayment.length>0\"></i>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-user-chart fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tCustomer & Sales\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.customersales.length>0\"></i>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-users-medical fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tAdd New Customer by Admin\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\"></i>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\r\n\t\t\t<div class=\"loading\" *ngIf=\"global.cartsdownloading||global.salesdownloading\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -183,180 +183,6 @@ var AlluserPage = /** @class */ (function () {
             _globals_service__WEBPACK_IMPORTED_MODULE_2__["GlobalsService"]])
     ], AlluserPage);
     return AlluserPage;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/customer/customer.module.ts":
-/*!*********************************************!*\
-  !*** ./src/app/customer/customer.module.ts ***!
-  \*********************************************/
-/*! exports provided: CustomerPageModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomerPageModule", function() { return CustomerPageModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
-/* harmony import */ var _customer_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./customer.page */ "./src/app/customer/customer.page.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-
-var routes = [
-    {
-        path: '',
-        component: _customer_page__WEBPACK_IMPORTED_MODULE_5__["CustomerPage"]
-    }
-];
-var CustomerPageModule = /** @class */ (function () {
-    function CustomerPageModule() {
-    }
-    CustomerPageModule = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            imports: [
-                _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
-                _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(routes)
-            ],
-            declarations: [_customer_page__WEBPACK_IMPORTED_MODULE_5__["CustomerPage"]],
-            providers: [
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"]
-            ]
-        })
-    ], CustomerPageModule);
-    return CustomerPageModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/customer/customer.page.html":
-/*!*********************************************!*\
-  !*** ./src/app/customer/customer.page.html ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<ion-header>\n    <ion-toolbar>\n        <ion-buttons slot=\"start\">\n            <ion-back-button></ion-back-button>\n        </ion-buttons>\n        <ion-title>\n            <i class=\"far fa-child fa-fw\"></i>\n            Customer\n        </ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\t<div class=\"text-xs-center\">\n<!--\t\tTODO: Indra kupret-->\n\t\t<div class=\"text-xs-center line-11\" *ngIf=\"customererror==true\" style=\"margin:30px 0;\">\n\t\t\tNo Customer Data Received<br>\n\t\t\t<small>\n\t\t\t\t<b>\n\t\t\t\t\t( ERROR ketika terima data )\n\t\t\t\t</b>\n\t\t\t</small>\n\t\t</div>\n\n\t\t<table class=\"table\" *ngIf=\"customererror==false\">\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th class=\"text-xs-left\">Customers</th>\n\t\t\t\t\t<th>Phone Num.</th>\n\t\t\t\t\t<th class=\"text-xs-right\">Last Log</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody *ngFor=\"let customer of customers\">\n\t\t\t\t<tr>\n\t\t\t\t\t<td class=\"text-xs-left line-09\">\n\t\t\t\t\t\t{{customer.id}}.\n\t\t\t\t\t\t<b>\n\t\t\t\t\t\t\t<i class=\"fas fa-user\" [ngClass]=\"{'tx-primary':customer.title=='Mr.', 'tx-lightmagenta':customer.title=='Mrs.' || customer.title=='Ms.'}\"></i>\n\t\t\t\t\t\t\t{{customer.name}}\n\t\t\t\t\t\t</b>\n\t\t\t\t\t\t<br>\n\t\t\t\t\t\t<small>\n\t\t\t\t\t\t\t{{customer.email}}\n\t\t\t\t\t\t</small>\n\t\t\t\t\t</td>\n\t\t\t\t\t<td class=\"line-10\">\n\t\t\t\t\t\t<small>\n\t\t\t\t\t\t\t{{customer.phone1}}\n\t\t\t\t\t\t\t<span *ngIf=\"customer.phone2!=''\">\n\t\t\t\t\t\t\t\t<br>\n\t\t\t\t\t\t\t\t{{customer.phone2}}\n\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t</small>\n\t\t\t\t\t</td>\n\t\t\t\t\t<td class=\"text-xs-right line-09\">\n\t\t\t\t\t\t<small>\n\t\t\t\t\t\t\t{{customer.updated_at}}\n\t\t\t\t\t\t</small>\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</ion-content>\n"
-
-/***/ }),
-
-/***/ "./src/app/customer/customer.page.scss":
-/*!*********************************************!*\
-  !*** ./src/app/customer/customer.page.scss ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2N1c3RvbWVyL2N1c3RvbWVyLnBhZ2Uuc2NzcyJ9 */"
-
-/***/ }),
-
-/***/ "./src/app/customer/customer.page.ts":
-/*!*******************************************!*\
-  !*** ./src/app/customer/customer.page.ts ***!
-  \*******************************************/
-/*! exports provided: CustomerPage */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomerPage", function() { return CustomerPage; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _globals_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../globals.service */ "./src/app/globals.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var CustomerPage = /** @class */ (function () {
-    function CustomerPage(global, http, router) {
-        this.global = global;
-        this.http = http;
-        this.router = router;
-        this.customers = null;
-    }
-    CustomerPage.prototype.ngOnInit = function () {
-        //console.log('customer mulai');
-        this.getcustomerdata();
-    };
-    CustomerPage.prototype.ionViewWillEnter = function () {
-        console.log("ANJING");
-    };
-    CustomerPage.prototype.ngOnEnter = function () {
-        console.log("OnEnter on contact.page.ts");
-    };
-    CustomerPage.prototype.ionSelected = function () {
-        console.log("KUCING MEONG");
-    };
-    CustomerPage.prototype.getcustomerdata = function () {
-        var _this = this;
-        this.customers = null;
-        var url = this.global.api + "select/customers";
-        console.log(this.global.logintoken);
-        var post = {
-            'app_token': this.global.logintoken,
-            'usertype': this.global.usertype,
-            'userID': this.global.userdata.id
-        };
-        this.httpresult = this.http.post(url, post, {
-            responseType: 'json'
-        });
-        this.httpresult.subscribe(function (data) {
-            if (data != null) {
-                if (data instanceof Array) {
-                    _this.customers = data;
-                    _this.customererror = false;
-                }
-                else {
-                    console.log('ERROR OUTPUT FROM ' + url);
-                    _this.customererror = true;
-                    _this.router.navigateByUrl('');
-                }
-            }
-        });
-    };
-    CustomerPage = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-customer',
-            template: __webpack_require__(/*! ./customer.page.html */ "./src/app/customer/customer.page.html"),
-            styles: [__webpack_require__(/*! ./customer.page.scss */ "./src/app/customer/customer.page.scss")]
-        }),
-        __metadata("design:paramtypes", [_globals_service__WEBPACK_IMPORTED_MODULE_2__["GlobalsService"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
-    ], CustomerPage);
-    return CustomerPage;
 }());
 
 
@@ -425,7 +251,7 @@ var MasterPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-buttons slot=\"start\">\n\t\t\t<ion-back-button></ion-back-button>\n\t\t</ion-buttons>\n\t\t<ion-title>\n\t\t\t<i class=\"fal fa-sun fa-fw\"></i>\n\t\t\tMaster\n\t\t</ion-title>\n\t\t<ion-buttons slot=\"end\">\n      <ion-menu-button autoHide=\"false\"></ion-menu-button>\n    </ion-buttons>\n\t</ion-toolbar>\n</ion-header>\n\t\n\n<ion-content padding>\n\t<div class=\"background-wrapper\">\n\t\t<div class=\"icon xxl\">\n\t\t\t<i class=\"fal fa-crown fa-fw\"></i>\n\t\t\t<div class=\"text\">\n\t\t\t\tIn master, you can see main database, that should read for calculating and processing transaction. Master is the brain of Jakartabrosur program.\n\t\t\t</div>\n\n\n\t\t\t<ul class=\"text menus\">\n\t\t\t\t<li>\n\t\t\t\t\t<i class=\"fal fa-scroll-old fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tView Paper Price + Details\n\t\t\t\t\t</div>\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.papers.length>0\"></i>\t\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\t<i class=\"fal fa-warehouse fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tView Papershops and Vendors\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\t<i class=\"fal fa-dryer fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tView Finishings + Options\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\t<i class=\"fal fa-toggle-on fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tJobsubtype Activation + Details\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\t<i class=\"fal fa-scanner fa-fw icon\"></i>\n\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\tExpense Price Lists\n\t\t\t\t\t</div>\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.expenseprices.length>0\"></i>\t\n\t\t\t\t</li>\n\t\t\t</ul>\n\n\t\t\t<div class=\"loading\" *ngIf=\"global.cartsdownloading||global.salesdownloading\">\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</ion-content>\n"
+module.exports = "<ion-header>\r\n\t<ion-toolbar>\r\n\t\t<ion-buttons slot=\"start\">\r\n\t\t\t<ion-back-button></ion-back-button>\r\n\t\t</ion-buttons>\r\n\t\t<ion-title>\r\n\t\t\t<i class=\"fal fa-sun fa-fw\"></i>\r\n\t\t\tMaster\r\n\t\t</ion-title>\r\n\t\t<ion-buttons slot=\"end\">\r\n      <ion-menu-button autoHide=\"false\"></ion-menu-button>\r\n    </ion-buttons>\r\n\t</ion-toolbar>\r\n</ion-header>\r\n\t\r\n\r\n<ion-content padding>\r\n\t<div class=\"background-wrapper\">\r\n\t\t<div class=\"icon xxl\">\r\n\t\t\t<i class=\"fal fa-crown fa-fw\"></i>\r\n\t\t\t<div class=\"text\">\r\n\t\t\t\tIn master, you can see main database, that should read for calculating and processing transaction. Master is the brain of Jakartabrosur program.\r\n\t\t\t</div>\r\n\r\n\r\n\t\t\t<ul class=\"text menus\">\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-scroll-old fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tView Paper Price + Details\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.papers.length>0\"></i>\t\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-warehouse fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tView Papershops and Vendors\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-dryer fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tView Finishings + Options\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-toggle-on fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tJobsubtype Activation + Details\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<i class=\"fal fa-scanner fa-fw icon\"></i>\r\n\t\t\t\t\t<div class=\"content\">\r\n\t\t\t\t\t\tExpense Price Lists\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<i class=\"fas fa-check fa-fw icon\" *ngIf=\"global.expenseprices.length>0\"></i>\t\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\r\n\t\t\t<div class=\"loading\" *ngIf=\"global.cartsdownloading||global.salesdownloading\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -556,7 +382,7 @@ var AddpricePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n  \t<ion-buttons slot=\"start\">\n      <!-- <ion-back-button defaultHref=\"tabs/full/(pricelist:pricelist)\"></ion-back-button> -->\n      <ion-back-button></ion-back-button>\n    </ion-buttons>\n    <ion-title>\n    \tTambah Daftar Harga\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\t<ion-list>\n\t\t<ion-item>\n\t    <ion-label color=\"primary\">Judul</ion-label>\n\t    <ion-input placeholder=\"Judul Harga\" type=\"text\" [(ngModel)]=\"newtitle\" class=\"text-xs-right\"></ion-input>\n\t  </ion-item>\n\n\t\t<ion-item>\n\t    <ion-label color=\"primary\">Keterangan</ion-label>\n\t    <ion-input placeholder=\"Detail\" type=\"text\" [(ngModel)]=\"newdetail\" class=\"text-xs-right\"></ion-input>\n\t  </ion-item>\n\n\t\t<ion-item>\n\t    <ion-label color=\"primary\">Harga</ion-label>\n\t    <ion-input placeholder=\"Rp xx.xxx,-\" type=\"number\" [(ngModel)]=\"newprice\" class=\"text-xs-right\"></ion-input>\n\t  </ion-item>\n\n\t\t<ion-item>\n\t\t  <ion-label color=\"primary\">Tipe Harga</ion-label>\n\t\t  <ion-select [value]=\"newtype\" ok-text=\"Okay\" cancel-text=\"Dismiss\" [(ngModel)]=\"newtype\" interface=\"action-sheet\" [interfaceOptions]=\"customActionSheetOptions\">\n\t\t\t  \t<ion-select-option *ngFor=\"let types of pricetypes\" [value]=\"types.id\">{{types.name}}</ion-select-option>\n\t\t    \n\t\t  </ion-select>\n\t  </ion-item>\n\n\t  <ion-item *ngIf=\"addpriceerror==true\">\n\t  \t<ion-label class=\"text-xs-center\" color=\"danger\">ERROR INPUT</ion-label>\n\t  </ion-item>\n\n\t</ion-list>\n\t<button class=\"btn btn-submit\" color='primary' (click)=\"addpriceclicked()\">\n\t\tSubmit\n\t</button>\n</ion-content>\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n  \t<ion-buttons slot=\"start\">\r\n      <!-- <ion-back-button defaultHref=\"tabs/full/(pricelist:pricelist)\"></ion-back-button> -->\r\n      <ion-back-button></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>\r\n    \tTambah Daftar Harga\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\t<ion-list>\r\n\t\t<ion-item>\r\n\t    <ion-label color=\"primary\">Judul</ion-label>\r\n\t    <ion-input placeholder=\"Judul Harga\" type=\"text\" [(ngModel)]=\"newtitle\" class=\"text-xs-right\"></ion-input>\r\n\t  </ion-item>\r\n\r\n\t\t<ion-item>\r\n\t    <ion-label color=\"primary\">Keterangan</ion-label>\r\n\t    <ion-input placeholder=\"Detail\" type=\"text\" [(ngModel)]=\"newdetail\" class=\"text-xs-right\"></ion-input>\r\n\t  </ion-item>\r\n\r\n\t\t<ion-item>\r\n\t    <ion-label color=\"primary\">Harga</ion-label>\r\n\t    <ion-input placeholder=\"Rp xx.xxx,-\" type=\"number\" [(ngModel)]=\"newprice\" class=\"text-xs-right\"></ion-input>\r\n\t  </ion-item>\r\n\r\n\t\t<ion-item>\r\n\t\t  <ion-label color=\"primary\">Tipe Harga</ion-label>\r\n\t\t  <ion-select [value]=\"newtype\" ok-text=\"Okay\" cancel-text=\"Dismiss\" [(ngModel)]=\"newtype\" interface=\"action-sheet\" [interfaceOptions]=\"customActionSheetOptions\">\r\n\t\t\t  \t<ion-select-option *ngFor=\"let types of pricetypes\" [value]=\"types.id\">{{types.name}}</ion-select-option>\r\n\t\t    \r\n\t\t  </ion-select>\r\n\t  </ion-item>\r\n\r\n\t  <ion-item *ngIf=\"addpriceerror==true\">\r\n\t  \t<ion-label class=\"text-xs-center\" color=\"danger\">ERROR INPUT</ion-label>\r\n\t  </ion-item>\r\n\r\n\t</ion-list>\r\n\t<button class=\"btn btn-submit\" color='primary' (click)=\"addpriceclicked()\">\r\n\t\tSubmit\r\n\t</button>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -767,7 +593,7 @@ var UserPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button></ion-back-button>\n    </ion-buttons>\n    <ion-title>\n      <i class=\"fal fa-users-crown fa-fw\"></i>\n\t\t\t&nbsp;\n\t\t\t<small>{{global.userdata.email}}</small>\n    </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-menu-button autoHide=\"false\" (click)=\"toggleMenu()\"></ion-menu-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <div class=\"single-user-wrapper\">\n\t\t<div class=\"header\">\n\t\t\t<div class=\"image\">\n\t\t\t\t{{global.userdata.name.charAt(0)}}\n\t\t\t</div>\n\t\t\t<div class=\"data\">\n\t\t\t\t<div class=\"text\">\n\t\t\t\t\t<div class=\"name\">\n\t\t\t\t\t\t{{global.userdata.name}}\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"role\">\n\t\t\t\t\t\t{{global.userdata.role.name}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t\n\t\t<div class=\"notif-preview\">\n\t\t\t<div class=\"header\">\n\t\t\t\t\n\t\t\t\tNotifikasi\n\t\t\t</div>\n\t\t\t<div class=\"list\">\n\t\t\t\t<ol>\n\t\t\t\t\t<li>hello World</li>\n\t\t\t\t\t<li>Septi Bau Kentut</li>\n\t\t\t\t\t<li>...</li>\n\t\t\t\t</ol>\n\t\t\t</div>\n\t\t</div>\n      \n\t\t<div class=\"loading\" *ngIf=\"global.cartsdownloading||global.salesdownloading\">\n\t\t</div>\n  </div>\n</ion-content>\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>\r\n      <i class=\"fal fa-users-crown fa-fw\"></i>\r\n\t\t\t&nbsp;\r\n\t\t\t<small>{{global.userdata.email}}</small>\r\n    </ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-menu-button autoHide=\"false\" (click)=\"toggleMenu()\"></ion-menu-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content padding>\r\n  <div class=\"single-user-wrapper\">\r\n\t\t<div class=\"header\">\r\n\t\t\t<div class=\"image\">\r\n\t\t\t\t{{global.userdata.name.charAt(0)}}\r\n\t\t\t</div>\r\n\t\t\t<div class=\"data\">\r\n\t\t\t\t<div class=\"text\">\r\n\t\t\t\t\t<div class=\"name\">\r\n\t\t\t\t\t\t{{global.userdata.name}}\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"role\">\r\n\t\t\t\t\t\t{{global.userdata.role.name}}\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t\r\n\t\t<div class=\"notif-preview\">\r\n\t\t\t<div class=\"header\">\r\n\t\t\t\t\r\n\t\t\t\tNotifikasi\r\n\t\t\t</div>\r\n\t\t\t<div class=\"list\">\r\n\t\t\t\t<ol>\r\n\t\t\t\t\t<li>hello World</li>\r\n\t\t\t\t\t<li>Septi Bau Kentut</li>\r\n\t\t\t\t\t<li>...</li>\r\n\t\t\t\t</ol>\r\n\t\t\t</div>\r\n\t\t</div>\r\n      \r\n\t\t<div class=\"loading\" *ngIf=\"global.cartsdownloading||global.salesdownloading\">\r\n\t\t</div>\r\n  </div>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -778,7 +604,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".single-user-wrapper .header {\n  display: flex;\n  margin-bottom: 10px; }\n  .single-user-wrapper .header .image {\n    background-color: #7744dd;\n    color: white;\n    border-radius: 100px;\n    border: 0;\n    width: 50px;\n    height: 50px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    margin: 0 10px 0 20px;\n    font-family: Google;\n    font-size: 120%;\n    font-weight: bold; }\n  .single-user-wrapper .header .data {\n    display: flex;\n    align-items: center; }\n  .single-user-wrapper .header .data .text {\n      line-height: 1; }\n  .single-user-wrapper .header .data .text .name {\n        font-size: 130%;\n        font-family: Helvetica;\n        font-weight: 600;\n        color: #555; }\n  .single-user-wrapper .header .data .text .role {\n        font-weight: 800;\n        font-size: 85%;\n        color: #779;\n        font-family: Google;\n        padding: 3px 1px; }\n  .single-user-wrapper .notif-preview {\n  border: 1px solid #9c9;\n  background-color: #f3fffa;\n  padding: 10px 5px;\n  margin: 10px 5px;\n  border-radius: 5px;\n  font-family: Google;\n  font-weight: 400;\n  font-size: 90%; }\n  .single-user-wrapper .notif-preview .header {\n    margin: 0;\n    padding: 0 3px;\n    font-size: 85%;\n    text-transform: uppercase;\n    font-weight: 900;\n    color: rgba(0, 0, 0, 0.5); }\n  .single-user-wrapper .notif-preview .list ol {\n    line-height: 1.2;\n    -webkit-margin-after: 0;\n            margin-block-end: 0;\n    -webkit-margin-before: 0;\n            margin-block-start: 0;\n    -webkit-padding-start: 20px;\n            padding-inline-start: 20px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXNlci9DOlxceGFtcHBcXGh0ZG9jc1xcakJyb3N1ckRyb2lkL3NyY1xcYXBwXFx1c2VyXFx1c2VyLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVDLGFBQWE7RUFDYixtQkFBbUIsRUFBQTtFQUhwQjtJQUtHLHlCQUF5QjtJQUN6QixZQUFZO0lBQ1osb0JBQW9CO0lBQ3BCLFNBQVM7SUFDVCxXQUFXO0lBQ1gsWUFBWTtJQUNaLGFBQWE7SUFDYixtQkFBbUI7SUFDbkIsdUJBQXVCO0lBQ3ZCLHFCQUFxQjtJQUNyQixtQkFBbUI7SUFDbkIsZUFBZTtJQUNmLGlCQUFpQixFQUFBO0VBakJwQjtJQW9CRyxhQUFhO0lBQ2IsbUJBQW1CLEVBQUE7RUFyQnRCO01BdUJFLGNBQWMsRUFBQTtFQXZCaEI7UUEwQkksZUFBZTtRQUNmLHNCQUFzQjtRQUN0QixnQkFBZ0I7UUFDaEIsV0FBVyxFQUFBO0VBN0JmO1FBaUNJLGdCQUFnQjtRQUNoQixjQUFjO1FBQ2QsV0FBVztRQUNYLG1CQUFtQjtRQUNuQixnQkFBZ0IsRUFBQTtFQXJDcEI7RUEyQ0Msc0JBQXNCO0VBQ3RCLHlCQUF5QjtFQUN6QixpQkFBaUI7RUFDakIsZ0JBQWdCO0VBQ2hCLGtCQUFrQjtFQUNsQixtQkFBbUI7RUFDbkIsZ0JBQWdCO0VBQ2hCLGNBQWMsRUFBQTtFQWxEZjtJQW9ERyxTQUFTO0lBQ1QsY0FBYztJQUNkLGNBQWM7SUFDZCx5QkFBeUI7SUFDekIsZ0JBQWdCO0lBQ2hCLHlCQUFxQixFQUFBO0VBekR4QjtJQTZERSxnQkFBZ0I7SUFDaEIsdUJBQW1CO1lBQW5CLG1CQUFtQjtJQUNuQix3QkFBcUI7WUFBckIscUJBQXFCO0lBQ3JCLDJCQUEwQjtZQUExQiwwQkFBMEIsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3VzZXIvdXNlci5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2luZ2xlLXVzZXItd3JhcHBlcntcclxuICAuaGVhZGVye1xyXG5cdGRpc3BsYXk6IGZsZXg7XHJcblx0bWFyZ2luLWJvdHRvbTogMTBweDtcclxuXHQuaW1hZ2V7XHJcblx0ICBiYWNrZ3JvdW5kLWNvbG9yOiAjNzc0NGRkO1xyXG5cdCAgY29sb3I6IHdoaXRlO1xyXG5cdCAgYm9yZGVyLXJhZGl1czogMTAwcHg7XHJcblx0ICBib3JkZXI6IDA7XHJcblx0ICB3aWR0aDogNTBweDtcclxuXHQgIGhlaWdodDogNTBweDtcclxuXHQgIGRpc3BsYXk6IGZsZXg7XHJcblx0ICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG5cdCAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcblx0ICBtYXJnaW46IDAgMTBweCAwIDIwcHg7XHJcblx0ICBmb250LWZhbWlseTogR29vZ2xlO1xyXG5cdCAgZm9udC1zaXplOiAxMjAlO1xyXG5cdCAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcblx0fVxyXG5cdC5kYXRhIHtcclxuXHQgIGRpc3BsYXk6IGZsZXg7XHJcblx0ICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG5cdCAgLnRleHQge1xyXG5cdFx0bGluZS1oZWlnaHQ6IDE7XHJcblxyXG5cdFx0Lm5hbWUge1xyXG5cdFx0ICBmb250LXNpemU6IDEzMCU7XHJcblx0XHQgIGZvbnQtZmFtaWx5OiBIZWx2ZXRpY2E7XHJcblx0XHQgIGZvbnQtd2VpZ2h0OiA2MDA7XHJcblx0XHQgIGNvbG9yOiAjNTU1O1xyXG5cdFx0fVxyXG5cclxuXHRcdC5yb2xlIHtcclxuXHRcdCAgZm9udC13ZWlnaHQ6IDgwMDtcclxuXHRcdCAgZm9udC1zaXplOiA4NSU7XHJcblx0XHQgIGNvbG9yOiAjNzc5O1xyXG5cdFx0ICBmb250LWZhbWlseTogR29vZ2xlO1xyXG5cdFx0ICBwYWRkaW5nOiAzcHggMXB4O1xyXG5cdFx0fVxyXG5cdCAgfVxyXG5cdH1cclxuICB9XHJcbiAgLm5vdGlmLXByZXZpZXd7XHJcblx0Ym9yZGVyOiAxcHggc29saWQgIzljOTtcclxuXHRiYWNrZ3JvdW5kLWNvbG9yOiAjZjNmZmZhO1xyXG5cdHBhZGRpbmc6IDEwcHggNXB4O1xyXG5cdG1hcmdpbjogMTBweCA1cHg7XHJcblx0Ym9yZGVyLXJhZGl1czogNXB4O1xyXG5cdGZvbnQtZmFtaWx5OiBHb29nbGU7XHJcblx0Zm9udC13ZWlnaHQ6IDQwMDtcclxuXHRmb250LXNpemU6IDkwJTtcclxuXHQuaGVhZGVye1xyXG5cdCAgbWFyZ2luOiAwO1xyXG5cdCAgcGFkZGluZzogMCAzcHg7XHJcblx0ICBmb250LXNpemU6IDg1JTtcclxuXHQgIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XHJcblx0ICBmb250LXdlaWdodDogOTAwO1xyXG5cdCAgY29sb3I6IHJnYmEoMCwwLDAsLjUpO1xyXG5cdH1cclxuXHQubGlzdHtcclxuXHQgIG9se1xyXG5cdFx0bGluZS1oZWlnaHQ6IDEuMjtcclxuXHRcdG1hcmdpbi1ibG9jay1lbmQ6IDA7XHJcblx0XHRtYXJnaW4tYmxvY2stc3RhcnQ6IDA7XHJcblx0XHRwYWRkaW5nLWlubGluZS1zdGFydDogMjBweDtcclxuXHQgIH1cclxuXHR9XHJcbiAgfVxyXG59Il19 */"
+module.exports = ".single-user-wrapper .header {\n  display: flex;\n  margin-bottom: 10px; }\n  .single-user-wrapper .header .image {\n    background-color: #7744dd;\n    color: white;\n    border-radius: 100px;\n    border: 0;\n    width: 50px;\n    height: 50px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    margin: 0 10px 0 20px;\n    font-family: Google;\n    font-size: 120%;\n    font-weight: bold; }\n  .single-user-wrapper .header .data {\n    display: flex;\n    align-items: center; }\n  .single-user-wrapper .header .data .text {\n      line-height: 1; }\n  .single-user-wrapper .header .data .text .name {\n        font-size: 130%;\n        font-family: Helvetica;\n        font-weight: 600;\n        color: #555; }\n  .single-user-wrapper .header .data .text .role {\n        font-weight: 800;\n        font-size: 85%;\n        color: #779;\n        font-family: Google;\n        padding: 3px 1px; }\n  .single-user-wrapper .notif-preview {\n  border: 1px solid #9c9;\n  background-color: #f3fffa;\n  padding: 10px 5px;\n  margin: 10px 5px;\n  border-radius: 5px;\n  font-family: Google;\n  font-weight: 400;\n  font-size: 90%; }\n  .single-user-wrapper .notif-preview .header {\n    margin: 0;\n    padding: 0 3px;\n    font-size: 85%;\n    text-transform: uppercase;\n    font-weight: 900;\n    color: rgba(0, 0, 0, 0.5); }\n  .single-user-wrapper .notif-preview .list ol {\n    line-height: 1.2;\n    -webkit-margin-after: 0;\n            margin-block-end: 0;\n    -webkit-margin-before: 0;\n            margin-block-start: 0;\n    -webkit-padding-start: 20px;\n            padding-inline-start: 20px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXNlci9jOlxceGFtcHBcXGh0ZG9jc1xcamJtb2JpbGUvc3JjXFxhcHBcXHVzZXJcXHVzZXIucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRUMsYUFBYTtFQUNiLG1CQUFtQixFQUFBO0VBSHBCO0lBS0cseUJBQXlCO0lBQ3pCLFlBQVk7SUFDWixvQkFBb0I7SUFDcEIsU0FBUztJQUNULFdBQVc7SUFDWCxZQUFZO0lBQ1osYUFBYTtJQUNiLG1CQUFtQjtJQUNuQix1QkFBdUI7SUFDdkIscUJBQXFCO0lBQ3JCLG1CQUFtQjtJQUNuQixlQUFlO0lBQ2YsaUJBQWlCLEVBQUE7RUFqQnBCO0lBb0JHLGFBQWE7SUFDYixtQkFBbUIsRUFBQTtFQXJCdEI7TUF1QkUsY0FBYyxFQUFBO0VBdkJoQjtRQTBCSSxlQUFlO1FBQ2Ysc0JBQXNCO1FBQ3RCLGdCQUFnQjtRQUNoQixXQUFXLEVBQUE7RUE3QmY7UUFpQ0ksZ0JBQWdCO1FBQ2hCLGNBQWM7UUFDZCxXQUFXO1FBQ1gsbUJBQW1CO1FBQ25CLGdCQUFnQixFQUFBO0VBckNwQjtFQTJDQyxzQkFBc0I7RUFDdEIseUJBQXlCO0VBQ3pCLGlCQUFpQjtFQUNqQixnQkFBZ0I7RUFDaEIsa0JBQWtCO0VBQ2xCLG1CQUFtQjtFQUNuQixnQkFBZ0I7RUFDaEIsY0FBYyxFQUFBO0VBbERmO0lBb0RHLFNBQVM7SUFDVCxjQUFjO0lBQ2QsY0FBYztJQUNkLHlCQUF5QjtJQUN6QixnQkFBZ0I7SUFDaEIseUJBQXFCLEVBQUE7RUF6RHhCO0lBNkRFLGdCQUFnQjtJQUNoQix1QkFBbUI7WUFBbkIsbUJBQW1CO0lBQ25CLHdCQUFxQjtZQUFyQixxQkFBcUI7SUFDckIsMkJBQTBCO1lBQTFCLDBCQUEwQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvdXNlci91c2VyLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zaW5nbGUtdXNlci13cmFwcGVye1xyXG4gIC5oZWFkZXJ7XHJcblx0ZGlzcGxheTogZmxleDtcclxuXHRtYXJnaW4tYm90dG9tOiAxMHB4O1xyXG5cdC5pbWFnZXtcclxuXHQgIGJhY2tncm91bmQtY29sb3I6ICM3NzQ0ZGQ7XHJcblx0ICBjb2xvcjogd2hpdGU7XHJcblx0ICBib3JkZXItcmFkaXVzOiAxMDBweDtcclxuXHQgIGJvcmRlcjogMDtcclxuXHQgIHdpZHRoOiA1MHB4O1xyXG5cdCAgaGVpZ2h0OiA1MHB4O1xyXG5cdCAgZGlzcGxheTogZmxleDtcclxuXHQgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcblx0ICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuXHQgIG1hcmdpbjogMCAxMHB4IDAgMjBweDtcclxuXHQgIGZvbnQtZmFtaWx5OiBHb29nbGU7XHJcblx0ICBmb250LXNpemU6IDEyMCU7XHJcblx0ICBmb250LXdlaWdodDogYm9sZDtcclxuXHR9XHJcblx0LmRhdGEge1xyXG5cdCAgZGlzcGxheTogZmxleDtcclxuXHQgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcblx0ICAudGV4dCB7XHJcblx0XHRsaW5lLWhlaWdodDogMTtcclxuXHJcblx0XHQubmFtZSB7XHJcblx0XHQgIGZvbnQtc2l6ZTogMTMwJTtcclxuXHRcdCAgZm9udC1mYW1pbHk6IEhlbHZldGljYTtcclxuXHRcdCAgZm9udC13ZWlnaHQ6IDYwMDtcclxuXHRcdCAgY29sb3I6ICM1NTU7XHJcblx0XHR9XHJcblxyXG5cdFx0LnJvbGUge1xyXG5cdFx0ICBmb250LXdlaWdodDogODAwO1xyXG5cdFx0ICBmb250LXNpemU6IDg1JTtcclxuXHRcdCAgY29sb3I6ICM3Nzk7XHJcblx0XHQgIGZvbnQtZmFtaWx5OiBHb29nbGU7XHJcblx0XHQgIHBhZGRpbmc6IDNweCAxcHg7XHJcblx0XHR9XHJcblx0ICB9XHJcblx0fVxyXG4gIH1cclxuICAubm90aWYtcHJldmlld3tcclxuXHRib3JkZXI6IDFweCBzb2xpZCAjOWM5O1xyXG5cdGJhY2tncm91bmQtY29sb3I6ICNmM2ZmZmE7XHJcblx0cGFkZGluZzogMTBweCA1cHg7XHJcblx0bWFyZ2luOiAxMHB4IDVweDtcclxuXHRib3JkZXItcmFkaXVzOiA1cHg7XHJcblx0Zm9udC1mYW1pbHk6IEdvb2dsZTtcclxuXHRmb250LXdlaWdodDogNDAwO1xyXG5cdGZvbnQtc2l6ZTogOTAlO1xyXG5cdC5oZWFkZXJ7XHJcblx0ICBtYXJnaW46IDA7XHJcblx0ICBwYWRkaW5nOiAwIDNweDtcclxuXHQgIGZvbnQtc2l6ZTogODUlO1xyXG5cdCAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcclxuXHQgIGZvbnQtd2VpZ2h0OiA5MDA7XHJcblx0ICBjb2xvcjogcmdiYSgwLDAsMCwuNSk7XHJcblx0fVxyXG5cdC5saXN0e1xyXG5cdCAgb2x7XHJcblx0XHRsaW5lLWhlaWdodDogMS4yO1xyXG5cdFx0bWFyZ2luLWJsb2NrLWVuZDogMDtcclxuXHRcdG1hcmdpbi1ibG9jay1zdGFydDogMDtcclxuXHRcdHBhZGRpbmctaW5saW5lLXN0YXJ0OiAyMHB4O1xyXG5cdCAgfVxyXG5cdH1cclxuICB9XHJcbn0iXX0= */"
 
 /***/ }),
 

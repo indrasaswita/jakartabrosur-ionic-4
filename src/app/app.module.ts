@@ -35,7 +35,7 @@ import { DatePicker } from '@ionic-native/date-picker/ngx';
 		DatePicker,
 		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 		{ provide: ErrorHandler, useClass: IonicErrorHandler },
-		GlobalsService,
+		//GlobalsService,
 		AuthGuardService,
 		AuthenticationService,
 		Platform,

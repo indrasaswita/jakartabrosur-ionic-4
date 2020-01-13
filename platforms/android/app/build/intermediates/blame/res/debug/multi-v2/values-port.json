@@ -1,6 +1,21 @@
 {
     "logs": [
         {
+            "outputFile": "C:\\xampp\\htdocs\\jbmobile\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\JKTBROSUR2\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\aa9b9f58556a5fa7e36f77610de69337\\res\\values-port\\values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "C:\\xampp\\htdocs\\jBrosurDroid\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
             "map": [
                 {

@@ -62,7 +62,7 @@ var CustomersalesPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button></ion-back-button>\n    </ion-buttons>\n    <ion-title>\n      <i class=\"far fa-clipboard-list fa-fw\"></i>\n      Customer & Sales\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-card class=\"welcome-card\">\n    <ion-card-header>\n      <ion-card-subtitle>Get Started</ion-card-subtitle>\n      <ion-card-title> QR Code and Barcode </ion-card-title>\n    </ion-card-header>\n    <ion-card-content>\n      <p>Here we can scan a Qr code or Barcode to get data and we will also see how to generate Barcode.</p>\n    </ion-card-content>\n    <ion-button (click)=\"goToBarcodeScan()\">Click to scan a barcode</ion-button>\n  </ion-card>\n\n</ion-content>"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>\r\n      <i class=\"far fa-clipboard-list fa-fw\"></i>\r\n      Customer & Sales\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-card class=\"welcome-card\">\r\n    <ion-card-header>\r\n      <ion-card-subtitle>Get Started</ion-card-subtitle>\r\n      <ion-card-title> QR Code and Barcode </ion-card-title>\r\n    </ion-card-header>\r\n    <ion-card-content>\r\n      <p>Here we can scan a Qr code or Barcode to get data and we will also see how to generate Barcode.</p>\r\n    </ion-card-content>\r\n    <ion-button (click)=\"goToBarcodeScan()\">Click to scan a barcode</ion-button>\r\n  </ion-card>\r\n\r\n</ion-content>"
 
 /***/ }),
 

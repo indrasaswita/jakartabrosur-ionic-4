@@ -6,7 +6,7 @@
 
 .btn{
 	padding: 8px 16px;
-	border-radius: 6px;
+	border-radius: 3px;
 	border: 1px solid #ccc;
 	background-color: white;
 	font-weight: bold;
@@ -33,6 +33,9 @@
 	}
 	&.btn-danger{
 		@include btn-custom-color(white, $brand-danger, #444);
+	}
+	&.btn-purple{
+		@include btn-custom-color(white, #407, #509);
 	}
 	&.btn-warning{
 		@include btn-custom-color(white, $brand-warning, #444);
@@ -71,3 +74,4 @@
 		}
 	}
 }
+

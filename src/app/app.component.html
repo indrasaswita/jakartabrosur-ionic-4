@@ -254,4 +254,16 @@
   </ion-menu>
 
   <ion-router-outlet id="submenu" main></ion-router-outlet>
+
+	<div class="errormessage-wrapper" [ngClass]="{'show':global.errormessageshow}">
+		<div class="errormessage" (click)="global.hideerror()">
+			{{global.errormessage}}
+		</div>
+	</div>
+	<div class="loadingmessage-wrapper" *ngIf="global.loadingshow">
+		<div class="loadingmessage">
+			<i class="fas fa-spin fa-spinner fa-4x"></i> <br>
+			Loading...
+		</div>
+	</div>
 </ion-app>
