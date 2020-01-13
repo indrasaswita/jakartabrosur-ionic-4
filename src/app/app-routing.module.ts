@@ -34,7 +34,6 @@ const routes: Routes = [
   { path: 'user', loadChildren: './user/user.module#UserPageModule' },
   { path: 'confirmationbyemployee', loadChildren: './confirmationbyemployee/confirmationbyemployee.module#ConfirmationbyemployeePageModule' },
   { path: 'cetaksuratjalan', loadChildren: './cetaksuratjalan/cetaksuratjalan.module#CetaksuratjalanPageModule' },
-  { path: 'editcustomerbankacc', loadChildren: './editcustomerbankacc/editcustomerbankacc.module#EditcustomerbankaccPageModule' }
 
 ];
 @NgModule({
